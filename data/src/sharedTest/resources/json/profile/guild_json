@@ -1,0 +1,132 @@
+{
+  "name": "Guild name",
+  "faction": "horde",
+  "region": "eu",
+  "realm": "Howling Fjord",
+  "last_crawled_at": "2020-09-23T16:40:17.000Z",
+  "profile_url": "profile_url",
+  "raid_rankings": {
+    "battle-of-dazaralor": {
+      "normal": {
+        "world": 2479,
+        "region": 1410,
+        "realm": 50
+      },
+      "heroic": {
+        "world": 4675,
+        "region": 2718,
+        "realm": 94
+      },
+      "mythic": {
+        "world": 3979,
+        "region": 2259,
+        "realm": 98
+      }
+    },
+    "crucible-of-storms": {
+      "normal": {
+        "world": 2488,
+        "region": 1070,
+        "realm": 33
+      },
+      "heroic": {
+        "world": 8464,
+        "region": 4577,
+        "realm": 119
+      },
+      "mythic": {
+        "world": 0,
+        "region": 0,
+        "realm": 0
+      }
+    },
+    "nyalotha-the-waking-city": {
+      "normal": {
+        "world": 5689,
+        "region": 3478,
+        "realm": 114
+      },
+      "heroic": {
+        "world": 5103,
+        "region": 2995,
+        "realm": 130
+      },
+      "mythic": {
+        "world": 3784,
+        "region": 2177,
+        "realm": 101
+      }
+    },
+    "the-eternal-palace": {
+      "normal": {
+        "world": 3885,
+        "region": 2421,
+        "realm": 90
+      },
+      "heroic": {
+        "world": 6155,
+        "region": 3384,
+        "realm": 115
+      },
+      "mythic": {
+        "world": 3229,
+        "region": 1866,
+        "realm": 86
+      }
+    },
+    "uldir": {
+      "normal": {
+        "world": 9853,
+        "region": 5742,
+        "realm": 156
+      },
+      "heroic": {
+        "world": 8293,
+        "region": 4731,
+        "realm": 128
+      },
+      "mythic": {
+        "world": 2069,
+        "region": 1227,
+        "realm": 43
+      }
+    }
+  },
+  "raid_progression": {
+    "battle-of-dazaralor": {
+      "summary": "9/9 M",
+      "total_bosses": 9,
+      "normal_bosses_killed": 9,
+      "heroic_bosses_killed": 9,
+      "mythic_bosses_killed": 9
+    },
+    "crucible-of-storms": {
+      "summary": "2/2 H",
+      "total_bosses": 2,
+      "normal_bosses_killed": 2,
+      "heroic_bosses_killed": 2,
+      "mythic_bosses_killed": 0
+    },
+    "nyalotha-the-waking-city": {
+      "summary": "10/12 M",
+      "total_bosses": 12,
+      "normal_bosses_killed": 12,
+      "heroic_bosses_killed": 12,
+      "mythic_bosses_killed": 10
+    },
+    "the-eternal-palace": {
+      "summary": "5/8 M",
+      "total_bosses": 8,
+      "normal_bosses_killed": 8,
+      "heroic_bosses_killed": 8,
+      "mythic_bosses_killed": 5
+    },
+    "uldir": {
+      "summary": "8/8 M",
+      "total_bosses": 8,
+      "normal_bosses_killed": 8,
+      "heroic_bosses_killed": 8,
+      "mythic_bosses_killed": 8
+    }
+  }
+}

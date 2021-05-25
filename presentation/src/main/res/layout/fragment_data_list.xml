@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isDataLoading"
+            type="androidx.lifecycle.LiveData&lt;Boolean>" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/data_list_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/data_list_progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{isDataLoading ? View.VISIBLE : View.GONE}" />
+
+        <com.nemesis.rio.presentation.view.epoxy.EpoxyRecyclerViewWithoutSharedPool
+            android:id="@+id/data_list_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{isDataLoading ? View.GONE : View.VISIBLE}"
+            tools:listitem="@layout/item_one_line_text" />
+
+    </FrameLayout>
+
+</layout>

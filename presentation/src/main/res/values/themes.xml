@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorSecondary">?colorPrimary</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="android:colorPrimaryDark">@color/background</item>
+        <item name="android:navigationBarColor">@color/nav_bar</item>
+        <item name="snackbarStyle">@style/snackbarStyle</item>
+        <item name="snackbarTextViewStyle">@style/snackbarTextStyle</item>
+        <item name="csrl_progressbarBackgroundColor">?colorSurface</item>
+        <item name="csrl_progressbarColor">?colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.SplashScreen">
+        <item name="android:windowBackground">@drawable/splash_screen_background</item>
+    </style>
+
+    <style name="AppTheme.DeathKnight">
+        <item name="colorPrimary">@color/class_death_knight</item>
+    </style>
+
+    <style name="AppTheme.DemonHunter">
+        <item name="colorPrimary">@color/class_demon_hunter</item>
+    </style>
+
+    <style name="AppTheme.Druid">
+        <item name="colorPrimary">@color/class_druid</item>
+    </style>
+
+    <style name="AppTheme.Hunter">
+        <item name="colorPrimary">@color/class_hunter</item>
+    </style>
+
+    <style name="AppTheme.Mage">
+        <item name="colorPrimary">@color/class_mage</item>
+    </style>
+
+    <style name="AppTheme.Monk">
+        <item name="colorPrimary">@color/class_monk</item>
+    </style>
+
+    <style name="AppTheme.Paladin">
+        <item name="colorPrimary">@color/class_paladin</item>
+    </style>
+
+    <style name="AppTheme.Priest">
+        <item name="colorPrimary">@color/class_priest</item>
+    </style>
+
+    <style name="AppTheme.Rogue">
+        <item name="colorPrimary">@color/class_rogue</item>
+    </style>
+
+    <style name="AppTheme.Shaman">
+        <item name="colorPrimary">@color/class_shaman</item>
+    </style>
+
+    <style name="AppTheme.Warlock">
+        <item name="colorPrimary">@color/class_warlock</item>
+    </style>
+
+    <style name="AppTheme.Warrior">
+        <item name="colorPrimary">@color/class_warrior</item>
+    </style>
+
+</resources>

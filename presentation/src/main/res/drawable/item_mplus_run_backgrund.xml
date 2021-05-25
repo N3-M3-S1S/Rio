@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <stroke
+        android:width="@dimen/item_mplus_run_border_stroke_size"
+        android:color="@color/item_mplus_run_border" />
+
+    <solid android:color="?colorSurface" />
+    <corners android:radius="@dimen/item_mplus_run_border_corners_size" />
+</shape>

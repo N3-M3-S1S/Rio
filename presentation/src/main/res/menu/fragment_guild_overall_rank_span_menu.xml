@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/rank_span_realm"
+        android:title="@string/realm_title" />
+    <item
+        android:id="@+id/rank_span_region"
+        android:title="@string/region_title" />
+    <item
+        android:id="@+id/rank_span_world"
+        android:title="@string/ranks_scope_world" />
+</menu>

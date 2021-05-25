@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="kotlin.jvm.functions.Function1" />
+
+        <import type="kotlin.Unit" />
+
+        <variable
+            name="string"
+            type="String" />
+
+        <variable
+            name="onClick"
+            type="Function1&lt;String, Unit>" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:minHeight="@dimen/item_one_line_text_min_height"
+        android:onClick="@{()->onClick.invoke(string)}"
+        android:orientation="vertical"
+        android:padding="@dimen/space_large">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{string}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            tools:text="@string/test_text" />
+
+    </FrameLayout>
+</layout>

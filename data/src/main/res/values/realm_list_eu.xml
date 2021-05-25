@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+    <string-array name="realm_list_eu">
+        <item>Aegwynn</item>
+        <item>Aerie Peak</item>
+        <item>Agamaggan</item>
+        <item>Aggra (Português)</item>
+        <item>Aggramar</item>
+        <item>Ahn\'Qiraj</item>
+        <item>Al\'Akir</item>
+        <item>Alexstrasza</item>
+        <item>Alleria</item>
+        <item>Alonsus</item>
+        <item>Aman\'Thul</item>
+        <item>Ambossar</item>
+        <item>Anachronos</item>
+        <item>Anetheron</item>
+        <item>Antonidas</item>
+        <item>Anub\'arak</item>
+        <item>Arak-arahm</item>
+        <item>Arathi</item>
+        <item>Arathor</item>
+        <item>Archimonde</item>
+        <item>Area 52</item>
+        <item>Argent Dawn</item>
+        <item>Arthas</item>
+        <item>Arygos</item>
+        <item>Aszune</item>
+        <item>Auchindoun</item>
+        <item>Azjol-Nerub</item>
+        <item>Azshara</item>
+        <item>Azuremyst</item>
+        <item>Baelgun</item>
+        <item>Balnazzar</item>
+        <item>Blackhand</item>
+        <item>Blackmoore</item>
+        <item>Blackrock</item>
+        <item>Blade\'s Edge</item>
+        <item>Bladefist</item>
+        <item>Bloodfeather</item>
+        <item>Bloodhoof</item>
+        <item>Bloodscalp</item>
+        <item>Blutkessel</item>
+        <item>Boulderfist</item>
+        <item>Bronze Dragonflight</item>
+        <item>Bronzebeard</item>
+        <item>Burning Blade</item>
+        <item>Burning Legion</item>
+        <item>Burning Steppes</item>
+        <item>C\'Thun</item>
+        <item>Chamber of Aspects</item>
+        <item>Chants éternels</item>
+        <item>Cho\'gall</item>
+        <item>Chromaggus</item>
+        <item>Confrérie du Thorium</item>
+        <item>Conseil des Ombres</item>
+        <item>Crushridge</item>
+        <item>Culte de la Rive noire</item>
+        <item>Daggerspine</item>
+        <item>Dalaran</item>
+        <item>Dalvengyr</item>
+        <item>Darkmoon Faire</item>
+        <item>Darksorrow</item>
+        <item>Darkspear</item>
+        <item>Das Konsortium</item>
+        <item>Das Syndikat</item>
+        <item>Deathwing</item>
+        <item>Defias Brotherhood</item>
+        <item>Dentarg</item>
+        <item>Der Mithrilorden</item>
+        <item>Der Rat von Dalaran</item>
+        <item>Der abyssische Rat</item>
+        <item>Destromath</item>
+        <item>Dethecus</item>
+        <item>Die Aldor</item>
+        <item>Die Arguswacht</item>
+        <item>Die Nachtwache</item>
+        <item>Die Silberne Hand</item>
+        <item>Die Todeskrallen</item>
+        <item>Die ewige Wacht</item>
+        <item>Doomhammer</item>
+        <item>Draenor</item>
+        <item>Dragonblight</item>
+        <item>Dragonmaw</item>
+        <item>Drak\'thul</item>
+        <item>Drek\'Thar</item>
+        <item>Dun Modr</item>
+        <item>Dun Morogh</item>
+        <item>Dunemaul</item>
+        <item>Durotan</item>
+        <item>Earthen Ring</item>
+        <item>Echsenkessel</item>
+        <item>Eitrigg</item>
+        <item>Eldre\'Thalas</item>
+        <item>Elune</item>
+        <item>Emerald Dream</item>
+        <item>Emeriss</item>
+        <item>Eonar</item>
+        <item>Eredar</item>
+        <item>Executus</item>
+        <item>Exodar</item>
+        <item>Festung der Stürme</item>
+        <item>Forscherliga</item>
+        <item>Frostmane</item>
+        <item>Frostmourne</item>
+        <item>Frostwhisper</item>
+        <item>Frostwolf</item>
+        <item>Garona</item>
+        <item>Garrosh</item>
+        <item>Genjuros</item>
+        <item>Ghostlands</item>
+        <item>Gilneas</item>
+        <item>Gorgonnash</item>
+        <item>Grim Batol</item>
+        <item>Gul\'dan</item>
+        <item>Hakkar</item>
+        <item>Haomarush</item>
+        <item>Hellfire</item>
+        <item>Hellscream</item>
+        <item>Hyjal</item>
+        <item>Illidan</item>
+        <item>Jaedenar</item>
+        <item>Kael\'thas</item>
+        <item>Karazhan</item>
+        <item>Kargath</item>
+        <item>Kazzak</item>
+        <item>Kel\'Thuzad</item>
+        <item>Khadgar</item>
+        <item>Khaz Modan</item>
+        <item>Khaz\'goroth</item>
+        <item>Kil\'jaeden</item>
+        <item>Kilrogg</item>
+        <item>Kirin Tor</item>
+        <item>Kor\'gall</item>
+        <item>Krag\'jin</item>
+        <item>Krasus</item>
+        <item>Kul Tiras</item>
+        <item>Kult der Verdammten</item>
+        <item>La Croisade écarlate</item>
+        <item>Laughing Skull</item>
+        <item>Les Clairvoyants</item>
+        <item>Les Sentinelles</item>
+        <item>Lightbringer</item>
+        <item>Lightning\'s Blade</item>
+        <item>Lordaeron</item>
+        <item>Los Errantes</item>
+        <item>Lothar</item>
+        <item>Madmortem</item>
+        <item>Magtheridon</item>
+        <item>Mal\'Ganis</item>
+        <item>Malfurion</item>
+        <item>Malorne</item>
+        <item>Malygos</item>
+        <item>Mannoroth</item>
+        <item>Marécage de Zangar</item>
+        <item>Mazrigos</item>
+        <item>Medivh</item>
+        <item>Minahonda</item>
+        <item>Moonglade</item>
+        <item>Mug\'thol</item>
+        <item>Nagrand</item>
+        <item>Nathrezim</item>
+        <item>Naxxramas</item>
+        <item>Nazjatar</item>
+        <item>Nefarian</item>
+        <item>Nemesis</item>
+        <item>Neptulon</item>
+        <item>Ner\'zhul</item>
+        <item>Nera\'thor</item>
+        <item>Nethersturm</item>
+        <item>Nordrassil</item>
+        <item>Norgannon</item>
+        <item>Nozdormu</item>
+        <item>Onyxia</item>
+        <item>Outland</item>
+        <item>Perenolde</item>
+        <item>Pozzo dell\'Eternità</item>
+        <item>Proudmoore</item>
+        <item>Quel\'Thalas</item>
+        <item>Ragnaros</item>
+        <item>Rajaxx</item>
+        <item>Rashgarroth</item>
+        <item>Ravencrest</item>
+        <item>Ravenholdt</item>
+        <item>Rexxar</item>
+        <item>Runetotem</item>
+        <item>Sanguino</item>
+        <item>Sargeras</item>
+        <item>Saurfang</item>
+        <item>Scarshield Legion</item>
+        <item>Sen\'jin</item>
+        <item>Shadowsong</item>
+        <item>Shattered Halls</item>
+        <item>Shattered Hand</item>
+        <item>Shattrath</item>
+        <item>Shen\'dralar</item>
+        <item>Silvermoon</item>
+        <item>Sinstralis</item>
+        <item>Skullcrusher</item>
+        <item>Spinebreaker</item>
+        <item>Spirestone</item>
+        <item>Sporeggar</item>
+        <item>Steamwheedle Cartel</item>
+        <item>Stormrage</item>
+        <item>Stormreaver</item>
+        <item>Stormscale</item>
+        <item>Sunstrider</item>
+        <item>Suramar</item>
+        <item>Sylvanas</item>
+        <item>Taerar</item>
+        <item>Talnivarr</item>
+        <item>Tarren Mill</item>
+        <item>Teldrassil</item>
+        <item>Temple noir</item>
+        <item>Terenas</item>
+        <item>Terokkar</item>
+        <item>Terrordar</item>
+        <item>The Maelstrom</item>
+        <item>The Sha\'tar</item>
+        <item>The Venture Co</item>
+        <item>Theradras</item>
+        <item>Thrall</item>
+        <item>Throk\'Feroth</item>
+        <item>Thunderhorn</item>
+        <item>Tichondrius</item>
+        <item>Tirion</item>
+        <item>Todeswache</item>
+        <item>Trollbane</item>
+        <item>Turalyon</item>
+        <item>Twilight\'s Hammer</item>
+        <item>Twisting Nether</item>
+        <item>Tyrande</item>
+        <item>Uldaman</item>
+        <item>Ulduar</item>
+        <item>Uldum</item>
+        <item>Un\'Goro</item>
+        <item>Varimathras</item>
+        <item>Vashj</item>
+        <item>Vek\'lor</item>
+        <item>Vek\'nilash</item>
+        <item>Vol\'jin</item>
+        <item>Wildhammer</item>
+        <item>Wrathbringer</item>
+        <item>Xavius</item>
+        <item>Ysera</item>
+        <item>Ysondre</item>
+        <item>Zenedar</item>
+        <item>Zirkel des Cenarius</item>
+        <item>Zul\'jin</item>
+        <item>Zuluhed</item>
+        <item>Азурегос</item>
+        <item>Борейская тундра</item>
+        <item>Вечная Песня</item>
+        <item>Галакронд</item>
+        <item>Голдринн</item>
+        <item>Гордунни</item>
+        <item>Гром</item>
+        <item>Дракономор</item>
+        <item>Король-лич</item>
+        <item>Пиратская Бухта</item>
+        <item>Подземье</item>
+        <item>Разувий</item>
+        <item>Ревущий фьорд</item>
+        <item>Свежеватель Душ</item>
+        <item>Седогрив</item>
+        <item>Страж Смерти</item>
+        <item>Термоштепсель</item>
+        <item>Ткач Смерти</item>
+        <item>Черный Шрам</item>
+        <item>Ясеневый лес</item>
+    </string-array>
+</resources>

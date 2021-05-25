@@ -1,0 +1,59 @@
+{
+  "mythic_plus_ranks": {
+    "class": {
+      "world": 14179,
+      "region": 8857,
+      "realm": 401
+    },
+    "class_tank": {
+      "world": 6469,
+      "region": 4181,
+      "realm": 198
+    },
+    "class_dps": {
+      "world": 0,
+      "region": 0,
+      "realm": 0
+    },
+    "faction_class": {
+      "world": 4471,
+      "region": 2712,
+      "realm": 391
+    },
+    "faction_class_tank": {
+      "world": 1891,
+      "region": 1165,
+      "realm": 196
+    },
+    "overall": {
+      "world": 213104,
+      "region": 128634,
+      "realm": 6030
+    },
+    "healer": {
+      "world": 42770,
+      "region": 25872,
+      "realm": 1242
+    },
+    "faction_overall": {
+      "world": 67365,
+      "region": 39616,
+      "realm": 5896
+    },
+    "faction_healer": {
+      "world": 261000,
+      "region": 145267,
+      "realm": 13250
+    },
+    "spec_268": {
+      "world": 6469,
+      "region": 4181,
+      "realm": 198
+    },
+    "faction_spec_269": {
+      "world": 1891,
+      "region": 1165,
+      "realm": 196
+    }
+  }
+}

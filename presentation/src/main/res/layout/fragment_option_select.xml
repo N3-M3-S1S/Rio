@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/option_select_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?colorSurface"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/option_select_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fragment_option_select_toolbar_background"
+        android:minHeight="?attr/actionBarSize"
+        tools:title="@string/test_text" />
+
+    <com.nemesis.rio.presentation.view.epoxy.EpoxyRecyclerViewWithoutSharedPool
+        android:id="@+id/option_select_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/space_normal"
+        android:layout_marginBottom="@dimen/space_normal"
+        app:itemSpacing="@dimen/space_normal"
+        tools:listitem="@layout/item_one_line_text" />
+
+</LinearLayout>

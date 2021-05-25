@@ -1,0 +1,27 @@
+{
+  "name": "Character",
+  "race": "Pandaren",
+  "class": "Monk",
+  "active_spec_name": "Brewmaster",
+  "active_spec_role": "TANK",
+  "gender": "female",
+  "faction": "alliance",
+  "achievement_points": 7250,
+  "honorable_kills": 0,
+  "thumbnail_url": "profile_image_url",
+  "region": "eu",
+  "realm": "Gordunni",
+  "profile_url": "profile_url",
+  "profile_banner": "alliancebanner1",
+  "gear": {
+    "item_level_equipped": 472
+  },
+  "guild": {
+    "name": "guild"
+  },
+  "covenant": {
+    "id": 3,
+    "name": "Night Fae",
+    "renown_level": 9
+  }
+}

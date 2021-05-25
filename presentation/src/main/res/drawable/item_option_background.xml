@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?colorPrimary">
+
+    <item>
+        <color android:color="?colorSurface" />
+    </item>
+
+
+    <item>
+        <selector>
+            <item
+                android:drawable="@color/item_option_selected_color"
+                android:state_selected="true" />
+        </selector>
+    </item>
+
+</ripple>

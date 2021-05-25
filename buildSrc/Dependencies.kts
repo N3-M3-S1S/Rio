@@ -1,0 +1,3 @@
+object Dependencies {
+    val kotlin = ""
+}

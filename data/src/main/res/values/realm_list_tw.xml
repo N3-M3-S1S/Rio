@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+    <string-array name="realm_list_tw">
+        <item>世界之樹</item>
+        <item>亞雷戈斯</item>
+        <item>冰霜之刺</item>
+        <item>冰風崗哨</item>
+        <item>地獄吼</item>
+        <item>夜空之歌</item>
+        <item>天空之牆</item>
+        <item>寒冰皇冠</item>
+        <item>尖石</item>
+        <item>屠魔山谷</item>
+        <item>巨龍之喉</item>
+        <item>憤怒使者</item>
+        <item>日落沼澤</item>
+        <item>暗影之月</item>
+        <item>水晶之刺</item>
+        <item>狂熱之刃</item>
+        <item>眾星之子</item>
+        <item>米奈希爾</item>
+        <item>聖光之願</item>
+        <item>血之谷</item>
+        <item>語風</item>
+        <item>銀翼要塞</item>
+        <item>阿薩斯</item>
+        <item>雲蛟衛</item>
+        <item>雷鱗</item>
+    </string-array>
+</resources>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.nemesis.rio.presentation.profile.search.ProfileSearchViewModel" />
+    </data>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/profile_search_control_root"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/profile_name_text_input_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_large"
+                    android:layout_marginTop="@dimen/space_large"
+                    android:layout_marginEnd="@dimen/space_large"
+                    app:endIconMode="clear_text"
+                    app:hintEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:profileSearch_profileTypeHint="@{viewModel.profileType}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/profile_name_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionSearch"
+                        android:inputType="text"
+                        android:singleLine="true"
+                        android:text="@={viewModel.profileName}"
+                        tools:hint="@string/test_text"
+                        tools:text="Name" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <include
+                    android:id="@+id/region_text_input_layout"
+                    layout="@layout/item_dropdown"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_large"
+                    android:layout_marginTop="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_large"
+                    app:layout_constraintEnd_toStartOf="@+id/realm_text_input_layout"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_weight="0.3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_name_text_input_layout"
+                    app:onClick="@{viewModel::onRegionSelectClicked}"
+                    app:text="@{viewModel.selectedRegion}"
+                    app:title="@{@string/region_title}" />
+
+                <include
+                    android:id="@+id/realm_text_input_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    layout="@layout/item_dropdown"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/space_large"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_weight="0.7"
+                    app:layout_constraintStart_toEndOf="@+id/region_text_input_layout"
+                    app:layout_constraintTop_toTopOf="@+id/region_text_input_layout"
+                    app:onClick="@{viewModel::onRealmSelectClicked}"
+                    app:text="@{viewModel.selectedRealm}"
+                    app:title="@{@string/realm_title}" />
+
+                <RadioGroup
+                    android:id="@+id/profile_type_radio_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_large"
+                    android:layout_marginTop="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_large"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="@+id/search_button"
+                    app:layout_constraintEnd_toStartOf="@+id/search_button"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/search_button"
+                    app:profileSearch_profileType="@={viewModel.profileType}">
+
+                    <RadioButton
+                        android:id="@+id/profile_type_character"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@string/profile_character"
+                        tools:checked="true" />
+
+                    <RadioButton
+                        android:id="@+id/profile_type_guild"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space_large"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@string/profile_guild" />
+                </RadioGroup>
+
+                <com.nemesis.rio.presentation.view.widget.MaterialProgressButton
+                    android:id="@+id/search_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_normal"
+                    android:enabled="@{viewModel.isSearchEnabled}"
+                    android:text="@string/search_title"
+                    app:layout_constraintEnd_toEndOf="@id/realm_text_input_layout"
+                    app:layout_constraintTop_toBottomOf="@id/realm_text_input_layout"
+                    app:progressVisible="@{viewModel.isSearchActive}" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/profile_search_history_fragment"
+                android:name="com.nemesis.rio.presentation.profile.search.history.ProfileSearchHistoryFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/space_normal"
+                tools:layout="@layout/fragment_data_list" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

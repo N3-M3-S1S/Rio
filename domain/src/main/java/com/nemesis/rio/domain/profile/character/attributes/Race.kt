@@ -1,0 +1,14 @@
+package com.nemesis.rio.domain.profile.character.attributes
+
+enum class Race {
+    // Alliance
+    HUMAN, DWARF, DARK_IRON_DWARF, NIGHT_ELF, GNOME, DRAENEI,
+    WORGEN, VOID_ELF, LIGHTFORGED_DRAENEI, KUL_TIRAN, MECHANOGNOME,
+
+    // Horde
+    ORC, UNDEAD, TAUREN, TROLL, BLOOD_ELF, GOBLIN, NIGHTBORNE,
+    HIGHMOUNTAIN_TAUREN, MAGHAR_ORC, ZANDALARI_TROLL, VULPERA,
+
+    // Both
+    PANDAREN
+}

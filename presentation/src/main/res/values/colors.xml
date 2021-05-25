@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <color name="primary">#E5A024</color>
+    <color name="surface">#373737</color>
+    <color name="background">#212121</color>
+    <color name="nav_bar">#1D1D1D</color>
+
+    <!-- Character overall -->
+    <color name="fragment_character_overall_profile_image_placeholder">#373737</color>
+
+    <!-- Mythic plus run -->
+    <color name="item_mplus_run_border">?colorControlNormal</color>
+    <color name="item_mplus_run_dungeon_image_tint">#80000000</color>
+
+    <!-- Ranks -->
+    <color name="item_ranks_header_background">@color/surface</color>
+
+    <!-- Raid progress -->
+    <color name="item_raid_progress_image_tint">#33000000</color>
+
+    <!-- Quality -->
+    <color name="quality_epic">#D097F7</color>
+    <color name="quality_legendary">#FF8F1F</color>
+
+    <!-- Faction -->
+    <color name="faction_alliance">#6585E7</color>
+    <color name="faction_horde">#FF3C1A</color>
+
+    <!-- Class -->
+    <color name="class_death_knight">#E5576F</color>
+    <color name="class_demon_hunter">#BC63D9</color>
+    <color name="class_druid">#FF7C0A</color>
+    <color name="class_hunter">#AAD372</color>
+    <color name="class_mage">#3FC7EB</color>
+    <color name="class_monk">#00FF98</color>
+    <color name="class_paladin">#F48CBA</color>
+    <color name="class_priest">#FFFFFF</color>
+    <color name="class_rogue">#FFF468</color>
+    <color name="class_shaman">#0F87FF</color>
+    <color name="class_warlock">#8788EE</color>
+    <color name="class_warrior">#C69B6D</color>
+
+</resources>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/raid_progress_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?selectableItemBackground"
+    android:paddingBottom="@dimen/space_normal">
+
+    <ImageView
+        android:id="@+id/raid_progress_raid_image"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/item_raid_progress_dungeon_image_height"
+        android:scaleType="fitXY"
+        android:tintMode="src_over"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/item_raid_progress_image_tint"
+        tools:srcCompat="@drawable/raid_tomb_of_sargeras" />
+
+    <TextView
+        android:id="@+id/raid_progress_raid_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_large"
+        android:layout_marginTop="@dimen/space_large"
+        android:layout_marginEnd="@dimen/space_large"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        app:layout_constraintEnd_toStartOf="@+id/raid_progress_expand_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/raid_progress_raid_image"
+        tools:text="@string/raid_tomb_of_sargeras" />
+
+    <ImageView
+        android:id="@+id/raid_progress_expand_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_large"
+        android:layout_marginEnd="@dimen/space_large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/raid_progress_raid_image"
+        app:srcCompat="@drawable/ic_expand" />
+
+    <TextView
+        android:id="@+id/raid_progress_best_progress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_large"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        app:layout_constraintEnd_toEndOf="@+id/raid_progress_raid_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/raid_progress_raid_name"
+        tools:text="@string/test_raid_progress_best" />
+
+    <TextView
+        android:id="@+id/raid_progress_mythic_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        tools:text="Mythic:" />
+
+    <TextView
+        android:id="@+id/raid_progress_heroic_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        tools:text="Heroic:"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/raid_progress_normal_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        tools:text="Normal:"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/raid_progress_mythic_kills"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        tools:text="@string/test_raid_progress"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/raid_progress_heroic_kills"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        tools:text="@string/test_raid_progress"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/raid_progress_normal_kills"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        tools:text="@string/test_raid_progress"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/raid_progress_flow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_large"
+        android:layout_marginTop="@dimen/space_normal"
+        android:visibility="gone"
+        app:constraint_referenced_ids="raid_progress_mythic_title, raid_progress_mythic_kills, raid_progress_heroic_title, raid_progress_heroic_kills, raid_progress_normal_title, raid_progress_normal_kills"
+        app:flow_horizontalGap="@dimen/space_small"
+        app:flow_horizontalStyle="spread_inside"
+        app:flow_maxElementsWrap="2"
+        app:flow_verticalGap="@dimen/space_small"
+        app:flow_wrapMode="chain"
+        app:layout_constraintEnd_toStartOf="@+id/raid_progress_expand_arrow"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/raid_progress_raid_name" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/raid_progress_achievement_aotc_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_large"
+        android:text="@string/raid_achievement_aotc_short"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        android:textColor="@color/quality_epic"
+        android:visibility="gone"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/raid_progress_best_progress"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/raid_progress_achievement_aotc_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_large"
+        android:layout_marginTop="@dimen/space_small"
+        android:layout_marginEnd="@dimen/space_large"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/guidline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/raid_progress_achievement_aotc_title"
+        tools:text="@string/test_date" />
+
+    <TextView
+        android:id="@+id/raid_progress_achievement_ce_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_normal"
+        android:text="@string/raid_achievement_ce_short"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        android:textColor="@color/quality_legendary"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/raid_progress_achievement_aotc_title"
+        app:layout_constraintTop_toBottomOf="@+id/raid_progress_best_progress"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/raid_progress_achievement_ce_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_large"
+        android:layout_marginTop="@dimen/space_small"
+        android:layout_marginEnd="@dimen/space_large"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidline"
+        app:layout_constraintTop_toBottomOf="@+id/raid_progress_achievement_ce_title"
+        tools:text="@string/test_date" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

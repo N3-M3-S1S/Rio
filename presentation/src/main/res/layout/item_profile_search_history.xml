@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+
+        <variable
+            name="profileName"
+            type="String" />
+
+        <variable
+            name="profileDescription"
+            type="CharSequence" />
+
+        <variable
+            name="serverInfo"
+            type="CharSequence" />
+
+        <variable
+            name="onClick"
+            type="Function0&lt;Unit>" />
+
+        <import type="kotlin.jvm.functions.Function0" />
+
+        <import type="kotlin.Unit" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/profile_search_history_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:minHeight="@dimen/three_line_list_item_min_height"
+        android:onClick="@{() -> onClick.invoke()}"
+        android:orientation="vertical"
+        android:padding="@dimen/space_large">
+
+        <TextView
+            android:id="@+id/profile_search_history_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{profileName}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            tools:text="@string/profile_character" />
+
+        <TextView
+            android:id="@+id/profile_search_history_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{profileDescription}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            tools:text="@string/test_search_item_profile_description" />
+
+        <TextView
+            android:id="@+id/profile_search_history_server_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{serverInfo}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            tools:text="@string/test_server_data" />
+    </LinearLayout>
+
+</layout>

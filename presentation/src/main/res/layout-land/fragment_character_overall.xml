@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.nemesis.rio.presentation.profile.overview.character.overall.CharacterOverallViewModel" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space_large">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/character_overall_image"
+                android:layout_width="@dimen/character_overall_image_size"
+                android:layout_height="@dimen/character_overall_image_size"
+                app:characterOverall_profileImageUrl="@{viewModel.characterOverallData.character.imageUrl}"
+                app:layout_constraintBottom_toTopOf="@+id/character_overall_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:shapeAppearanceOverlay="@style/CharacterOverallImageShapeOverlay" />
+
+            <TextView
+                android:id="@+id/character_overall_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_normal"
+                android:text="@{viewModel.characterOverallData.character.name}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:textColor="?colorPrimary"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toTopOf="@id/character_overall_guild_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/character_overall_image"
+                tools:text="@string/profile_character" />
+
+            <ImageView
+                android:id="@+id/character_overall_covenant_image"
+                android:layout_width="@dimen/character_overall_covenant_image_size"
+                android:layout_height="@dimen/character_overall_covenant_image_size"
+                android:layout_marginStart="@dimen/space_small"
+                app:covenantImage="@{viewModel.characterOverallData.character.attributes.covenant}"
+                app:layout_constraintBottom_toBottomOf="@+id/character_overall_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/character_overall_name"
+                app:layout_constraintTop_toTopOf="@+id/character_overall_name"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/covenant_kyrian" />
+
+            <TextView
+                android:id="@+id/character_overall_guild_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?selectableItemBackground"
+                android:clickable="@{!viewModel.isGuildSearchActive}"
+                android:onClick="@{() -> viewModel.onGuildNameClicked()}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:visibility="@{viewModel.characterOverallData.character.guildName == null ? View.GONE : !viewModel.isLoading &amp;&amp; !viewModel.isGuildSearchActive ? View.VISIBLE : View.INVISIBLE}"
+                app:guildName="@{viewModel.characterOverallData.character.guildName}"
+                app:layout_constraintBottom_toTopOf="@+id/character_overall_server_data"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/character_overall_guild_search_progress_bar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/character_overall_name"
+                tools:text="@string/test_character_overall_guild_name" />
+
+            <ProgressBar
+                android:id="@+id/character_overall_guild_search_progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/space_small"
+                android:visibility="@{!viewModel.isLoading &amp;&amp; viewModel.isGuildSearchActive ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@id/character_overall_guild_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/character_overall_guild_name"
+                tools:visibility="gone" />
+
+            <TextView
+                android:id="@+id/character_overall_server_data"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_normal"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:layout_constraintBottom_toTopOf="@+id/character_overall_attributes_ilvl"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/character_overall_guild_name"
+                app:serverInfo_faction="@{viewModel.characterOverallData.character.faction}"
+                app:serverInfo_realm="@{viewModel.characterOverallData.character.realm}"
+                app:serverInfo_region="@{viewModel.characterOverallData.character.region}"
+                tools:text="@string/test_server_data" />
+
+            <TextView
+                android:id="@+id/character_overall_attributes_ilvl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_large"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                app:characterOverall_attributes="@{viewModel.characterOverallData.character.attributes}"
+                app:characterOverall_itemLevel="@{viewModel.characterOverallData.character.gear.itemLevel}"
+                app:layout_constraintBottom_toTopOf="@+id/character_overall_mplus_score_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/character_overall_server_data"
+                tools:text="@string/test_character_overall_attributes_ilvl" />
+
+            <TextView
+                android:id="@+id/character_overall_mplus_score_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_large"
+                android:layout_marginEnd="@dimen/space_large"
+                android:gravity="center"
+                android:text="@string/character_overall_best_mplus_score"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:layout_constraintBottom_toTopOf="@+id/character_overall_mplus_score"
+                app:layout_constraintEnd_toStartOf="@+id/guidline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/character_overall_attributes_ilvl" />
+
+            <TextView
+                android:id="@+id/character_overall_mplus_score"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_large"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                app:layout_constraintBottom_toTopOf="@+id/character_overall_mplus_score_season"
+                app:layout_constraintEnd_toStartOf="@+id/guidline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/character_overall_mplus_score_title"
+                app:mythicPlusScore="@{viewModel.characterOverallData.mythicPlusData.score}"
+                tools:text="@string/test_mythic_plus_score" />
+
+            <TextView
+                android:id="@+id/character_overall_mplus_score_season"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_large"
+                android:gravity="center"
+                android:text="@{viewModel.characterOverallData.mythicPlusData.season}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                app:layout_constraintBottom_toTopOf="@+id/character_overall_last_update_datetime"
+                app:layout_constraintEnd_toStartOf="@+id/guidline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/character_overall_mplus_score"
+                tools:text="@string/test_season" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/character_overall_raid_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_large"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:layout_constraintBottom_toTopOf="@+id/character_overall_best_raid_progress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guidline"
+                app:layout_constraintTop_toTopOf="@+id/character_overall_mplus_score_title"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:raidName="@{viewModel.characterOverallData.raidingData.raid}"
+                tools:text="@string/raid_nyalotha" />
+
+            <TextView
+                android:id="@+id/character_overall_best_raid_progress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_large"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                app:layout_constraintBottom_toTopOf="@+id/character_overall_raid_achievement"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guidline"
+                app:layout_constraintTop_toBottomOf="@+id/character_overall_raid_name"
+                app:raidProgress_bossesCount="@{viewModel.characterOverallData.raidingData.raid.bossesCount}"
+                app:raidProgress_bossesKilled="@{viewModel.characterOverallData.raidingData.progress}"
+                app:raidProgress_difficulty="@{viewModel.characterOverallData.raidingData.difficulty}"
+                tools:text="@string/test_raid_progress_best" />
+
+            <TextView
+                android:id="@+id/character_overall_raid_achievement"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_large"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:visibility="@{viewModel.characterOverallData.raidingData.achievement == null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="@+id/character_overall_mplus_score_season"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guidline"
+                app:layout_constraintTop_toBottomOf="@+id/character_overall_best_raid_progress"
+                app:raidAchievementShort="@{viewModel.characterOverallData.raidingData.achievement}"
+                tools:text="@string/raid_achievement_ce_short"
+                tools:textColor="@color/quality_legendary" />
+
+            <TextView
+                android:id="@+id/character_overall_last_update_datetime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_large"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/character_overall_mplus_score_season"
+                app:profileOverview_lastUpdateDateTime="@{viewModel.characterOverallData.lastUpdateDateTime}"
+                tools:text="@string/profile_overall_last_update_datetime_format" />
+
+            <ProgressBar
+                android:id="@+id/character_overall_progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/character_overall_content_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.characterOverallData == null || viewModel.isLoading ? View.GONE : View.VISIBLE}"
+                app:constraint_referenced_ids="character_overall_best_raid_progress,character_overall_name,character_overall_mplus_score,character_overall_mplus_score_season,character_overall_server_data,character_overall_raid_achievement,character_overall_image,character_overall_last_update_datetime,character_overall_attributes_ilvl,character_overall_mplus_score_title,character_overall_raid_name,character_overall_covenant_image"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="16dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

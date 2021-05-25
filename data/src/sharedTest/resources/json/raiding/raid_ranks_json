@@ -1,0 +1,57 @@
+{
+  "raid_rankings": {
+    "nyalotha-the-waking-city": {
+      "normal": {
+        "world": 799,
+        "region": 564,
+        "realm": 20
+      },
+      "heroic": {
+        "world": 658,
+        "region": 521,
+        "realm": 25
+      },
+      "mythic": {
+        "world": 123,
+        "region": 456,
+        "realm": 789
+      }
+    },
+    "uldir": {
+      "normal": {
+        "world": 799,
+        "region": 564,
+        "realm": 20
+      },
+      "heroic": {
+        "world": 0,
+        "region": 0,
+        "realm": 0
+      },
+      "mythic": {
+        "world": 0,
+        "region": 0,
+        "realm": 0
+      }
+    },
+    "battle-of-dazaralor": {
+      "normal": {
+        "world": 0,
+        "region": 0,
+        "realm": 0
+      },
+      "heroic": {
+        "world": 0,
+        "region": 0,
+        "realm": 0
+      },
+      "mythic": {
+        "world": 0,
+        "region": 0,
+        "realm": 0
+      }
+    },
+    "unknown_raid": null,
+    "unknown_raid_2": null
+  }
+}

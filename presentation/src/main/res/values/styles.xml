@@ -1,0 +1,16 @@
+<resources>
+
+    <style name="snackbarStyle" parent="Widget.MaterialComponents.Snackbar">
+        <item name="backgroundTint">?colorSurface</item>
+    </style>
+
+    <style name="snackbarTextStyle" parent="Widget.MaterialComponents.Snackbar.TextView">
+        <item name="android:textColor">?colorOnSurface</item>
+    </style>
+
+    <style name="CharacterOverallImageShapeOverlay">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+</resources>

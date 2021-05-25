@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="textResId"
+            type="Integer" />
+    </data>
+
+    <TextView  xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_mplus_no_current_season_content_message_height"
+        android:gravity="center"
+        android:padding="@dimen/space_large"
+        android:text="@{context.getString(textResId)}"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        tools:text="Text" />
+</layout>

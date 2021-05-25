@@ -1,0 +1,26 @@
+{
+  "raid_progression": {
+    "the-eternal-palace": {
+      "summary": "8/8 H",
+      "total_bosses": 8,
+      "normal_bosses_killed": 8,
+      "heroic_bosses_killed": 8,
+      "mythic_bosses_killed": 3
+    },
+    "nyalotha-the-waking-city": {
+      "summary": "0/8 N",
+      "total_bosses": 8,
+      "normal_bosses_killed": 0,
+      "heroic_bosses_killed": 0,
+      "mythic_bosses_killed": 1
+    },
+    "uldir": {
+      "summary": "0/8 N",
+      "total_bosses": 8,
+      "normal_bosses_killed": 0,
+      "heroic_bosses_killed": 0,
+      "mythic_bosses_killed": 0
+    },
+    "unknown_raid": null
+  }
+}

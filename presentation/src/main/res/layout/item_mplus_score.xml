@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="titleResId"
+            type="Integer" />
+
+        <variable
+            name="score"
+            type="Float" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/mplus_score_root"
+        android:layout_width="@dimen/item_mplus_score_width"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_normal"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/mplus_score_value"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_mplus_score_height"
+            android:background="@drawable/item_mplus_score_background"
+            android:gravity="center"
+            android:paddingStart="@dimen/space_normal"
+            android:paddingTop="@dimen/space_small"
+            android:paddingEnd="@dimen/space_normal"
+            android:paddingBottom="@dimen/space_small"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:autoSizeMaxTextSize="20sp"
+            app:autoSizeMinTextSize="12sp"
+            app:autoSizeStepGranularity="1sp"
+            app:autoSizeTextType="uniform"
+            app:mythicPlusScore="@{score}"
+            tools:text="@string/test_mythic_plus_score" />
+
+        <TextView
+            android:id="@+id/character_overall_mplus_score_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_small"
+            android:singleLine="true"
+            android:text="@{context.getString(titleResId)}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            tools:text="@string/role_healer" />
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,935 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "5a22f04a2d06d88ee10acd6c8364b150",
+    "entities": [
+      {
+        "tableName": "CharacterEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`name` TEXT NOT NULL COLLATE NOCASE, `region` TEXT NOT NULL, `faction` TEXT NOT NULL, `url` TEXT NOT NULL, `realm` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `guildName` TEXT, `profileID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `lastRefreshDateTime` TEXT NOT NULL, `lastSearchDateTime` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "region",
+            "columnName": "region",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "faction",
+            "columnName": "faction",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "realm",
+            "columnName": "realm",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imageUrl",
+            "columnName": "imageUrl",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "guildName",
+            "columnName": "guildName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "profileID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastRefreshDateTime",
+            "columnName": "lastRefreshDateTime",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastSearchDateTime",
+            "columnName": "lastSearchDateTime",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "profileID"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_CharacterEntity_name_region_realm",
+            "unique": true,
+            "columnNames": [
+              "name",
+              "region",
+              "realm"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_CharacterEntity_name_region_realm` ON `${TABLE_NAME}` (`name`, `region`, `realm`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "CharacterAttributesEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`profileID` INTEGER NOT NULL, `characterClass` TEXT NOT NULL, `activeSpec` TEXT NOT NULL, `race` TEXT NOT NULL, `covenant` TEXT, PRIMARY KEY(`profileID`), FOREIGN KEY(`profileID`) REFERENCES `CharacterEntity`(`profileID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "characterID",
+            "columnName": "profileID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "attributes.characterClass",
+            "columnName": "characterClass",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "attributes.activeSpec",
+            "columnName": "activeSpec",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "attributes.race",
+            "columnName": "race",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "attributes.covenant",
+            "columnName": "covenant",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "profileID"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "CharacterEntity",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "profileID"
+            ],
+            "referencedColumns": [
+              "profileID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "GearEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`itemLevel` INTEGER NOT NULL, `profileID` INTEGER NOT NULL, PRIMARY KEY(`profileID`))",
+        "fields": [
+          {
+            "fieldPath": "itemLevel",
+            "columnName": "itemLevel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "characterID",
+            "columnName": "profileID",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "profileID"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "GuildEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`profileID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `lastRefreshDateTime` TEXT NOT NULL, `lastSearchDateTime` TEXT, `name` TEXT NOT NULL, `region` TEXT NOT NULL, `faction` TEXT NOT NULL, `url` TEXT NOT NULL, `realm` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "profileID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastRefreshDateTime",
+            "columnName": "lastRefreshDateTime",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastSearchDateTime",
+            "columnName": "lastSearchDateTime",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "guild.name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "guild.region",
+            "columnName": "region",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "guild.faction",
+            "columnName": "faction",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "guild.url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "guild.realm",
+            "columnName": "realm",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "profileID"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_GuildEntity_name_region_realm",
+            "unique": true,
+            "columnNames": [
+              "name",
+              "region",
+              "realm"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_GuildEntity_name_region_realm` ON `${TABLE_NAME}` (`name`, `region`, `realm`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "MythicPlusRanksEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`ranksType` INTEGER NOT NULL, `scope` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `profileID` INTEGER NOT NULL, `world` INTEGER NOT NULL, `region` INTEGER NOT NULL, `realm` INTEGER NOT NULL, FOREIGN KEY(`profileID`) REFERENCES `CharacterEntity`(`profileID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "ranksType",
+            "columnName": "ranksType",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "scope",
+            "columnName": "scope",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "characterID",
+            "columnName": "profileID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ranks.world",
+            "columnName": "world",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ranks.region",
+            "columnName": "region",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ranks.realm",
+            "columnName": "realm",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "CharacterEntity",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "profileID"
+            ],
+            "referencedColumns": [
+              "profileID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "MythicPlusSpecRanksEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`spec` TEXT NOT NULL, `scope` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `profileID` INTEGER NOT NULL, `world` INTEGER NOT NULL, `region` INTEGER NOT NULL, `realm` INTEGER NOT NULL, FOREIGN KEY(`profileID`) REFERENCES `CharacterEntity`(`profileID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "spec",
+            "columnName": "spec",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "scope",
+            "columnName": "scope",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "characterID",
+            "columnName": "profileID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ranks.world",
+            "columnName": "world",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ranks.region",
+            "columnName": "region",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ranks.realm",
+            "columnName": "realm",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "CharacterEntity",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "profileID"
+            ],
+            "referencedColumns": [
+              "profileID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "MythicPlusRoleRanksEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`role` TEXT NOT NULL, `ranksType` INTEGER NOT NULL, `scope` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `profileID` INTEGER NOT NULL, `world` INTEGER NOT NULL, `region` INTEGER NOT NULL, `realm` INTEGER NOT NULL, FOREIGN KEY(`profileID`) REFERENCES `CharacterEntity`(`profileID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "role",
+            "columnName": "role",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ranksType",
+            "columnName": "ranksType",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "scope",
+            "columnName": "scope",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "characterID",
+            "columnName": "profileID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ranks.world",
+            "columnName": "world",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ranks.region",
+            "columnName": "region",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ranks.realm",
+            "columnName": "realm",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "CharacterEntity",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "profileID"
+            ],
+            "referencedColumns": [
+              "profileID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "MythicPlusOverallScoreParentEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`overallScore` REAL NOT NULL, `seasonId` INTEGER NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `profileID` INTEGER NOT NULL, FOREIGN KEY(`profileID`) REFERENCES `CharacterEntity`(`profileID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "overallScore",
+            "columnName": "overallScore",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "seasonID",
+            "columnName": "seasonId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "characterID",
+            "columnName": "profileID",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_MythicPlusOverallScoreParentEntity_seasonId_profileID",
+            "unique": true,
+            "columnNames": [
+              "seasonId",
+              "profileID"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_MythicPlusOverallScoreParentEntity_seasonId_profileID` ON `${TABLE_NAME}` (`seasonId`, `profileID`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "CharacterEntity",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "profileID"
+            ],
+            "referencedColumns": [
+              "profileID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "MythicPlusRoleScoreChildEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`role` TEXT NOT NULL, `score` REAL NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `overallScoreId` INTEGER NOT NULL, FOREIGN KEY(`overallScoreId`) REFERENCES `MythicPlusOverallScoreParentEntity`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "role",
+            "columnName": "role",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "score",
+            "columnName": "score",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "overallScoreID",
+            "columnName": "overallScoreId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_MythicPlusRoleScoreChildEntity_role_score_overallScoreId",
+            "unique": true,
+            "columnNames": [
+              "role",
+              "score",
+              "overallScoreId"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_MythicPlusRoleScoreChildEntity_role_score_overallScoreId` ON `${TABLE_NAME}` (`role`, `score`, `overallScoreId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "MythicPlusOverallScoreParentEntity",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "overallScoreId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "MythicPlusRunEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`dungeon` TEXT NOT NULL, `keystoneLevel` INTEGER NOT NULL, `date` TEXT NOT NULL, `duration` INTEGER NOT NULL, `keystoneUpgrades` INTEGER NOT NULL, `score` REAL NOT NULL, `url` TEXT NOT NULL, `runID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `profileID` INTEGER NOT NULL, FOREIGN KEY(`profileID`) REFERENCES `CharacterEntity`(`profileID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "dungeon",
+            "columnName": "dungeon",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "keystoneLevel",
+            "columnName": "keystoneLevel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "duration",
+            "columnName": "duration",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "keystoneUpgrades",
+            "columnName": "keystoneUpgrades",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "score",
+            "columnName": "score",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "runID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "characterID",
+            "columnName": "profileID",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "runID"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "CharacterEntity",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "profileID"
+            ],
+            "referencedColumns": [
+              "profileID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "MythicPlusRunAffixesEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`t2` TEXT NOT NULL, `t4` TEXT, `t7` TEXT, `t10` TEXT, `runID` INTEGER NOT NULL, PRIMARY KEY(`runID`), FOREIGN KEY(`runID`) REFERENCES `MythicPlusRunEntity`(`runID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "t2",
+            "columnName": "t2",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "t4",
+            "columnName": "t4",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "t7",
+            "columnName": "t7",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "t10",
+            "columnName": "t10",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "runID",
+            "columnName": "runID",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "runID"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "MythicPlusRunEntity",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "runID"
+            ],
+            "referencedColumns": [
+              "runID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "RaidRanksEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`raid` TEXT NOT NULL, `difficulty` TEXT NOT NULL, `profileID` INTEGER NOT NULL, `world` INTEGER NOT NULL, `region` INTEGER NOT NULL, `realm` INTEGER NOT NULL, PRIMARY KEY(`raid`, `difficulty`, `profileID`), FOREIGN KEY(`profileID`) REFERENCES `GuildEntity`(`profileID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "raid",
+            "columnName": "raid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "difficulty",
+            "columnName": "difficulty",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "guildID",
+            "columnName": "profileID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ranks.world",
+            "columnName": "world",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ranks.region",
+            "columnName": "region",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ranks.realm",
+            "columnName": "realm",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "raid",
+            "difficulty",
+            "profileID"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "GuildEntity",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "profileID"
+            ],
+            "referencedColumns": [
+              "profileID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "RaidProgressEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`raid` TEXT NOT NULL, `normalKills` INTEGER NOT NULL, `heroicKills` INTEGER NOT NULL, `mythicKills` INTEGER NOT NULL, `profileID` INTEGER NOT NULL, `profileType` INTEGER NOT NULL, PRIMARY KEY(`profileType`, `profileID`, `raid`))",
+        "fields": [
+          {
+            "fieldPath": "raid",
+            "columnName": "raid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "normalKills",
+            "columnName": "normalKills",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "heroicKills",
+            "columnName": "heroicKills",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mythicKills",
+            "columnName": "mythicKills",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "profileID",
+            "columnName": "profileID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "profileType",
+            "columnName": "profileType",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "profileType",
+            "profileID",
+            "raid"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "RaidAchievementsEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`raid` TEXT NOT NULL, `aotcDate` TEXT NOT NULL, `ceDate` TEXT, `profileID` INTEGER NOT NULL, PRIMARY KEY(`raid`, `profileID`), FOREIGN KEY(`profileID`) REFERENCES `CharacterEntity`(`profileID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "raid",
+            "columnName": "raid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "aotcDate",
+            "columnName": "aotcDate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ceDate",
+            "columnName": "ceDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "characterID",
+            "columnName": "profileID",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "raid",
+            "profileID"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "CharacterEntity",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "profileID"
+            ],
+            "referencedColumns": [
+              "profileID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "seasons",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`api_value` TEXT NOT NULL, `name` TEXT NOT NULL, `expansion` INTEGER NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "apiValue",
+            "columnName": "api_value",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expansion",
+            "columnName": "expansion",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_seasons_api_value",
+            "unique": true,
+            "columnNames": [
+              "api_value"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_seasons_api_value` ON `${TABLE_NAME}` (`api_value`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5a22f04a2d06d88ee10acd6c8364b150')"
+    ]
+  }
+}

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+
+        <variable
+            name="titleResId"
+            type="int" />
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="text"
+            type="String" />
+
+        <variable
+            name="textResId"
+            type="int" />
+
+        <variable
+            name="onClick"
+            type="Function0&lt;Unit>" />
+
+        <import type="kotlin.jvm.functions.Function0" />
+
+        <import type="kotlin.Unit" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_normal"
+        android:background="@drawable/item_dropdown_background"
+        android:onClick="@{() -> onClick.invoke()}">
+
+        <TextView
+            android:id="@+id/dropdown_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_normal"
+            android:layout_marginEnd="@dimen/space_normal"
+            android:background="@drawable/item_dropdown_title_background"
+            android:ellipsize="end"
+            android:paddingStart="@dimen/space_normal"
+            android:paddingEnd="@dimen/space_normal"
+            android:singleLine="true"
+            android:text="@{titleResId != 0 ? context.getString(titleResId) : title}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:translationZ="1dp"
+            tools:text="@string/test_text" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_normal"
+            android:padding="@dimen/space_large">
+
+            <TextView
+                android:id="@+id/dropdown_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_large"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@{textResId != 0 ? context.getString(textResId) : text}"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                tools:text="@string/test_text" />
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+</layout>

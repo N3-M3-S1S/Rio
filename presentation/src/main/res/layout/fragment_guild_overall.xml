@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.nemesis.rio.presentation.profile.overview.guild.overall.GuildOverallViewModel" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/space_large">
+
+        <TextView
+            android:id="@+id/guild_overall_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{viewModel.guildOverallData.guild.name}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            app:layout_constraintBottom_toTopOf="@+id/guild_overall_server_data"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="@string/profile_guild" />
+
+        <TextView
+            android:id="@+id/guild_overall_server_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintBottom_toTopOf="@+id/guild_overall_raid_name_and_difficulty"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guild_overall_name"
+            app:serverInfo_faction="@{viewModel.guildOverallData.guild.faction}"
+            app:serverInfo_realm="@{viewModel.guildOverallData.guild.realm}"
+            app:serverInfo_region="@{viewModel.guildOverallData.guild.region}"
+            tools:text="@string/test_server_data" />
+
+        <TextView
+            android:id="@+id/guild_overall_raid_name_and_difficulty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_large"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:guildOverall_difficulty="@{viewModel.guildOverallData.raidingData.difficulty}"
+            app:guildOverall_raid="@{viewModel.guildOverallData.raidingData.raid}"
+            app:layout_constraintBottom_toTopOf="@+id/guild_overall_raid_rank_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guild_overall_server_data"
+            tools:text="@string/test_guild_overall_raid_with_difficulty" />
+
+        <TextView
+            android:id="@+id/guild_overall_raid_rank_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_large"
+            android:layout_marginEnd="@dimen/space_large"
+            android:gravity="center"
+            android:text="@string/guild_overall_rank"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            app:layout_constraintBottom_toTopOf="@+id/guild_overall_raid_rank"
+            app:layout_constraintEnd_toStartOf="@+id/guidline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guild_overall_raid_name_and_difficulty"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/guild_overall_raid_rank"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space_large"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            app:guildOverall_ranks="@{viewModel.guildOverallData.raidingData.ranks}"
+            app:guildOverall_ranksSpan="@{viewModel.ranksSpan}"
+            app:layout_constraintBottom_toTopOf="@+id/guild_overall_raid_ranks_span"
+            app:layout_constraintEnd_toStartOf="@+id/guidline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guild_overall_raid_rank_title"
+            tools:text="@string/test_rank" />
+
+        <TextView
+            android:id="@+id/guild_overall_raid_ranks_span"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space_normal"
+            android:background="?selectableItemBackground"
+            android:gravity="center"
+            android:paddingStart="@dimen/space_normal"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:visibility="@{viewModel.guildOverallData.raidingData.ranks == null || viewModel.isLoading ? View.GONE : View.VISIBLE}"
+            app:drawableEndCompat="@drawable/ic_arrow_drop_down"
+            app:layout_constraintBottom_toTopOf="@+id/guild_overall_last_refresh_datetime"
+            app:layout_constraintEnd_toStartOf="@+id/guidline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guild_overall_raid_rank"
+            app:rankSpan="@{viewModel.ranksSpan}"
+            tools:ignore="RtlSymmetry"
+            tools:text="@string/ranks_scope_world" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/guild_overall_raid_progress_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_large"
+            android:gravity="center"
+            android:text="@string/guild_overall_raid_progress"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            app:layout_constraintBottom_toTopOf="@+id/guild_overall_raid_progress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guidline"
+            app:layout_constraintTop_toTopOf="@+id/guild_overall_raid_rank_title"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/guild_overall_raid_progress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_large"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            app:layout_constraintBottom_toTopOf="@+id/guild_overall_last_refresh_datetime"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guidline"
+            app:layout_constraintTop_toBottomOf="@+id/guild_overall_raid_progress_title"
+            app:raidProgress_bossesCount="@{viewModel.guildOverallData.raidingData.raid.bossesCount}"
+            app:raidProgress_bossesKilled="@{viewModel.guildOverallData.raidingData.bossesKilled}"
+            tools:text="@string/test_raid_progress" />
+
+        <TextView
+            android:id="@+id/guild_overall_last_refresh_datetime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_large"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guild_overall_raid_ranks_span"
+            app:profileOverview_lastUpdateDateTime="@{viewModel.guildOverallData.lastUpdateDateTime}"
+            tools:text="@string/profile_overall_last_update_datetime_format" />
+
+        <ProgressBar
+            android:id="@+id/guild_overall_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/guild_overall_content_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.isLoading || viewModel.guildOverallData == null ? View.GONE : View.VISIBLE}"
+            app:constraint_referenced_ids="guild_overall_raid_progress,guild_overall_name,guild_overall_raid_rank,guild_overall_server_data,guild_overall_last_refresh_datetime,guild_overall_raid_rank_title,guild_overall_raid_progress_title,guild_overall_raid_name_and_difficulty"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

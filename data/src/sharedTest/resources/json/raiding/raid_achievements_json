@@ -1,0 +1,16 @@
+{
+  "raid_achievement_curve": [
+    {
+      "raid": "the-eternal-palace",
+      "aotc": "2019-09-28T20:02:51.000Z"
+    },
+    {
+      "raid": "uldir",
+      "aotc": "2018-07-14T01:23:42.000Z",
+      "cutting_edge": "2019-12-29T21:49:19.000Z"
+    },
+    {
+      "raid": "unknown_raid"
+    }
+  ]
+}

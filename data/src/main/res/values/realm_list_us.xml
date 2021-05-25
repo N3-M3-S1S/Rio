@@ -1,0 +1,251 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+    <string-array name="realm_list_us">
+        <item>Aegwynn</item>
+        <item>Aerie Peak</item>
+        <item>Agamaggan</item>
+        <item>Aggramar</item>
+        <item>Akama</item>
+        <item>Alexstrasza</item>
+        <item>Alleria</item>
+        <item>Altar of Storms</item>
+        <item>Alterac Mountains</item>
+        <item>Aman\'Thul</item>
+        <item>Andorhal</item>
+        <item>Anetheron</item>
+        <item>Antonidas</item>
+        <item>Anub\'arak</item>
+        <item>Anvilmar</item>
+        <item>Arathor</item>
+        <item>Archimonde</item>
+        <item>Area 52</item>
+        <item>Argent Dawn</item>
+        <item>Arthas</item>
+        <item>Arygos</item>
+        <item>Auchindoun</item>
+        <item>Azgalor</item>
+        <item>Azjol-Nerub</item>
+        <item>Azralon</item>
+        <item>Azshara</item>
+        <item>Azuremyst</item>
+        <item>Baelgun</item>
+        <item>Balnazzar</item>
+        <item>Barthilas</item>
+        <item>Black Dragonflight</item>
+        <item>Blackhand</item>
+        <item>Blackrock</item>
+        <item>Blackwater Raiders</item>
+        <item>Blackwing Lair</item>
+        <item>Blade\'s Edge</item>
+        <item>Bladefist</item>
+        <item>Bleeding Hollow</item>
+        <item>Blood Furnace</item>
+        <item>Bloodhoof</item>
+        <item>Bloodscalp</item>
+        <item>Bonechewer</item>
+        <item>Borean Tundra</item>
+        <item>Boulderfist</item>
+        <item>Bronzebeard</item>
+        <item>Burning Blade</item>
+        <item>Burning Legion</item>
+        <item>Caelestrasz</item>
+        <item>Cairne</item>
+        <item>Cenarion Circle</item>
+        <item>Cenarius</item>
+        <item>Cho\'gall</item>
+        <item>Chromaggus</item>
+        <item>Coilfang</item>
+        <item>Crushridge</item>
+        <item>Daggerspine</item>
+        <item>Dalaran</item>
+        <item>Dalvengyr</item>
+        <item>Dark Iron</item>
+        <item>Darkspear</item>
+        <item>Darrowmere</item>
+        <item>Dath\'Remar</item>
+        <item>Dawnbringer</item>
+        <item>Deathwing</item>
+        <item>Demon Soul</item>
+        <item>Dentarg</item>
+        <item>Destromath</item>
+        <item>Dethecus</item>
+        <item>Detheroc</item>
+        <item>Doomhammer</item>
+        <item>Draenor</item>
+        <item>Dragonblight</item>
+        <item>Dragonmaw</item>
+        <item>Drak\'Tharon</item>
+        <item>Drak\'thul</item>
+        <item>Draka</item>
+        <item>Drakkari</item>
+        <item>Dreadmaul</item>
+        <item>Drenden</item>
+        <item>Dunemaul</item>
+        <item>Durotan</item>
+        <item>Duskwood</item>
+        <item>Earthen Ring</item>
+        <item>Echo Isles</item>
+        <item>Eitrigg</item>
+        <item>Eldre\'Thalas</item>
+        <item>Elune</item>
+        <item>Emerald Dream</item>
+        <item>Eonar</item>
+        <item>Eredar</item>
+        <item>Executus</item>
+        <item>Exodar</item>
+        <item>Farstriders</item>
+        <item>Feathermoon</item>
+        <item>Fenris</item>
+        <item>Firetree</item>
+        <item>Fizzcrank</item>
+        <item>Frostmane</item>
+        <item>Frostmourne</item>
+        <item>Frostwolf</item>
+        <item>Galakrond</item>
+        <item>Gallywix</item>
+        <item>Garithos</item>
+        <item>Garona</item>
+        <item>Garrosh</item>
+        <item>Ghostlands</item>
+        <item>Gilneas</item>
+        <item>Gnomeregan</item>
+        <item>Goldrinn</item>
+        <item>Gorefiend</item>
+        <item>Gorgonnash</item>
+        <item>Greymane</item>
+        <item>Grizzly Hills</item>
+        <item>Gul\'dan</item>
+        <item>Gundrak</item>
+        <item>Gurubashi</item>
+        <item>Hakkar</item>
+        <item>Haomarush</item>
+        <item>Hellscream</item>
+        <item>Hydraxis</item>
+        <item>Hyjal</item>
+        <item>Icecrown</item>
+        <item>Illidan</item>
+        <item>Jaedenar</item>
+        <item>Jubei\'Thos</item>
+        <item>Kael\'thas</item>
+        <item>Kalecgos</item>
+        <item>Kargath</item>
+        <item>Kel\'Thuzad</item>
+        <item>Khadgar</item>
+        <item>Khaz Modan</item>
+        <item>Khaz\'goroth</item>
+        <item>Kil\'jaeden</item>
+        <item>Kilrogg</item>
+        <item>Kirin Tor</item>
+        <item>Korgath</item>
+        <item>Korialstrasz</item>
+        <item>Kul Tiras</item>
+        <item>Laughing Skull</item>
+        <item>Lethon</item>
+        <item>Lightbringer</item>
+        <item>Lightning\'s Blade</item>
+        <item>Lightninghoof</item>
+        <item>Llane</item>
+        <item>Lothar</item>
+        <item>Madoran</item>
+        <item>Maelstrom</item>
+        <item>Magtheridon</item>
+        <item>Maiev</item>
+        <item>Mal\'Ganis</item>
+        <item>Malfurion</item>
+        <item>Malorne</item>
+        <item>Malygos</item>
+        <item>Mannoroth</item>
+        <item>Medivh</item>
+        <item>Misha</item>
+        <item>Mok\'Nathal</item>
+        <item>Moon Guard</item>
+        <item>Moonrunner</item>
+        <item>Mug\'thol</item>
+        <item>Muradin</item>
+        <item>Nagrand</item>
+        <item>Nathrezim</item>
+        <item>Nazgrel</item>
+        <item>Nazjatar</item>
+        <item>Nemesis</item>
+        <item>Ner\'zhul</item>
+        <item>Nesingwary</item>
+        <item>Nordrassil</item>
+        <item>Norgannon</item>
+        <item>Onyxia</item>
+        <item>Perenolde</item>
+        <item>Proudmoore</item>
+        <item>Quel\'Thalas</item>
+        <item>Quel\'dorei</item>
+        <item>Ragnaros</item>
+        <item>Ravencrest</item>
+        <item>Ravenholdt</item>
+        <item>Rexxar</item>
+        <item>Rivendare</item>
+        <item>Runetotem</item>
+        <item>Sargeras</item>
+        <item>Saurfang</item>
+        <item>Scarlet Crusade</item>
+        <item>Scilla</item>
+        <item>Sen\'jin</item>
+        <item>Sentinels</item>
+        <item>Shadow Council</item>
+        <item>Shadowmoon</item>
+        <item>Shadowsong</item>
+        <item>Shandris</item>
+        <item>Shattered Halls</item>
+        <item>Shattered Hand</item>
+        <item>Shu\'halo</item>
+        <item>Silver Hand</item>
+        <item>Silvermoon</item>
+        <item>Sisters of Elune</item>
+        <item>Skullcrusher</item>
+        <item>Skywall</item>
+        <item>Smolderthorn</item>
+        <item>Spinebreaker</item>
+        <item>Spirestone</item>
+        <item>Staghelm</item>
+        <item>Steamwheedle Cartel</item>
+        <item>Stonemaul</item>
+        <item>Stormrage</item>
+        <item>Stormreaver</item>
+        <item>Stormscale</item>
+        <item>Suramar</item>
+        <item>Tanaris</item>
+        <item>Terenas</item>
+        <item>Terokkar</item>
+        <item>Thaurissan</item>
+        <item>The Forgotten Coast</item>
+        <item>The Scryers</item>
+        <item>The Underbog</item>
+        <item>The Venture Co</item>
+        <item>Thorium Brotherhood</item>
+        <item>Thrall</item>
+        <item>Thunderhorn</item>
+        <item>Thunderlord</item>
+        <item>Tichondrius</item>
+        <item>Tol Barad</item>
+        <item>Tortheldrin</item>
+        <item>Trollbane</item>
+        <item>Turalyon</item>
+        <item>Twisting Nether</item>
+        <item>Uldaman</item>
+        <item>Uldum</item>
+        <item>Undermine</item>
+        <item>Ursin</item>
+        <item>Uther</item>
+        <item>Vashj</item>
+        <item>Vek\'nilash</item>
+        <item>Velen</item>
+        <item>Warsong</item>
+        <item>Whisperwind</item>
+        <item>Wildhammer</item>
+        <item>Windrunner</item>
+        <item>Winterhoof</item>
+        <item>Wyrmrest Accord</item>
+        <item>Ysera</item>
+        <item>Ysondre</item>
+        <item>Zangarmarsh</item>
+        <item>Zul\'jin</item>
+        <item>Zuluhed</item>
+    </string-array>
+</resources>

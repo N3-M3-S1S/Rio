@@ -1,0 +1,39 @@
+<resources>
+    <!-- App -->
+    <dimen name="space_small">4dp</dimen>
+    <dimen name="space_normal">8dp</dimen>
+    <dimen name="space_large">16dp</dimen>
+    <dimen name="item_one_line_text_min_height">48dp</dimen>
+    <dimen name="three_line_list_item_min_height">88dp</dimen>
+    <dimen name="splash_screen_logo_size">100dp</dimen>
+
+    <!-- Character overall -->
+    <dimen name="character_overall_image_size">80dp</dimen>
+    <dimen name="character_overall_covenant_image_size">24dp</dimen>
+
+    <!-- Mythic plus score -->
+    <dimen name="item_mplus_score_width">80dp</dimen>
+    <dimen name="item_mplus_score_height">40dp</dimen>
+
+    <!-- Mythic plus run -->
+    <dimen name="item_mplus_run_border_stroke_size">1dp</dimen>
+    <dimen name="item_mplus_run_border_corners_size">4dp</dimen>
+    <dimen name="item_mplus_run_star_size">18dp</dimen>
+    <dimen name="item_mplus_run_view_height">210dp</dimen>
+    <dimen name="item_mplus_run_affix_icon_size">28dp</dimen>
+    <dimen name="item_mplus_run_affix_icon_border_size">1dp</dimen>
+    <dimen name="item_mplus_run_affix_icon_border_corners_size">4dp</dimen>
+    <dimen name="item_mplus_run_affix_icon_space">8dp</dimen>
+
+    <!-- Mythic plus -->
+    <dimen name="item_mplus_no_current_season_content_message_height">200dp</dimen>
+
+    <!-- Ranks -->
+    <dimen name="item_ranks_space_between_ranks">4dp</dimen>
+    <dimen name="item_ranks_icon_size">24dp</dimen>
+    <item name="item_ranks_guidline_percent" format="float" type="dimen">0.45</item>
+
+    <!-- Raid progress -->
+    <dimen name="item_raid_progress_dungeon_image_height">194dp</dimen>
+
+</resources>

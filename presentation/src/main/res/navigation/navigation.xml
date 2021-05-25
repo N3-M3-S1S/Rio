@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/searchFragment">
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.nemesis.rio.presentation.profile.search.ProfileSearchFragment"
+        android:label="@string/search_title"
+        tools:layout="@layout/fragment_profile_search" />
+
+    <fragment
+        android:id="@+id/characterOverviewFragment"
+        android:name="com.nemesis.rio.presentation.profile.overview.character.CharacterOverviewParentFragment"
+        tools:layout="@layout/fragment_profile_overview">
+        <argument
+            android:name="characterParcel"
+            app:argType="com.nemesis.rio.presentation.profile.character.CharacterParcel" />
+    </fragment>
+
+    <action
+        android:id="@+id/toCharacterOverview"
+        app:destination="@id/characterOverviewFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"  />
+
+    <fragment
+        android:id="@+id/guildOverviewFragment"
+        android:name="com.nemesis.rio.presentation.profile.overview.guild.GuildOverviewParentFragment"
+        tools:layout="@layout/fragment_profile_overview">
+        <argument
+            android:name="guildParcel"
+            app:argType="com.nemesis.rio.presentation.profile.guild.GuildParcel" />
+    </fragment>
+
+    <action
+        android:id="@+id/toGuildOverview"
+        app:destination="@id/guildOverviewFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"   />
+
+</navigation>

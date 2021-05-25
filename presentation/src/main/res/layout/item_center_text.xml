@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="text"
+            type="String" />
+
+        <variable
+            name="textResId"
+            type="Integer" />
+    </data>
+
+    <TextView  xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="@dimen/space_large"
+        android:text="@{textResId == null ? text : context.getString(textResId)}"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        tools:text="@string/test_text" />
+
+</layout>
+

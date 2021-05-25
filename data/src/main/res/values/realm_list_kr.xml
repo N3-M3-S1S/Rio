@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+    <string-array name="realm_list_kr">
+        <item>가로나</item>
+        <item>굴단</item>
+        <item>노르간논</item>
+        <item>달라란</item>
+        <item>데스윙</item>
+        <item>듀로탄</item>
+        <item>렉사르</item>
+        <item>말퓨리온</item>
+        <item>불타는 군단</item>
+        <item>세나리우스</item>
+        <item>스톰레이지</item>
+        <item>아즈샤라</item>
+        <item>알렉스트라자</item>
+        <item>와일드해머</item>
+        <item>윈드러너</item>
+        <item>줄진</item>
+        <item>하이잘</item>
+        <item>헬스크림</item>
+    </string-array>
+</resources>

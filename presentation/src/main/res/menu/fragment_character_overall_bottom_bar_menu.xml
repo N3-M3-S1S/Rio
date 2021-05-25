@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/character_overview_overall"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/profile_overall"
+        tools:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/character_overview_mplus"
+        android:icon="@drawable/ic_hourglass_bottom"
+        android:title="@string/mplus_title"
+        tools:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/character_overview_raid_progress"
+        android:icon="@drawable/ic_skull"
+        android:title="@string/raid_progress"
+        tools:showAsAction="ifRoom" />
+
+</menu>

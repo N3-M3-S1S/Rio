@@ -1,0 +1,30 @@
+{
+  "mythic_plus_scores_by_season": [
+    {
+      "season": "season-bfa-1",
+      "scores": {
+        "all": 1838,
+        "dps": 1599.3,
+        "healer": 0,
+        "tank": 1727.6,
+        "spec_0": 0,
+        "spec_1": 0,
+        "spec_2": 0,
+        "spec_3": 0
+      }
+    },
+    {
+      "season": "season-bfa-2",
+      "scores": {
+        "all": 0,
+        "dps": 0,
+        "healer": 0,
+        "tank": 0,
+        "spec_0": 0,
+        "spec_1": 0,
+        "spec_2": 0,
+        "spec_3": 0
+      }
+    }
+  ]
+}

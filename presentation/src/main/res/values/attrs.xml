@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="characterClassColor" format="color|reference" />
+
+    <declare-styleable name="ColoredSwipeRefreshLayout">
+        <attr name="csrl_progressbarColor" format="color|reference" />
+        <attr name="csrl_progressbarBackgroundColor" format="color|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="MaterialProgressButton">
+        <attr name="mpb_progressVisibility" format="boolean" />
+        <attr name="mpb_progressbarColor" format="color|reference" />
+    </declare-styleable>
+</resources>

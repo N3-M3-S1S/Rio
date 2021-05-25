@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.nemesis.rio.presentation.profile.overview.ProfileOverviewViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/profile_overview_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.nemesis.rio.presentation.view.widget.ColoredSwipeRefreshLayout
+            android:id="@+id/profile_overview_swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:swipeRefresh_isRefreshing="@{viewModel.isProfileUpdating}"
+            app:swipeRefresh_onRefresh="@{() -> viewModel.updateProfile()}">
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/profile_overview_child_fragment_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout="@layout/fragment_character_overall" />
+
+        </com.nemesis.rio.presentation.view.widget.ColoredSwipeRefreshLayout>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/profile_overview_bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:menu="@menu/fragment_character_overall_bottom_bar_menu" />
+
+    </LinearLayout>
+</layout>

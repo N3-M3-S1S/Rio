@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="kotlin.jvm.functions.Function1" />
+
+        <import type="kotlin.Unit" />
+
+        <variable
+            name="string"
+            type="String" />
+
+        <variable
+            name="stringResId"
+            type="int" />
+
+        <variable
+            name="isSelected"
+            type="boolean" />
+
+        <variable
+            name="onClick"
+            type="Function1&lt;String, Unit>" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_option_background"
+        android:minHeight="48dp"
+        android:onClick="@{()->onClick.invoke(string)}"
+        android:orientation="vertical"
+        android:padding="@dimen/space_large"
+        app:selected="@{isSelected}">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{stringResId != 0 ? context.getString(stringResId) : string}"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="16sp"
+            tools:text="Text" />
+    </FrameLayout>
+
+
+</layout>
