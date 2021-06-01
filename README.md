@@ -1,6 +1,9 @@
 # Rio
 An unofficial client for Raider.IO  API
 
+# Google Play
+[Link](https://play.google.com/store/apps/details?id=com.nemesis.rio)
+
 # APK 
 [Download link](/../../releases/latest/download/rio-1.0-release.apk)
 
