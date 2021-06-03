@@ -2,7 +2,7 @@ package com.nemesis.rio.presentation.profile.search.character.history.list
 
 import androidx.core.text.buildSpannedString
 import androidx.core.text.color
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.profile.search.usecase.GetProfileSearchHistory
 import com.nemesis.rio.presentation.profile.buildServerInfoString
 import com.nemesis.rio.presentation.profile.character.attributes.colorResId

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.findNavController
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.presentation.R
 import com.nemesis.rio.presentation.profile.character.attributes.themeResId
 import com.nemesis.rio.presentation.profile.overview.ProfileOverviewParentFragment

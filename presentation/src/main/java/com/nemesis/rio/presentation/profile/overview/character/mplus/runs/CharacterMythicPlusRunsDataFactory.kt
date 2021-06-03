@@ -3,7 +3,7 @@ package com.nemesis.rio.presentation.profile.overview.character.mplus.runs
 import com.nemesis.rio.domain.mplus.runs.sorting.MythicPlusRunsSortingOption
 import com.nemesis.rio.domain.mplus.runs.usecase.GetMythicPlusRunsForCurrentSeason
 import com.nemesis.rio.domain.mplus.runs.usecase.SortMythicPlusRuns
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.sorting.SortingOrder
 
 class CharacterMythicPlusRunsDataFactory(

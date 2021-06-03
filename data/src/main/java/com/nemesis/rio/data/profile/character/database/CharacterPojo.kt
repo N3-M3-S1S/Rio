@@ -7,7 +7,7 @@ import com.nemesis.rio.data.profile.character.database.attributes.toAttributes
 import com.nemesis.rio.data.profile.character.database.gear.GearEntity
 import com.nemesis.rio.data.profile.character.database.gear.toGear
 import com.nemesis.rio.data.profile.database.ProfileEntity
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 
 data class CharacterPojo(
     @Embedded

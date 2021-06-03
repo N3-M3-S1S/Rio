@@ -5,7 +5,7 @@ import com.nemesis.rio.data.api.refresh.ProfileLastCrawlDateTimeProvider
 import com.nemesis.rio.data.database.AppDatabase
 import com.nemesis.rio.data.profile.character.update.CharacterUpdateStrategy
 import com.nemesis.rio.data.profile.database.ProfileDao
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.profile.update.usecase.ProfileUpdateStrategy
 import com.nemesis.rio.presentation.profile.profileCoreDependencies
 import org.koin.core.qualifier.qualifier

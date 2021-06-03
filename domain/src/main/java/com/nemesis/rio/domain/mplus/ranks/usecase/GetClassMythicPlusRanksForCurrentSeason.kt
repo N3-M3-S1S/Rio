@@ -3,7 +3,7 @@ package com.nemesis.rio.domain.mplus.ranks.usecase
 import com.nemesis.rio.domain.mplus.ranks.MythicPlusClassRanks
 import com.nemesis.rio.domain.mplus.ranks.MythicPlusRanksScope
 import com.nemesis.rio.domain.mplus.ranks.MythicPlusRanksSource
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 
 class GetClassMythicPlusRanksForCurrentSeason(private val ranksSource: MythicPlusRanksSource) {
 

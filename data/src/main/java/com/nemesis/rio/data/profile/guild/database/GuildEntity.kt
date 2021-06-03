@@ -4,7 +4,7 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Index
 import com.nemesis.rio.data.profile.database.ProfileEntity
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Guild
 
 @Entity(
     tableName = GuildEntity.TABLE_NAME,

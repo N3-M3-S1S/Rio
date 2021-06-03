@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.Index
 import com.nemesis.rio.data.profile.database.ProfileEntity
 import com.nemesis.rio.domain.profile.Faction
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.server.Region
 import com.nemesis.rio.domain.server.realm.Realm
 

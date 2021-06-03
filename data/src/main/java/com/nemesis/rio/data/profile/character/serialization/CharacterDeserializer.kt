@@ -6,7 +6,7 @@ import com.nemesis.rio.data.profile.character.serialization.gear.GearDeserialize
 import com.nemesis.rio.data.profile.serialization.ProfileSerialization
 import com.nemesis.rio.data.serialization.JsonObjectDeserializer
 import com.nemesis.rio.data.serialization.getUnquotedString
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.profile.character.attributes.CharacterAttributes
 import com.nemesis.rio.domain.profile.character.gear.Gear
 import kotlinx.serialization.json.*

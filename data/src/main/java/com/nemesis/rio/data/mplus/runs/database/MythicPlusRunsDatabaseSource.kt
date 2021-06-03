@@ -4,7 +4,7 @@ import com.nemesis.rio.data.profile.database.ProfileIDProvider
 import com.nemesis.rio.data.profile.database.withProfileID
 import com.nemesis.rio.domain.mplus.runs.MythicPlusRun
 import com.nemesis.rio.domain.mplus.runs.MythicPlusRunsSource
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 
 class MythicPlusRunsDatabaseSource(
     private val runsDao: MythicPlusRunsDao,

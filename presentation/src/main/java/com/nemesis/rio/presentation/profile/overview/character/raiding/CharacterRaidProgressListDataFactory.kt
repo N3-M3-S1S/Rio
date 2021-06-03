@@ -1,6 +1,6 @@
 package com.nemesis.rio.presentation.profile.overview.character.raiding
 
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.raiding.achievements.usecase.GetAllRaidAchievements
 import com.nemesis.rio.domain.raiding.progress.usecase.GetAllRaidProgress
 import com.nemesis.rio.presentation.profile.overview.raiding.RaidProgressItem

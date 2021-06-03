@@ -2,7 +2,7 @@ package com.nemesis.rio.presentation.profile.overview.guild
 
 import android.util.SparseArray
 import androidx.fragment.app.Fragment
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Guild
 import com.nemesis.rio.presentation.R
 import com.nemesis.rio.presentation.profile.overview.guild.overall.GuildOverallFragment
 import com.nemesis.rio.presentation.profile.overview.guild.overall.guildOverallModule

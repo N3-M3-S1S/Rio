@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nemesis.rio.domain.profile.Profile
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.profile.guild.search.usecase.SearchGuild
 import com.nemesis.rio.presentation.app.messages.MessageManager
 import com.nemesis.rio.presentation.app.messages.logAndSendExceptionMessage

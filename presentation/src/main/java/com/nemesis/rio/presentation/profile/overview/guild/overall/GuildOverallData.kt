@@ -1,6 +1,6 @@
 package com.nemesis.rio.presentation.profile.overview.guild.overall
 
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Guild
 import kotlinx.datetime.LocalDateTime
 
 data class GuildOverallData(

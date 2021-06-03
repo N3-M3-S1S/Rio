@@ -2,7 +2,7 @@ package com.nemesis.rio.presentation.profile.overview.guild.raiding
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Guild
 import com.nemesis.rio.presentation.profile.overview.raiding.RaidProgressListData
 import com.nemesis.rio.presentation.profile.overview.raiding.RaidProgressViewModel
 import com.nemesis.rio.presentation.utils.LoadingStateController

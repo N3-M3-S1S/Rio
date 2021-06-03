@@ -1,6 +1,6 @@
 package com.nemesis.rio.presentation.profile.overview.guild.raiding
 
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Guild
 import com.nemesis.rio.domain.raiding.progress.usecase.GetAllRaidProgress
 import com.nemesis.rio.presentation.profile.overview.raiding.RaidProgressItem
 import com.nemesis.rio.presentation.profile.overview.raiding.RaidProgressListData

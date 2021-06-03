@@ -9,7 +9,7 @@ import com.nemesis.rio.data.raiding.progress.database.RaidProgressDao
 import com.nemesis.rio.data.raiding.progress.database.RaidProgressEntity
 import com.nemesis.rio.data.raiding.progress.database.toRaidProgress
 import com.nemesis.rio.data.raiding.progress.database.toRaidProgressMap
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.raiding.Raid
 import com.nemesis.rio.domain.raiding.achievements.RaidAchievement
 import com.nemesis.rio.domain.raiding.progress.RaidProgress

@@ -6,7 +6,7 @@ import com.nemesis.rio.data.profile.character.database.attributes.toEntity
 import com.nemesis.rio.data.profile.character.database.gear.GearEntity
 import com.nemesis.rio.data.profile.character.database.gear.toEntity
 import com.nemesis.rio.data.profile.database.ProfileDao
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.profile.search.ProfileSearchHistoryItem
 import com.nemesis.rio.domain.server.Region
 import com.nemesis.rio.domain.server.realm.Realm

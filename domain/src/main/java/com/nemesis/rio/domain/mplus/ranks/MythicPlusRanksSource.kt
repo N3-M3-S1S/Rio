@@ -1,6 +1,6 @@
 package com.nemesis.rio.domain.mplus.ranks
 
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 
 interface MythicPlusRanksSource {
     suspend fun getSpecRanksForCurrentSeason(

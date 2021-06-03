@@ -1,7 +1,7 @@
 package com.nemesis.rio.domain.mplus.runs.usecase
 
 import com.nemesis.rio.domain.mplus.runs.MythicPlusRunsSource
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 
 class GetMythicPlusRunsForCurrentSeason(private val runsSource: MythicPlusRunsSource) {
 

@@ -1,7 +1,7 @@
 package com.nemesis.rio.domain.raiding.progress.usecase
 
-import com.nemesis.rio.domain.profile.character.Character
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Character
+import com.nemesis.rio.domain.profile.Guild
 import com.nemesis.rio.domain.raiding.Raid
 import com.nemesis.rio.domain.raiding.progress.RaidProgress
 import com.nemesis.rio.domain.raiding.source.CharacterRaidingSource

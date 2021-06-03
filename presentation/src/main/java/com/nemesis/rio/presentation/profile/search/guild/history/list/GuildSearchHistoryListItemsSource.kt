@@ -1,6 +1,6 @@
 package com.nemesis.rio.presentation.profile.search.guild.history.list
 
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Guild
 import com.nemesis.rio.domain.profile.search.usecase.GetProfileSearchHistory
 import com.nemesis.rio.presentation.R
 import com.nemesis.rio.presentation.profile.buildServerInfoString

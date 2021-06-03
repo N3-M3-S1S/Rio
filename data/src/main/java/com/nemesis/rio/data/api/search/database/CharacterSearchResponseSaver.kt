@@ -8,7 +8,7 @@ import com.nemesis.rio.domain.mplus.ranks.MythicPlusRanksScope
 import com.nemesis.rio.domain.mplus.runs.MythicPlusRun
 import com.nemesis.rio.domain.mplus.scores.MythicPlusScores
 import com.nemesis.rio.domain.mplus.seasons.Season
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.raiding.Raid
 import com.nemesis.rio.domain.raiding.achievements.RaidAchievement
 import com.nemesis.rio.domain.raiding.progress.RaidProgress

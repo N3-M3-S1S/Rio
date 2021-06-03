@@ -2,7 +2,7 @@ package com.nemesis.rio.presentation.profile.guild
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Guild
 import com.nemesis.rio.presentation.profile.ProfileCommonDataParcel
 import com.nemesis.rio.presentation.utils.extensions.readStringOrThrow
 import kotlinx.parcelize.Parceler

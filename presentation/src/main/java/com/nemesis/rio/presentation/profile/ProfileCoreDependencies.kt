@@ -4,8 +4,8 @@ import com.nemesis.rio.data.profile.database.ProfileIDProvider
 import com.nemesis.rio.data.profile.database.ProfileSaver
 import com.nemesis.rio.data.profile.update.ProfileUpdateRegistryImpl
 import com.nemesis.rio.domain.profile.Profile
-import com.nemesis.rio.domain.profile.character.Character
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Character
+import com.nemesis.rio.domain.profile.Guild
 import com.nemesis.rio.domain.profile.update.ProfileUpdateRegistry
 import com.nemesis.rio.domain.profile.update.usecase.CheckIsProfileUpdated
 import com.nemesis.rio.domain.profile.update.usecase.GetProfileLastUpdateDateTime

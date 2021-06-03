@@ -1,10 +1,10 @@
 package sharedTest
 
 import com.nemesis.rio.domain.profile.Faction
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.profile.character.attributes.*
 import com.nemesis.rio.domain.profile.character.gear.Gear
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Guild
 import com.nemesis.rio.domain.server.Region
 
 fun createTestCharacter(name: String = "testCharacter"): Character {

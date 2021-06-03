@@ -2,7 +2,7 @@ package com.nemesis.rio.data.profile.character.database
 
 import androidx.room.ColumnInfo
 import com.nemesis.rio.data.profile.database.ProfileEntity
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 
 data class CharacterUpdatePojo(
     @ColumnInfo(name = ProfileEntity.ID_COLUMN_NAME)

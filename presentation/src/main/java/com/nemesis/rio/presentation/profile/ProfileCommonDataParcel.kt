@@ -24,8 +24,10 @@ data class ProfileCommonDataParcel(
         fun writeToParcel(parcel: Parcel, profile: Profile) {
             parcel.writeParcelable(profile.toCommonDataParcel())
         }
+
+        private fun Profile.toCommonDataParcel() =
+            ProfileCommonDataParcel(name, region, faction, url)
     }
 }
 
-private fun Profile.toCommonDataParcel() =
-    ProfileCommonDataParcel(name, region, faction, url)
+

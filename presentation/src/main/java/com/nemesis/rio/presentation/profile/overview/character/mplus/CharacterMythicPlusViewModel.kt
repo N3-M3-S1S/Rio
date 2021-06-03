@@ -9,7 +9,7 @@ import com.nemesis.rio.domain.mplus.runs.sorting.MythicPlusRunsSortingOption
 import com.nemesis.rio.domain.mplus.scores.usecase.GetExpansionsWithScores
 import com.nemesis.rio.domain.mplus.scores.usecase.GetSeasonsWithScoresForExpansion
 import com.nemesis.rio.domain.mplus.seasons.Season
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.sorting.SortingOrder
 import com.nemesis.rio.presentation.mplus.ranks.MythicPlusRanksType
 import com.nemesis.rio.presentation.profile.overview.character.mplus.ranks.CharacterMythicPlusRanksData
@@ -28,7 +28,6 @@ import com.nemesis.rio.presentation.utils.extensions.updateValue
 import com.nemesis.rio.presentation.utils.mapWithDelayedLoading
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class CharacterMythicPlusViewModel(
     private val characterFlow: Flow<Character>,

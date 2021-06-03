@@ -1,7 +1,7 @@
 package com.nemesis.rio.presentation.profile.overview.guild.ranks
 
 import com.nemesis.rio.domain.game.Expansion
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Guild
 import com.nemesis.rio.domain.raiding.Raid
 import com.nemesis.rio.domain.raiding.ranks.RaidRanks
 import com.nemesis.rio.domain.raiding.ranks.usecase.GetAllRaidRanks

@@ -1,7 +1,7 @@
 package com.nemesis.rio.data.profile.guild.serialization
 
 import com.nemesis.rio.domain.profile.Faction
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Guild
 import com.nemesis.rio.domain.server.Region
 import kotlinx.serialization.json.Json
 import org.junit.Test

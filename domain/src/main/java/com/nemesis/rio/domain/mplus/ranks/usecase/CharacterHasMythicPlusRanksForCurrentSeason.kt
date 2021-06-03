@@ -1,7 +1,7 @@
 package com.nemesis.rio.domain.mplus.ranks.usecase
 
 import com.nemesis.rio.domain.mplus.ranks.MythicPlusRanksSource
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 
 class CharacterHasMythicPlusRanksForCurrentSeason(private val mythicPlusRanksSource: MythicPlusRanksSource) {
 

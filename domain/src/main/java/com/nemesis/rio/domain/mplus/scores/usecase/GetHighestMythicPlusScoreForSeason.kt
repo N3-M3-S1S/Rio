@@ -3,7 +3,7 @@ package com.nemesis.rio.domain.mplus.scores.usecase
 import com.nemesis.rio.domain.mplus.scores.MythicPlusScore
 import com.nemesis.rio.domain.mplus.scores.MythicPlusScoresSource
 import com.nemesis.rio.domain.mplus.seasons.Season
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import kotlin.math.max
 
 class GetHighestMythicPlusScoreForSeason(private val mythicPlusScoresSource: MythicPlusScoresSource) {

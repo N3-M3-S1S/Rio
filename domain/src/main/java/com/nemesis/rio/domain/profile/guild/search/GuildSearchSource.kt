@@ -1,6 +1,6 @@
 package com.nemesis.rio.domain.profile.guild.search
 
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Guild
 import com.nemesis.rio.domain.server.Region
 import com.nemesis.rio.domain.server.realm.Realm
 

@@ -2,7 +2,7 @@ package com.nemesis.rio.presentation.profile.overview.character.mplus.ranks
 
 import com.nemesis.rio.domain.mplus.ranks.MythicPlusRanksScope
 import com.nemesis.rio.domain.mplus.ranks.usecase.GetSpecMythicPlusRanksForCurrentSeason
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.presentation.profile.character.attributes.iconResId
 import com.nemesis.rio.presentation.profile.character.attributes.stringResId
 import com.nemesis.rio.presentation.ranks.list.RanksListItem

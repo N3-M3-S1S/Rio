@@ -2,7 +2,7 @@ package com.nemesis.rio.presentation.profile.character
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.profile.character.attributes.CharacterAttributes
 import com.nemesis.rio.domain.profile.character.attributes.Covenant
 import com.nemesis.rio.domain.profile.character.gear.Gear

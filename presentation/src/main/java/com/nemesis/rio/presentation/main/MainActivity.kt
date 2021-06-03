@@ -14,7 +14,7 @@ import com.nemesis.rio.presentation.R
 import com.nemesis.rio.presentation.app.browser.UrlBrowser
 import com.nemesis.rio.presentation.app.messages.Message
 import com.nemesis.rio.presentation.databinding.ActivityMainBinding
-import com.nemesis.rio.presentation.profile.overview.getProfileOverviewDirection
+import com.nemesis.rio.presentation.profile.overview.overviewDirection
 import kotlinx.coroutines.flow.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     private fun observeNavigateToProfileOverviewEventFlow() {
         lifecycleScope.launchWhenStarted {
             navigateToProfileOverviewEventFlow
-                .map { it.getProfileOverviewDirection() }
+                .map { it.overviewDirection }
                 .collect(navController::navigate)
         }
     }

@@ -3,7 +3,7 @@ package com.nemesis.rio.presentation.profile.overview.guild.ranks
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Guild
 import com.nemesis.rio.presentation.utils.LoadingStateController
 import com.nemesis.rio.presentation.utils.LoadingStateDelegate
 import com.nemesis.rio.presentation.utils.extensions.toLiveData

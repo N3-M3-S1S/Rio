@@ -2,6 +2,7 @@ package com.nemesis.rio.data.profile.character.database
 
 import com.nemesis.rio.data.AppDatabaseTest
 import com.nemesis.rio.data.profile.database.createTestCharacterInDatabase
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.profile.character.attributes.Race
 import com.nemesis.rio.domain.profile.character.attributes.Spec
 import com.nemesis.rio.utils.now
@@ -34,19 +35,28 @@ class CharacterDaoTest : AppDatabaseTest() {
     @Test
     fun updateCharacter() = runBlocking {
         val testCharacter = createTestCharacter()
-
         characterDao.saveOrUpdate(testCharacter)
-        val expectedCharacter = testCharacter.copy(
-            attributes = testCharacter.attributes.copy(
-                activeSpec = Spec.BREWMASTER,
-                race = Race.BLOOD_ELF
-            )
+        val updatedAttributes = testCharacter.attributes.copy(
+            activeSpec = Spec.BREWMASTER,
+            race = Race.BLOOD_ELF
         )
+        val updatedCharacter =
+            Character(
+                testCharacter.name,
+                testCharacter.region,
+                testCharacter.faction,
+                testCharacter.url,
+                testCharacter.realm,
+                updatedAttributes,
+                testCharacter.gear,
+                testCharacter.imageUrl,
+                testCharacter.guildName
+            )
 
-        characterDao.saveOrUpdate(expectedCharacter)
+        characterDao.saveOrUpdate(updatedCharacter)
         val characterFromDatabase =
             with(testCharacter) { characterDao.searchCharacter(name, region, realm) }
-        assertEquals(expectedCharacter, characterFromDatabase)
+        assertEquals(updatedCharacter, characterFromDatabase)
     }
 
     @Test

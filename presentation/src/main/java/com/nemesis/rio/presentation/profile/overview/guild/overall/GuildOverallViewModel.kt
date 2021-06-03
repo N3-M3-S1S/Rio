@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chibatching.kotpref.livedata.asLiveData
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Guild
 import com.nemesis.rio.presentation.ranks.RanksSpan
 import com.nemesis.rio.presentation.utils.LoadingStateController
 import com.nemesis.rio.presentation.utils.LoadingStateDelegate

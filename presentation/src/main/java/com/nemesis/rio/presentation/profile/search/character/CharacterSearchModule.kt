@@ -11,7 +11,7 @@ import com.nemesis.rio.data.profile.character.search.CharacterSearchSourceImpl
 import com.nemesis.rio.data.profile.database.ProfileSaver
 import com.nemesis.rio.data.raiding.achievements.database.RaidAchievementsSaver
 import com.nemesis.rio.data.raiding.progress.database.RaidProgressSaver
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.profile.character.search.CharacterSearchSource
 import com.nemesis.rio.domain.profile.character.search.usecase.SearchCharacter
 import com.nemesis.rio.presentation.profile.character.characterQualifier

@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
 import com.nemesis.rio.data.profile.database.ProfileDao
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Guild
 import com.nemesis.rio.domain.profile.search.ProfileSearchHistoryItem
 import com.nemesis.rio.domain.server.Region
 import com.nemesis.rio.domain.server.realm.Realm

@@ -1,6 +1,6 @@
 package com.nemesis.rio.domain.raiding.source
 
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Guild
 import com.nemesis.rio.domain.raiding.Raid
 import com.nemesis.rio.domain.raiding.progress.RaidProgress
 import com.nemesis.rio.domain.raiding.ranks.RaidRanks

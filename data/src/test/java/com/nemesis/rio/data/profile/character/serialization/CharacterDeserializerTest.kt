@@ -1,7 +1,7 @@
 package com.nemesis.rio.data.profile.character.serialization
 
 import com.nemesis.rio.domain.profile.Faction
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.profile.character.attributes.*
 import com.nemesis.rio.domain.profile.character.gear.Gear
 import com.nemesis.rio.domain.server.Region

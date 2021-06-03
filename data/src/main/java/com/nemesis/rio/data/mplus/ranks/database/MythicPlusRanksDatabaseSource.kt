@@ -3,7 +3,7 @@ package com.nemesis.rio.data.mplus.ranks.database
 import com.nemesis.rio.data.profile.database.ProfileIDProvider
 import com.nemesis.rio.data.profile.database.withProfileID
 import com.nemesis.rio.domain.mplus.ranks.*
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.profile.character.attributes.Role
 import com.nemesis.rio.domain.ranks.Ranks
 

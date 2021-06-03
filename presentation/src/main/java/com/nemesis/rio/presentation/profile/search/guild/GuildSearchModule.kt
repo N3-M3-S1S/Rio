@@ -8,7 +8,7 @@ import com.nemesis.rio.data.profile.guild.search.GuildSearchDatabaseSource
 import com.nemesis.rio.data.profile.guild.search.GuildSearchSourceImpl
 import com.nemesis.rio.data.raiding.progress.database.RaidProgressSaver
 import com.nemesis.rio.data.raiding.ranks.database.GuildRaidRanksSaver
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Guild
 import com.nemesis.rio.domain.profile.guild.search.GuildSearchSource
 import com.nemesis.rio.domain.profile.guild.search.usecase.SearchGuild
 import com.nemesis.rio.presentation.profile.guild.guildQualifier

@@ -2,7 +2,7 @@ package com.nemesis.rio.presentation.profile.overview.character.overall
 
 import com.nemesis.rio.domain.mplus.scores.usecase.GetHighestMythicPlusScoreForSeason
 import com.nemesis.rio.domain.mplus.seasons.usecase.GetCurrentSeason
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.profile.update.usecase.GetProfileLastUpdateDateTime
 import com.nemesis.rio.domain.raiding.achievements.bestAchievementOrNull
 import com.nemesis.rio.domain.raiding.achievements.usecase.GetAchievementsForRaid

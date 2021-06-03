@@ -1,6 +1,6 @@
 package com.nemesis.rio.presentation.profile.overview.character.overall
 
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import kotlinx.datetime.LocalDateTime
 
 data class CharacterOverallData(

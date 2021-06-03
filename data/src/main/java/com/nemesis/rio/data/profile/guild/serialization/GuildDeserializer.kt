@@ -2,7 +2,7 @@ package com.nemesis.rio.data.profile.guild.serialization
 
 import com.nemesis.rio.data.profile.serialization.ProfileSerialization
 import com.nemesis.rio.data.serialization.JsonObjectDeserializer
-import com.nemesis.rio.domain.profile.guild.Guild
+import com.nemesis.rio.domain.profile.Guild
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 

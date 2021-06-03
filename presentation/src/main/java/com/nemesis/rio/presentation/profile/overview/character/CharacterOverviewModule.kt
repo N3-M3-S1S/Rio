@@ -2,7 +2,7 @@ package com.nemesis.rio.presentation.profile.overview.character
 
 import android.util.SparseArray
 import androidx.fragment.app.Fragment
-import com.nemesis.rio.domain.profile.character.Character
+import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.presentation.R
 import com.nemesis.rio.presentation.profile.overview.character.mplus.CharacterMythicPlusFragment
 import com.nemesis.rio.presentation.profile.overview.character.mplus.characterMythicPlusModule
