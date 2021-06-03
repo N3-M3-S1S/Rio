@@ -56,7 +56,7 @@ object DataDependencies {
     const val MOCK_WEB_SERVER = "com.squareup.okhttp3:mockwebserver:$MOCK_WEB_SERVER_VERSION"
 }
 
-object AppDependencies {
+object PresentationDependencies {
     private const val KOIN_VERSION = "3.0.2"
     private const val KOTPREF_VERSION = "2.13.1"
     private const val EPOXY_VERSION = "4.5.0"

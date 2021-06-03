@@ -41,7 +41,7 @@ kapt {
 }
 
 dependencies {
-    with(AppDependencies) {
+    with(PresentationDependencies) {
         implementation(KOIN_ANDROID)
         implementation(KOIN_EXT)
 
@@ -81,9 +81,3 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":utils"))
 }
-
-repositories {
-    mavenCentral()
-}
-
-

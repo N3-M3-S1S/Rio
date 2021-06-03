@@ -19,6 +19,6 @@ buildscript {
     dependencies {
         classpath(ProjectDependencies.KOTLIN_GRADLE_PLUGIN)
         classpath(ProjectDependencies.ANDROID_GRADLE_PLUGIN)
-        classpath(AppDependencies.NAVIGATION_SAFE_ARGS_PLUGIN)
+        classpath(PresentationDependencies.NAVIGATION_SAFE_ARGS_PLUGIN)
     }
 }
