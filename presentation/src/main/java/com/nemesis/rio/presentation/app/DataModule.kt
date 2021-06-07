@@ -8,6 +8,7 @@ import com.nemesis.rio.data.connection.NetworkConnectionStatus
 import com.nemesis.rio.data.database.AppDatabase
 import com.nemesis.rio.data.database.AppDatabaseInitializer
 import com.nemesis.rio.data.database.asset.*
+import com.nemesis.rio.data.mplus.scores.colors.database.MythicPlusScoreColorsAssetUpdater
 import com.nemesis.rio.data.mplus.seasons.database.SeasonsAssetUpdater
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
@@ -24,10 +25,11 @@ val dataModule = module {
     single { androidApplication().getSharedPreferences("shared_preferences", Context.MODE_PRIVATE) }
     single {
         val seasonAssetUpdater = get<SeasonsAssetUpdater>()
+        val scoreColorsAssetUpdater = get<MythicPlusScoreColorsAssetUpdater>()
         AppDatabaseInitializer(
             get(),
             get(),
-            listOf(seasonAssetUpdater)
+            listOf(seasonAssetUpdater, scoreColorsAssetUpdater)
         )
     }
     single { RioApi.create() }

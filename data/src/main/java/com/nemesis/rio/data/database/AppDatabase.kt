@@ -8,6 +8,8 @@ import com.nemesis.rio.data.mplus.ranks.database.*
 import com.nemesis.rio.data.mplus.runs.database.MythicPlusRunAffixesEntity
 import com.nemesis.rio.data.mplus.runs.database.MythicPlusRunEntity
 import com.nemesis.rio.data.mplus.runs.database.MythicPlusRunsDao
+import com.nemesis.rio.data.mplus.scores.colors.database.MythicPlusScoreColorDao
+import com.nemesis.rio.data.mplus.scores.colors.database.MythicPlusScoreColorEntity
 import com.nemesis.rio.data.mplus.scores.database.*
 import com.nemesis.rio.data.mplus.seasons.database.SeasonEntity
 import com.nemesis.rio.data.mplus.seasons.database.SeasonsDao
@@ -38,6 +40,7 @@ import com.nemesis.rio.data.raiding.ranks.database.RaidRanksEntity
 
         MythicPlusOverallScoreEntity::class,
         MythicPlusRoleScoreEntity::class,
+        MythicPlusScoreColorEntity::class,
 
         MythicPlusRunEntity::class,
         MythicPlusRunAffixesEntity::class,
@@ -47,7 +50,8 @@ import com.nemesis.rio.data.raiding.ranks.database.RaidRanksEntity
         RaidAchievementsEntity::class,
 
         SeasonEntity::class],
-    version = 2
+    version = 3,
+    autoMigrations = [AutoMigration(from = 2, to = 3)]
 )
 
 @TypeConverters(value = [DateTimeConverters::class, ExpansionConverters::class])
@@ -66,6 +70,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract val raidRanksDao: RaidRanksDao
 
     abstract val mythicPlusScoresDao: MythicPlusScoresDao
+    abstract val mythicPlusScoreColorDao: MythicPlusScoreColorDao
     abstract val mythicPlusRunsDao: MythicPlusRunsDao
     abstract val mythicPlusRanksDao: MythicPlusRanksDao
 
