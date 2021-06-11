@@ -2,14 +2,13 @@ package com.nemesis.rio.data.database
 
 import android.content.Context
 import androidx.room.*
+import com.nemesis.rio.data.database.migrations.Migration_1_2
 import com.nemesis.rio.data.game.database.ExpansionConverters
 import com.nemesis.rio.data.mplus.ranks.database.*
 import com.nemesis.rio.data.mplus.runs.database.MythicPlusRunAffixesEntity
 import com.nemesis.rio.data.mplus.runs.database.MythicPlusRunEntity
 import com.nemesis.rio.data.mplus.runs.database.MythicPlusRunsDao
-import com.nemesis.rio.data.mplus.scores.database.MythicPlusOverallScoreParentEntity
-import com.nemesis.rio.data.mplus.scores.database.MythicPlusRoleScoreChildEntity
-import com.nemesis.rio.data.mplus.scores.database.MythicPlusScoresDao
+import com.nemesis.rio.data.mplus.scores.database.*
 import com.nemesis.rio.data.mplus.seasons.database.SeasonEntity
 import com.nemesis.rio.data.mplus.seasons.database.SeasonsDao
 import com.nemesis.rio.data.profile.character.database.CharacterDao
@@ -37,8 +36,8 @@ import com.nemesis.rio.data.raiding.ranks.database.RaidRanksEntity
         MythicPlusSpecRanksEntity::class,
         MythicPlusRoleRanksEntity::class,
 
-        MythicPlusOverallScoreParentEntity::class,
-        MythicPlusRoleScoreChildEntity::class,
+        MythicPlusOverallScoreEntity::class,
+        MythicPlusRoleScoreEntity::class,
 
         MythicPlusRunEntity::class,
         MythicPlusRunAffixesEntity::class,
@@ -48,7 +47,7 @@ import com.nemesis.rio.data.raiding.ranks.database.RaidRanksEntity
         RaidAchievementsEntity::class,
 
         SeasonEntity::class],
-    version = 1
+    version = 2
 )
 
 @TypeConverters(value = [DateTimeConverters::class, ExpansionConverters::class])
@@ -76,7 +75,10 @@ abstract class AppDatabase : RoomDatabase() {
         private const val DATABASE_NAME = "db"
         private const val DATABASE_ASSET_NAME = "db.sqlite"
 
-        fun build(context: Context) = Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
-            .createFromAsset(DATABASE_ASSET_NAME).build()
+        fun build(context: Context) =
+            Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
+                .createFromAsset(DATABASE_ASSET_NAME)
+                .addMigrations(Migration_1_2)
+                .build()
     }
 }

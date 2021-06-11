@@ -48,11 +48,14 @@ object DataDependencies {
     const val ROOM = "androidx.room:room-ktx:$ROOM_VERSION"
     const val ROOM_RUNTIME = "androidx.room:room-runtime:$ROOM_VERSION"
     const val ROOM_COMPILER = "androidx.room:room-compiler:$ROOM_VERSION"
+    const val ROOM_TESTING = "androidx.room:room-testing:$ROOM_VERSION"
+
     const val KOTLINX_SERIALIZATION =
         "org.jetbrains.kotlinx:kotlinx-serialization-json:$KOTLINX_SERIALIZATION_VERSION"
     const val RETROFIT = "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
     const val RETROFIT_KOTLINX_SERIALIZATION_CONVERTER =
         "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$KOTLINX_SERIALIZATION_RETROFIT_CONVERTER_VERSION"
+
     const val MOCK_WEB_SERVER = "com.squareup.okhttp3:mockwebserver:$MOCK_WEB_SERVER_VERSION"
 }
 

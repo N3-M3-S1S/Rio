@@ -5,31 +5,34 @@ import com.nemesis.rio.data.profile.character.serialization.attributes.RoleSeria
 import com.nemesis.rio.data.serialization.JsonObjectDeserializer
 import com.nemesis.rio.data.serialization.getUnquotedString
 import com.nemesis.rio.domain.mplus.scores.MythicPlusScore
-import com.nemesis.rio.domain.mplus.scores.MythicPlusScores
 import com.nemesis.rio.domain.profile.character.attributes.Role
 import com.nemesis.rio.utils.enumMap
 import kotlinx.serialization.json.*
 
-object MythicPlusSeasonApiValueToScoresDeserializer :
-    JsonObjectDeserializer<Map<String, MythicPlusScores>>() {
+object MythicPlusScoresForSeasonDeserializer :
+    JsonObjectDeserializer<List<MythicPlusScoresContainer>>() {
 
     @OptIn(ExperimentalStdlibApi::class)
     override fun deserialize(
         jsonObject: JsonObject,
         json: Json,
-    ): Map<String, MythicPlusScores> {
+    ): List<MythicPlusScoresContainer> {
         val scoresBySeasonJsonObjects = getScoresBySeasonJsonObjects(jsonObject)
 
-        val seasonApiValueWithScores = mutableMapOf<String, MythicPlusScores>()
+        val result = mutableListOf<MythicPlusScoresContainer>()
 
         for (scoresBySeasonJsonObject in scoresBySeasonJsonObjects) {
-            val scoresForSeason =
-                parseNotZeroScoresOrNull(getScoresJsonObject(scoresBySeasonJsonObject)) ?: continue
+            val scoresJsonObject = getScoresJsonObject(scoresBySeasonJsonObject)
+            val overallScore = parseOverallScore(scoresJsonObject)
+            if (overallScore == 0f) continue //if overall score is 0 - a character has no scores for a season, no need to parse further
+            val roleScores = parseRoleScores(scoresJsonObject)
             val seasonApiValue = getSeasonJsonValue(scoresBySeasonJsonObject)
-            seasonApiValueWithScores[seasonApiValue] = scoresForSeason
+            val mythicPlusScoresForSeason =
+                MythicPlusScoresContainer(seasonApiValue, overallScore, roleScores)
+            result.add(mythicPlusScoresForSeason)
         }
 
-        return seasonApiValueWithScores
+        return result
     }
 
     private fun getScoresBySeasonJsonObjects(jsonObject: JsonObject): List<JsonObject> =
@@ -40,21 +43,13 @@ object MythicPlusSeasonApiValueToScoresDeserializer :
     private fun getScoresJsonObject(scoresBySeasonJsonObject: JsonObject): JsonObject =
         scoresBySeasonJsonObject.getValue("scores").jsonObject
 
-    @OptIn(ExperimentalStdlibApi::class)
-    private fun parseNotZeroScoresOrNull(scoresJsonObject: JsonObject): MythicPlusScores? {
-        val overallScore = parseScore(scoresJsonObject, "all")
-        return if (overallScore > 0F) {
-            val roleScores = parseRoleScores(scoresJsonObject)
-            MythicPlusScores(overallScore, roleScores)
-        } else {
-            null // if overall score if 0, all role scores are also 0
-        }
-    }
+    private fun parseOverallScore(scoresJsonObject: JsonObject): MythicPlusScore =
+        parseMythicPlusScore(scoresJsonObject, "all")
 
     private fun parseRoleScores(scoresJsonObject: JsonObject): Map<Role, MythicPlusScore> {
         val roleScores = enumMap<Role, MythicPlusScore>()
         RoleSerialization.jsonValueToRole.forEach { (roleJsonValue, role) ->
-            val roleScore = parseScore(scoresJsonObject, roleJsonValue)
+            val roleScore = parseMythicPlusScore(scoresJsonObject, roleJsonValue)
             if (roleScore != 0F) {
                 roleScores[role] = roleScore
             }
@@ -62,7 +57,10 @@ object MythicPlusSeasonApiValueToScoresDeserializer :
         return roleScores
     }
 
-    private fun parseScore(scoresJsonObject: JsonObject, scoreKey: String): MythicPlusScore =
+    private fun parseMythicPlusScore(
+        scoresJsonObject: JsonObject,
+        scoreKey: String
+    ): MythicPlusScore =
         scoresJsonObject.getValue(scoreKey).jsonPrimitive.float
 
     private fun getSeasonJsonValue(scoresBySeasonJsonObject: JsonObject): String =

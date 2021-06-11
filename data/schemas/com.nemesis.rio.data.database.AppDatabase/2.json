@@ -1,8 +1,8 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 1,
-    "identityHash": "5a22f04a2d06d88ee10acd6c8364b150",
+    "version": 2,
+    "identityHash": "57c34bcf53fd1668d55fef9635311b76",
     "entities": [
       {
         "tableName": "CharacterEntity",
@@ -455,30 +455,30 @@
         ]
       },
       {
-        "tableName": "MythicPlusOverallScoreParentEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`overallScore` REAL NOT NULL, `seasonId` INTEGER NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `profileID` INTEGER NOT NULL, FOREIGN KEY(`profileID`) REFERENCES `CharacterEntity`(`profileID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "tableName": "MythicPlusOverallScoreEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`score` REAL NOT NULL, `seasonId` INTEGER NOT NULL, `characterId` INTEGER NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, FOREIGN KEY(`characterId`) REFERENCES `CharacterEntity`(`profileID`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`seasonId`) REFERENCES `seasons`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
-            "fieldPath": "overallScore",
-            "columnName": "overallScore",
+            "fieldPath": "score",
+            "columnName": "score",
             "affinity": "REAL",
             "notNull": true
           },
           {
-            "fieldPath": "seasonID",
+            "fieldPath": "seasonId",
             "columnName": "seasonId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "characterId",
+            "columnName": "characterId",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
             "fieldPath": "id",
             "columnName": "id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "characterID",
-            "columnName": "profileID",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -489,34 +489,35 @@
           ],
           "autoGenerate": true
         },
-        "indices": [
-          {
-            "name": "index_MythicPlusOverallScoreParentEntity_seasonId_profileID",
-            "unique": true,
-            "columnNames": [
-              "seasonId",
-              "profileID"
-            ],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_MythicPlusOverallScoreParentEntity_seasonId_profileID` ON `${TABLE_NAME}` (`seasonId`, `profileID`)"
-          }
-        ],
+        "indices": [],
         "foreignKeys": [
           {
             "table": "CharacterEntity",
             "onDelete": "CASCADE",
             "onUpdate": "NO ACTION",
             "columns": [
-              "profileID"
+              "characterId"
             ],
             "referencedColumns": [
               "profileID"
+            ]
+          },
+          {
+            "table": "seasons",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "seasonId"
+            ],
+            "referencedColumns": [
+              "id"
             ]
           }
         ]
       },
       {
-        "tableName": "MythicPlusRoleScoreChildEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`role` TEXT NOT NULL, `score` REAL NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `overallScoreId` INTEGER NOT NULL, FOREIGN KEY(`overallScoreId`) REFERENCES `MythicPlusOverallScoreParentEntity`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "tableName": "MythicPlusRoleScoreEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`role` TEXT NOT NULL, `score` REAL NOT NULL, `seasonId` INTEGER NOT NULL, `characterId` INTEGER NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, FOREIGN KEY(`characterId`) REFERENCES `CharacterEntity`(`profileID`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`seasonId`) REFERENCES `seasons`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "role",
@@ -531,14 +532,20 @@
             "notNull": true
           },
           {
-            "fieldPath": "id",
-            "columnName": "id",
+            "fieldPath": "seasonId",
+            "columnName": "seasonId",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "overallScoreID",
-            "columnName": "overallScoreId",
+            "fieldPath": "characterId",
+            "columnName": "characterId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -549,25 +556,25 @@
           ],
           "autoGenerate": true
         },
-        "indices": [
-          {
-            "name": "index_MythicPlusRoleScoreChildEntity_role_score_overallScoreId",
-            "unique": true,
-            "columnNames": [
-              "role",
-              "score",
-              "overallScoreId"
-            ],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_MythicPlusRoleScoreChildEntity_role_score_overallScoreId` ON `${TABLE_NAME}` (`role`, `score`, `overallScoreId`)"
-          }
-        ],
+        "indices": [],
         "foreignKeys": [
           {
-            "table": "MythicPlusOverallScoreParentEntity",
+            "table": "CharacterEntity",
             "onDelete": "CASCADE",
             "onUpdate": "NO ACTION",
             "columns": [
-              "overallScoreId"
+              "characterId"
+            ],
+            "referencedColumns": [
+              "profileID"
+            ]
+          },
+          {
+            "table": "seasons",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "seasonId"
             ],
             "referencedColumns": [
               "id"
@@ -929,7 +936,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5a22f04a2d06d88ee10acd6c8364b150')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '57c34bcf53fd1668d55fef9635311b76')"
     ]
   }
 }

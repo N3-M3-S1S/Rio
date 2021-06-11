@@ -1,39 +1,54 @@
 package com.nemesis.rio.data.mplus.scores.database
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Transaction
 import com.nemesis.rio.domain.game.Expansion
+import com.nemesis.rio.domain.mplus.scores.MythicPlusScore
 import com.nemesis.rio.domain.mplus.seasons.Season
 
 @Dao
 abstract class MythicPlusScoresDao {
 
+    @Insert
+    internal abstract suspend fun saveOverallScores(overallScoreEntities: List<MythicPlusOverallScoreEntity>)
+
+    @Insert
+    internal abstract suspend fun saveRoleScoreEntities(roleScoreEntities: List<MythicPlusRoleScoreEntity>)
+
+    @Query("SELECT score FROM MythicPlusOverallScoreEntity WHERE characterId = :characterId AND seasonId = (SELECT id from SEASONS where name = :season)")
+    internal abstract suspend fun getOverallScore(
+        characterId: Long,
+        season: Season
+    ): MythicPlusScore?
+
+    @Query("SELECT * FROM MythicPlusRoleScoreEntity WHERE characterId = :characterId AND seasonId = (SELECT id from SEASONS where name = :season)")
+    internal abstract suspend fun getRoleScoresEntities(
+        characterId: Long,
+        season: Season
+    ): List<MythicPlusRoleScoreEntity>
+
     @Transaction
-    open suspend fun saveOrUpdate(scoresPojos: List<MythicPlusScoresPojo>) {
-        scoresPojos.forEach { mythicPlusScoresPojo ->
-            with(mythicPlusScoresPojo) {
-                val overallScoreID = saveOrUpdateParentScoresEntity(parentScoresEntity)
-                roleScoreEntities
-                    .onEach { it.overallScoreID = overallScoreID }
-                    .let { saveOrUpdateRoleScoreEntities(it) }
-            }
-        }
+    internal open suspend fun deleteAllScores(characterId: Long) {
+        deleteOverallScores(characterId)
+        deleteRoleScores(characterId)
     }
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    protected abstract suspend fun saveOrUpdateParentScoresEntity(entity: MythicPlusOverallScoreParentEntity): Long
+    @Query("DELETE FROM MythicPlusOverallScoreEntity WHERE characterId = :characterId")
+    protected abstract suspend fun deleteOverallScores(characterId: Long)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    protected abstract suspend fun saveOrUpdateRoleScoreEntities(entities: List<MythicPlusRoleScoreChildEntity>)
+    @Query("DELETE FROM MythicPlusRoleScoreEntity WHERE characterId = :characterId")
+    protected abstract suspend fun deleteRoleScores(characterId: Long)
 
-    @Query("SELECT * FROM MythicPlusOverallScoreParentEntity WHERE profileId = :characterID AND seasonID = (SELECT id from seasons WHERE name = :season)")
-    abstract suspend fun getScoresPojoForSeason(
-        season: Season,
+    @Query("SELECT DISTINCT expansion from seasons WHERE id in (SELECT seasonId from MythicPlusOverallScoreEntity where characterId = :characterID) ORDER BY expansion DESC")
+    internal abstract suspend fun getExpansionsWithScores(characterID: Long): List<Expansion>
+
+    @Query("SELECT name from seasons where expansion = :expansion and id in (SELECT seasonId from MythicPlusOverallScoreEntity where characterId = :characterID) ORDER BY expansion DESC")
+    internal abstract suspend fun getSeasonsWithScores(
         characterID: Long,
-    ): MythicPlusScoresPojo?
+        expansion: Expansion
+    ): List<Season>
 
-    @Query("SELECT DISTINCT expansion from seasons WHERE id in (SELECT seasonID from MythicPlusOverallScoreParentEntity where profileID = :characterID) ORDER BY expansion DESC")
-    abstract suspend fun getExpansionsWithScores(characterID: Long): List<Expansion>
 
-    @Query("SELECT name from seasons where expansion = :expansion and id in (SELECT seasonID from MythicPlusOverallScoreParentEntity where profileID = :characterID) ORDER BY id DESC")
-    abstract suspend fun getSeasonsWithScores(characterID: Long, expansion: Expansion): List<Season>
 }

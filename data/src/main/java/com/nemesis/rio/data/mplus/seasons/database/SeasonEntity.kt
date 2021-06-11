@@ -4,7 +4,7 @@ import androidx.room.*
 import com.nemesis.rio.data.game.database.ExpansionConverters
 import com.nemesis.rio.domain.game.Expansion
 
-@Entity(tableName = "seasons", indices = [Index("api_value", unique = true)])
+@Entity(tableName = SeasonEntity.TABLE_NAME, indices = [Index("api_value", unique = true)])
 data class SeasonEntity(
     @ColumnInfo(name = "api_value") val apiValue: String,
     val name: String,
@@ -12,4 +12,9 @@ data class SeasonEntity(
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0
+
+    companion object {
+        const val TABLE_NAME = "seasons"
+    }
+
 }

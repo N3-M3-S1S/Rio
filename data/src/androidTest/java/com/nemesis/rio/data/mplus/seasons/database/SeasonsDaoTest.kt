@@ -30,7 +30,7 @@ class SeasonsDaoTest : AppDatabaseTest() {
     @Test
     fun getIDForSeasonApiValue() = runBlocking {
         testSeasonEntities.forEach { seasonEntity ->
-            val result = seasonsDao.getSeasonIDForApiValue(seasonEntity.apiValue)
+            val result = seasonsDao.getSeasonIdByApiValue(seasonEntity.apiValue)
             val expectedSeasonID = seasonEntity.id
             assertEquals(expectedSeasonID, result)
         }

@@ -1,6 +1,6 @@
 package com.nemesis.rio.presentation.profile.overview.character.overall
 
-import com.nemesis.rio.domain.mplus.scores.usecase.GetHighestMythicPlusScoreForSeason
+import com.nemesis.rio.domain.mplus.scores.usecase.GetOverallMythicPlusScore
 import com.nemesis.rio.domain.mplus.seasons.usecase.GetCurrentSeason
 import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.profile.update.usecase.GetProfileLastUpdateDateTime
@@ -12,7 +12,7 @@ import com.nemesis.rio.domain.raiding.usecase.GetCurrentRaid
 
 class CharacterOverallDataFactory(
     private val getCurrentSeason: GetCurrentSeason,
-    private val getHighestMythicPlusScoreForSeason: GetHighestMythicPlusScoreForSeason,
+    private val getOverallMythicPlusScore: GetOverallMythicPlusScore,
     private val getCurrentRaid: GetCurrentRaid,
     private val getBestKillsForRaid: GetProgressForRaid,
     private val getAchievementsForRaid: GetAchievementsForRaid,
@@ -32,9 +32,9 @@ class CharacterOverallDataFactory(
 
     private suspend fun getMythicPlusDataForCurrentSeason(character: Character): CharacterOverallMythicPlusData {
         val currentSeason = getCurrentSeason()
-        val highestMythicPlusScoreForCurrentSeason =
-            getHighestMythicPlusScoreForSeason(character, currentSeason)
-        return CharacterOverallMythicPlusData(currentSeason, highestMythicPlusScoreForCurrentSeason)
+        val overallMythicPlusScoreForCurrentSeason =
+            getOverallMythicPlusScore(character, currentSeason)
+        return CharacterOverallMythicPlusData(currentSeason, overallMythicPlusScoreForCurrentSeason)
     }
 
     private suspend fun getRaidingDataForCurrentRaid(character: Character): CharacterOverallRaidingData {

@@ -20,6 +20,7 @@ android {
                 resources.srcDirs(sharedTestResourcesDirectory)
             }
         }
+        getByName("androidTest").assets.srcDirs("$projectDir/schemas")
     }
 
     defaultConfig {
@@ -40,6 +41,7 @@ dependencies {
     with(DataDependencies) {
         api(ROOM)
         implementation(ROOM_RUNTIME)
+        implementation(ROOM_TESTING)
         kapt(ROOM_COMPILER)
 
         implementation(KOTLINX_SERIALIZATION)

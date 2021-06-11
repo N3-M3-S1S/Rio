@@ -14,13 +14,13 @@ internal class MythicPlusScoresDeserializerTest {
         val expectedSeasonApiValue = "season-bfa-1"
 
         val result = Json.decodeFromJsonElement(
-            MythicPlusSeasonApiValueToScoresDeserializer,
+            MythicPlusScoresForSeasonDeserializer,
             mythicPlusScoresJson
         )
 
-        assertEquals(setOf(expectedSeasonApiValue), result.keys)
+        assertEquals(setOf(expectedSeasonApiValue), result.mapTo(mutableSetOf(),MythicPlusScoresContainer::seasonApiValue))
 
-        val scores = result.getValue(expectedSeasonApiValue)
+        val scores = result.first { it.seasonApiValue == expectedSeasonApiValue }
 
         val expectedOverallScore = 1838F
         assertEquals(expectedOverallScore, scores.overallScore)

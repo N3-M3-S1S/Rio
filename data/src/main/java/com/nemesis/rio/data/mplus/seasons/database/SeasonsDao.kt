@@ -12,8 +12,8 @@ abstract class SeasonsDao {
     @Query("SELECT name FROM seasons WHERE expansion = :expansion")
     abstract suspend fun getSeasonsForExpansion(expansion: Expansion): List<Season>
 
-    @Query("SELECT id FROM seasons WHERE api_value = :apiValue")
-    abstract suspend fun getSeasonIDForApiValue(apiValue: String): Long?
+    @Query("SELECT id FROM seasons WHERE api_value = :seasonApiValue")
+    abstract suspend fun getSeasonIdByApiValue(seasonApiValue: String): Long?
 
     @Query("SELECT name FROM seasons WHERE id = (SELECT MAX(id) FROM seasons)")
     abstract suspend fun getLastSeason(): Season

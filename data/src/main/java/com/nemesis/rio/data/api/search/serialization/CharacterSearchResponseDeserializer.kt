@@ -3,7 +3,7 @@ package com.nemesis.rio.data.api.search.serialization
 import com.nemesis.rio.data.api.search.CharacterSearchResponse
 import com.nemesis.rio.data.mplus.ranks.serialization.MythicPlusRanksDeserializer
 import com.nemesis.rio.data.mplus.runs.serialization.MythicPlusRunsDeserializer
-import com.nemesis.rio.data.mplus.scores.serialization.MythicPlusSeasonApiValueToScoresDeserializer
+import com.nemesis.rio.data.mplus.scores.serialization.MythicPlusScoresForSeasonDeserializer
 import com.nemesis.rio.data.profile.character.serialization.CharacterDeserializer
 import com.nemesis.rio.data.raiding.achievements.serialization.RaidAchievementsDeserializer
 import com.nemesis.rio.data.raiding.progress.serialization.RaidProgressDeserializer
@@ -23,7 +23,7 @@ internal object CharacterSearchResponseDeserializer : JsonObjectDeserializer<Cha
             json.decodeFromJsonElement(deserializer, jsonObject)
 
         val character = deserialize(CharacterDeserializer)
-        val mythicPlusScores = deserialize(MythicPlusSeasonApiValueToScoresDeserializer)
+        val mythicPlusScores = deserialize(MythicPlusScoresForSeasonDeserializer)
         val mythicPlusRanks = deserialize(MythicPlusRanksDeserializer)
         val mythicPlusRuns = deserialize(MythicPlusRunsDeserializer)
         val raidAchievements = deserialize(RaidAchievementsDeserializer)

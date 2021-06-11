@@ -23,7 +23,7 @@ val characterOverallModule = module {
     factory {
         CharacterOverallDataFactory(
             getCurrentSeason = get(),
-            getHighestMythicPlusScoreForSeason = get(),
+            getOverallMythicPlusScore = get(),
             getCurrentRaid = get(),
             getBestKillsForRaid = get(),
             getAchievementsForRaid = get(),
