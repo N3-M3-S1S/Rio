@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil.getDefaultComponent
 import com.airbnb.epoxy.EpoxyAsyncUtil
 import com.airbnb.epoxy.EpoxyController
 import com.nemesis.rio.presentation.BuildConfig
+import com.nemesis.rio.presentation.launcher.launcherModule
 import com.nemesis.rio.presentation.main.mainActivityModule
 import com.nemesis.rio.presentation.mplus.mythicPlusModules
 import com.nemesis.rio.presentation.profile.overview.character.characterOverviewModules
@@ -25,6 +26,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import timber.log.Timber
+import java.io.File
 
 class App : Application() {
 
@@ -49,6 +51,7 @@ class App : Application() {
             androidFileProperties()
             modules(
                 mainActivityModule,
+                launcherModule,
                 appModule,
                 dataModule,
                 profileModule,
@@ -67,6 +70,7 @@ class App : Application() {
 
     private fun setupDefaultBindingAdapters() =
         getKoin().get<DefaultBindingAdapters>().also(DataBindingUtil::setDefaultComponent)
+
 }
 
 val applicationScope = MainScope()
