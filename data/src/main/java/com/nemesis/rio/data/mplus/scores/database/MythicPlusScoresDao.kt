@@ -44,7 +44,7 @@ abstract class MythicPlusScoresDao {
     @Query("SELECT DISTINCT expansion from seasons WHERE id in (SELECT seasonId from MythicPlusOverallScoreEntity where characterId = :characterID) ORDER BY expansion DESC")
     internal abstract suspend fun getExpansionsWithScores(characterID: Long): List<Expansion>
 
-    @Query("SELECT name from seasons where expansion = :expansion and id in (SELECT seasonId from MythicPlusOverallScoreEntity where characterId = :characterID) ORDER BY expansion DESC")
+    @Query("SELECT name from seasons where expansion = :expansion and id in (SELECT seasonId from MythicPlusOverallScoreEntity where characterId = :characterID) ORDER BY id DESC")
     internal abstract suspend fun getSeasonsWithScores(
         characterID: Long,
         expansion: Expansion
