@@ -73,11 +73,9 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
         private const val DATABASE_NAME = "db"
-        private const val DATABASE_ASSET_NAME = "db.sqlite"
 
         fun build(context: Context) =
             Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
-                .createFromAsset(DATABASE_ASSET_NAME)
                 .addMigrations(Migration_1_2)
                 .build()
     }

@@ -2,6 +2,7 @@ package com.nemesis.rio.data.mplus.seasons.database
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.nemesis.rio.domain.game.Expansion
 import com.nemesis.rio.domain.mplus.seasons.Season
@@ -21,6 +22,7 @@ abstract class SeasonsDao {
     @Query("SELECT api_value FROM seasons")
     abstract suspend fun getSeasonJsonValues(): List<String>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     internal abstract suspend fun save(seasonEntities: List<SeasonEntity>)
+
 }

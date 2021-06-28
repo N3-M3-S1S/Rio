@@ -4,12 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nemesis.rio.presentation.app.initialization.ApplicationInitializationState
+import com.nemesis.rio.data.database.AppDatabaseInitializer
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
+import com.nemesis.rio.presentation.app.initialization.ApplicationInitializationState
 
-class LauncherViewModel(applicationInitializationState: ApplicationInitializationState) :
+class LauncherViewModel(
+    applicationInitializationState: ApplicationInitializationState,
+    private val appDatabaseInitializer: AppDatabaseInitializer
+) :
     ViewModel() {
 
     private val _applicationInitializing = MutableLiveData(false)
@@ -31,7 +35,7 @@ class LauncherViewModel(applicationInitializationState: ApplicationInitializatio
     }
 
     private suspend fun initializeApplication() {
-        // handle application update
+        appDatabaseInitializer.initializeAppDatabase()
     }
 
     private fun sendNavigateToMainScreenEvent() {
