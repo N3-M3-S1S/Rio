@@ -149,6 +149,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/character_overall_mplus_score_title"
             app:mythicPlusScore="@{viewModel.characterOverallData.mythicPlusData.score}"
+            app:characterOverall_scoreColor="@{viewModel.characterOverallData.mythicPlusData.scoreColor}"
             tools:text="@string/test_mythic_plus_score" />
 
         <TextView

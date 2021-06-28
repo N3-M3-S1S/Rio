@@ -9,7 +9,6 @@ import com.nemesis.rio.presentation.game.stringResId
 import com.nemesis.rio.presentation.itemDropdown
 import com.nemesis.rio.presentation.itemMplusScore
 import com.nemesis.rio.presentation.itemTextHeader
-import com.nemesis.rio.presentation.mplus.scores.MythicPlusScoreItem
 import com.nemesis.rio.presentation.view.epoxy.EpoxyModelsBuilderDelegate
 
 class CharacterMythicPlusScoresDataModelsBuilder(
@@ -56,14 +55,15 @@ class CharacterMythicPlusScoresDataModelsBuilder(
         }
     }
 
-    private fun EpoxyController.scores(scoreItems: List<MythicPlusScoreItem>) {
+    private fun EpoxyController.scores(scoreItems: List<CharacterMythicPlusScoreItem>) {
         group(R.layout.item_mplus_scores_group) {
             id("scores_group")
-            scoreItems.forEach { scoreListItem ->
+            scoreItems.forEach { (title, score, scoreColor) ->
                 itemMplusScore {
-                    id(scoreListItem.id)
-                    titleResId(scoreListItem.titleResId)
-                    score(scoreListItem.score)
+                    id(title)
+                    title(title)
+                    score(score)
+                    scoreColor(scoreColor)
                 }
             }
             spanSizeOverride { totalSpanCount, _, _ -> totalSpanCount }

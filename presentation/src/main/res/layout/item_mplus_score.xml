@@ -6,12 +6,16 @@
     <data>
 
         <variable
-            name="titleResId"
-            type="Integer" />
+            name="title"
+            type="String" />
 
         <variable
             name="score"
-            type="Float" />
+            type="float" />
+
+        <variable
+            name="scoreColor"
+            type="String" />
 
     </data>
 
@@ -40,6 +44,7 @@
             app:autoSizeStepGranularity="1sp"
             app:autoSizeTextType="uniform"
             app:mythicPlusScore="@{score}"
+            app:characterMplusScore_scoreColor="@{scoreColor}"
             tools:text="@string/test_mythic_plus_score" />
 
         <TextView
@@ -48,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_small"
             android:singleLine="true"
-            android:text="@{context.getString(titleResId)}"
+            android:text="@{title}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             tools:text="@string/role_healer" />
 

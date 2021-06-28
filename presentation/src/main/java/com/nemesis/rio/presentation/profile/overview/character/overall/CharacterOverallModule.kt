@@ -24,6 +24,7 @@ val characterOverallModule = module {
         CharacterOverallDataFactory(
             getCurrentSeason = get(),
             getOverallMythicPlusScore = get(),
+            getHexColorForMythicPlusScore = get(),
             getCurrentRaid = get(),
             getBestKillsForRaid = get(),
             getAchievementsForRaid = get(),

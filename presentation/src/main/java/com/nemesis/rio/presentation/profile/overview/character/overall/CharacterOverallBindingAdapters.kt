@@ -6,10 +6,12 @@ import androidx.core.text.buildSpannedString
 import androidx.core.text.color
 import androidx.databinding.BindingAdapter
 import coil.load
+import com.nemesis.rio.domain.mplus.scores.color.HexColor
 import com.nemesis.rio.domain.profile.character.attributes.CharacterAttributes
 import com.nemesis.rio.presentation.R
 import com.nemesis.rio.presentation.profile.character.attributes.colorResId
 import com.nemesis.rio.presentation.profile.character.attributes.stringResId
+import com.nemesis.rio.presentation.utils.increaseForegroundHexColorBrightnessToWCAGAAStandard
 import splitties.resources.color
 import splitties.resources.str
 
@@ -42,4 +44,11 @@ fun ImageView.setCharacterOverallProfileImage(profileImageUrl: String?) {
             crossfade(true)
         }
     }
+}
+
+@BindingAdapter("characterOverall_scoreColor")
+fun TextView.setCharacterOverallScoreColor(scoreColor: HexColor?) {
+    scoreColor
+        ?.let(::increaseForegroundHexColorBrightnessToWCAGAAStandard)
+        ?.let(::setTextColor)
 }
