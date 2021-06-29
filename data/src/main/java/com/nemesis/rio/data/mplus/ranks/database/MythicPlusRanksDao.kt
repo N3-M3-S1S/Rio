@@ -3,6 +3,7 @@ package com.nemesis.rio.data.mplus.ranks.database
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Transaction
 import com.nemesis.rio.domain.mplus.ranks.MythicPlusRanksScope
 
 @Dao
@@ -40,6 +41,7 @@ abstract class MythicPlusRanksDao {
         characterID: Long
     ): List<MythicPlusSpecRanksEntity>
 
+    @Transaction
     open suspend fun deleteAll(characterID: Long) {
         deleteMythicPlusRanksEntities(characterID)
         deleteMythicPlusSpecRanksEntities(characterID)

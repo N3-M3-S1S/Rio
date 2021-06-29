@@ -14,13 +14,16 @@ abstract class SeasonsDao {
     abstract suspend fun getSeasonsForExpansion(expansion: Expansion): List<Season>
 
     @Query("SELECT id FROM seasons WHERE api_value = :seasonApiValue")
-    abstract suspend fun getSeasonIdByApiValue(seasonApiValue: String): Long?
+    abstract suspend fun getSeasonIdByApiValue(seasonApiValue: String): Int?
 
     @Query("SELECT name FROM seasons WHERE id = (SELECT MAX(id) FROM seasons)")
-    abstract suspend fun getLastSeason(): Season
+    abstract suspend fun getLastAddedSeason(): Season
 
     @Query("SELECT api_value FROM seasons")
-    abstract suspend fun getSeasonJsonValues(): List<String>
+    abstract suspend fun getSeasonApiValues(): List<String>
+
+    @Query("SELECT api_value FROM seasons WHERE name = :season")
+    abstract suspend fun getSeasonApiValue(season: Season): String
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     internal abstract suspend fun save(seasonEntities: List<SeasonEntity>)

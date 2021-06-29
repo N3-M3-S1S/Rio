@@ -6,7 +6,7 @@ import kotlinx.coroutines.runBlocking
 val testSeasonEntities = enumValues<Expansion>().flatMapIndexed { index, expansion ->
     (1..3).map { i ->
         SeasonEntity("season-$i-$expansion", "Season $expansion $i", expansion).also {
-            it.id = ((index * 10) + i).toLong()
+            it.id = ((index * 10) + i)
         }
     }
 }

@@ -16,8 +16,7 @@ class MythicPlusScoresSaver(
         val overallScoreEntities = mutableListOf<MythicPlusOverallScoreEntity>()
         val roleScoreEntities = mutableListOf<MythicPlusRoleScoreEntity>()
 
-        for (mythicPlusScoresContainer in progress) {
-            val (seasonApiValue, overallScore, roleScores) = mythicPlusScoresContainer
+        for ((seasonApiValue, overallScore, roleScores) in progress) {
             val seasonId = seasonDao.getSeasonIdByApiValue(seasonApiValue)
             if (seasonId == null) {
                 Timber.d("No season id for api value '$seasonApiValue', scores with this api value will not be saved")

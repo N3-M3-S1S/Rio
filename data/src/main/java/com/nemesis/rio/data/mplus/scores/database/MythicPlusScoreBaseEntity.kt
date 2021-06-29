@@ -9,7 +9,7 @@ abstract class MythicPlusScoreBaseEntity(
     @ColumnInfo(name = SCORE_COLUMN)
     val score: MythicPlusScore,
     @ColumnInfo(name = SEASON_ID_COLUMN)
-    val seasonId: Long,
+    val seasonId: Int,
     @ColumnInfo(name = CHARACTER_ID_COLUMN)
     val characterId: Long
 ) {

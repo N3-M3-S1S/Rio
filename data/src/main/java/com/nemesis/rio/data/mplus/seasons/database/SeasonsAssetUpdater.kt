@@ -25,7 +25,7 @@ class SeasonsAssetUpdater(private val seasonsDao: SeasonsDao) : AppDatabaseTable
                     val expansionId =
                         cursor.getInt(cursor.getColumnIndex(SeasonEntity.EXPANSION_COLUMN))
                     val expansion = ExpansionConverters.idToExpansion(expansionId)
-                    val id = cursor.getInt(cursor.getColumnIndex("id")).toLong()
+                    val id = cursor.getInt(cursor.getColumnIndex("id"))
                     val seasonEntity = SeasonEntity(apiValue, name, expansion, id)
                     seasonEntities.add(seasonEntity)
                 }

@@ -24,7 +24,7 @@ import com.nemesis.rio.domain.mplus.scores.MythicPlusScore
         )
     ]
 )
-class MythicPlusOverallScoreEntity(score: MythicPlusScore, seasonId: Long, characterId: Long) :
+class MythicPlusOverallScoreEntity(score: MythicPlusScore, seasonId: Int, characterId: Long) :
     MythicPlusScoreBaseEntity(score, seasonId, characterId) {
 
     companion object {

@@ -29,7 +29,7 @@ class MythicPlusRoleScoreEntity(
     @ColumnInfo(name = ROLE_COLUMN)
     val role: Role,
     score: MythicPlusScore,
-    seasonId: Long,
+    seasonId: Int,
     characterId: Long
 ) : MythicPlusScoreBaseEntity(score, seasonId, characterId) {
 

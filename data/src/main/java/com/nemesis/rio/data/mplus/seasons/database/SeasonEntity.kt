@@ -18,7 +18,7 @@ data class SeasonEntity(
     val expansion: Expansion
 ) {
 
-    constructor(apiValue: String, name: String, expansion: Expansion, id: Long) : this(
+    constructor(apiValue: String, name: String, expansion: Expansion, id: Int) : this(
         apiValue,
         name,
         expansion
@@ -34,5 +34,5 @@ data class SeasonEntity(
     }
 
     @PrimaryKey(autoGenerate = true)
-    var id: Long = 0
+    var id: Int = 0
 }

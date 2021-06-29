@@ -34,12 +34,11 @@ class SeasonsDaoTest : AppDatabaseTest() {
             val expectedSeasonID = seasonEntity.id
             assertEquals(expectedSeasonID, result)
         }
-
     }
 
     @Test
     fun getActualSeason() = runBlocking {
-        val result = seasonsDao.getLastSeason()
+        val result = seasonsDao.getLastAddedSeason()
         val expectedSeason = testSeasonEntities.maxByOrNull { it.id }?.name
         assertEquals(expectedSeason, result)
     }

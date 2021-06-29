@@ -40,7 +40,7 @@ value class CharacterSearchFields(private val apiFieldsQueryParameter: String) {
                 add(MYTHIC_PLUS_RANKS)
                 add(MYTHIC_PLUS_RECENT_RUNS)
                 add("$MYTHIC_PLUS_BEST_RUNS:all")
-                val seasonsJsonValuesString = seasonsDao.getSeasonJsonValues()
+                val seasonsJsonValuesString = seasonsDao.getSeasonApiValues()
                     .joinToString(separator = ":", prefix = ":")
                 add(MYTHIC_PLUS_SCORES_BY_SEASON + seasonsJsonValuesString)
 

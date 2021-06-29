@@ -9,5 +9,5 @@ class SeasonsDatabaseSource(private val seasonsDao: SeasonsDao) : SeasonsSource 
     override suspend fun getSeasons(expansion: Expansion): List<Season> =
         seasonsDao.getSeasonsForExpansion(expansion)
 
-    override suspend fun getCurrentSeason(): Season = seasonsDao.getLastSeason()
+    override suspend fun getCurrentSeason(): Season = seasonsDao.getLastAddedSeason()
 }
