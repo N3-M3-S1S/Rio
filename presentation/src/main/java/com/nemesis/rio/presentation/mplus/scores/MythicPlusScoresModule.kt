@@ -1,6 +1,8 @@
 package com.nemesis.rio.presentation.mplus.scores
 
 import com.nemesis.rio.data.database.AppDatabase
+import com.nemesis.rio.data.mplus.scores.colors.update.MythicPlusScoreColorsUpdateScheduler
+import com.nemesis.rio.data.mplus.scores.colors.update.MythicPlusScoreColorsUpdateWorker
 import com.nemesis.rio.data.mplus.scores.colors.database.MythicPlusScoreColorDatabaseSource
 import com.nemesis.rio.data.mplus.scores.colors.database.MythicPlusScoreColorsAssetUpdater
 import com.nemesis.rio.data.mplus.scores.database.MythicPlusScoresDatabaseSource
@@ -17,6 +19,8 @@ import com.nemesis.rio.domain.mplus.scores.usecase.GetSeasonsWithScoresForExpans
 import com.nemesis.rio.domain.mplus.seasons.SeasonsSource
 import com.nemesis.rio.domain.mplus.seasons.usecase.GetCurrentSeason
 import com.nemesis.rio.presentation.profile.character.characterQualifier
+import org.koin.android.ext.koin.androidApplication
+import org.koin.androidx.workmanager.dsl.worker
 import org.koin.dsl.module
 import org.koin.experimental.builder.factory
 import org.koin.experimental.builder.factoryBy
@@ -33,6 +37,8 @@ val mythicPlusScoresModule = module {
     factory<GetCurrentSeason>()
     factoryBy<SeasonsSource, SeasonsDatabaseSource>()
     factory<SeasonsAssetUpdater>()
+    factory<MythicPlusScoreColorsUpdateScheduler>()
+    worker { MythicPlusScoreColorsUpdateWorker(get(), get(), get(), androidApplication(), it.get()) }
     single { get<AppDatabase>().mythicPlusScoresDao }
     single { get<AppDatabase>().seasonsDao }
     single { get<AppDatabase>().mythicPlusScoreColorDao }

@@ -5,14 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nemesis.rio.data.database.AppDatabaseInitializer
+import com.nemesis.rio.data.mplus.scores.colors.update.MythicPlusScoreColorsUpdateScheduler
+import com.nemesis.rio.presentation.app.initialization.ApplicationInitializationState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
-import com.nemesis.rio.presentation.app.initialization.ApplicationInitializationState
 
 class LauncherViewModel(
     applicationInitializationState: ApplicationInitializationState,
-    private val appDatabaseInitializer: AppDatabaseInitializer
+    private val appDatabaseInitializer: AppDatabaseInitializer,
+    private val mythicPlusScoreColorsUpdateScheduler: MythicPlusScoreColorsUpdateScheduler
 ) :
     ViewModel() {
 
@@ -30,6 +32,7 @@ class LauncherViewModel(
                 applicationInitializationState.setApplicationInitialized()
                 _applicationInitializing.value = false
             }
+            mythicPlusScoreColorsUpdateScheduler.scheduleMythicPlusScoreColorsUpdate()
             sendNavigateToMainScreenEvent()
         }
     }
