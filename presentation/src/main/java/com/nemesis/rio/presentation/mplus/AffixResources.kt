@@ -22,4 +22,5 @@ val Affix.imageResId
         Affix.GRIEVOUS -> R.drawable.affix_griveous
         Affix.STORMING -> R.drawable.affix_storming
         Affix.PRIDEFUL -> R.drawable.affix_prideful
+        Affix.TORMENTED -> R.drawable.affix_tormented
     }

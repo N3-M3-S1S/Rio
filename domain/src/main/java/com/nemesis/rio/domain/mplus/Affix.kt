@@ -9,7 +9,7 @@ enum class Affix(val tier: Tier) {
     NECROTIC(Tier.T7), EXPLOSIVE(Tier.T7), QUAKING(Tier.T7),
     VOLCANIC(Tier.T7), GRIEVOUS(Tier.T7), STORMING(Tier.T7),
 
-    PRIDEFUL(Tier.T10);
+    PRIDEFUL(Tier.T10), TORMENTED(Tier.T10);
 
     enum class Tier {
         T2, T4, T7, T10

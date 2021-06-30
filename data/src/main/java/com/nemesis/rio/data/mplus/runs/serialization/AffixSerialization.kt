@@ -22,6 +22,7 @@ internal object AffixSerialization {
             GRIEVOUS -> 12
             STORMING -> 124
             PRIDEFUL -> 121
+            TORMENTED -> 128
         }
 
     fun parseAffixByIdOrNull(affixId: Int): Affix? = enumValues<Affix>().find { affix ->
