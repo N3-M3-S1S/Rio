@@ -23,6 +23,8 @@ import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidFileProperties
 import org.koin.android.ext.koin.androidLogger
+import org.koin.androidx.workmanager.koin.workManagerFactory
+import org.koin.core.KoinExperimentalAPI
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import timber.log.Timber
@@ -44,11 +46,13 @@ class App : Application() {
         }
     }
 
+    @OptIn(KoinExperimentalAPI::class)
     private fun setupKoin() {
         startKoin {
             androidLogger(Level.DEBUG)
             androidContext(this@App)
             androidFileProperties()
+            workManagerFactory()
             modules(
                 mainActivityModule,
                 launcherModule,

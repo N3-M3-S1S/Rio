@@ -16,7 +16,8 @@ object ProjectDependencies {
     const val MOCKK = "io.mockk:mockk:$MOCKK_VERSION"
     const val KOTLIN_DATE_TIME = "org.jetbrains.kotlinx:kotlinx-datetime:$KOTLIN_DATE_TIME_VERSION"
     const val KOTLIN_TEST = "org.jetbrains.kotlin:kotlin-test-junit:$KOTLIN_TEST_VERSION"
-    const val DETEKT_FORMATTING = "io.gitlab.arturbosch.detekt:detekt-formatting:$DETEKT_FORMATTING_VERSION"
+    const val DETEKT_FORMATTING =
+        "io.gitlab.arturbosch.detekt:detekt-formatting:$DETEKT_FORMATTING_VERSION"
 }
 
 object AndroidDependencies {
@@ -44,6 +45,8 @@ object DataDependencies {
     private const val KOTLINX_SERIALIZATION_RETROFIT_CONVERTER_VERSION = "0.8.0"
     private const val KOTLINX_SERIALIZATION_VERSION = "1.2.0"
     private const val MOCK_WEB_SERVER_VERSION = "4.9.1"
+    private const val WORK_MANAGER_VERSION = "2.5.0"
+
 
     const val ROOM = "androidx.room:room-ktx:$ROOM_VERSION"
     const val ROOM_RUNTIME = "androidx.room:room-runtime:$ROOM_VERSION"
@@ -52,11 +55,15 @@ object DataDependencies {
 
     const val KOTLINX_SERIALIZATION =
         "org.jetbrains.kotlinx:kotlinx-serialization-json:$KOTLINX_SERIALIZATION_VERSION"
+
     const val RETROFIT = "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
     const val RETROFIT_KOTLINX_SERIALIZATION_CONVERTER =
         "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$KOTLINX_SERIALIZATION_RETROFIT_CONVERTER_VERSION"
 
     const val MOCK_WEB_SERVER = "com.squareup.okhttp3:mockwebserver:$MOCK_WEB_SERVER_VERSION"
+
+    const val WORK_MANAGER_KTX = "androidx.work:work-runtime-ktx:$WORK_MANAGER_VERSION"
+
 }
 
 object PresentationDependencies {
@@ -81,6 +88,7 @@ object PresentationDependencies {
 
     const val KOIN_ANDROID = "io.insert-koin:koin-android:$KOIN_VERSION"
     const val KOIN_EXT = "io.insert-koin:koin-android-ext:$KOIN_VERSION"
+    const val KOIN_WORK_MANAGER = "io.insert-koin:koin-androidx-workmanager:$KOIN_VERSION"
 
     const val KOTPREF = "com.chibatching.kotpref:kotpref:$KOTPREF_VERSION"
     const val KOTPREF_INITIALIZER = "com.chibatching.kotpref:initializer:$KOTPREF_VERSION"
@@ -124,4 +132,5 @@ object PresentationDependencies {
         "com.github.kirich1409:viewbindingpropertydelegate:$VIEW_BINDING_PROPERTY_DELEGATE_VERSION"
 
     const val LEAK_CANARY = "com.squareup.leakcanary:leakcanary-android:$LEAK_CANARY_VERSION"
+
 }

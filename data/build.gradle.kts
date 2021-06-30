@@ -49,6 +49,8 @@ dependencies {
         implementation(RETROFIT)
         implementation(RETROFIT_KOTLINX_SERIALIZATION_CONVERTER)
 
+        api(WORK_MANAGER_KTX)
+
         testImplementation(MOCK_WEB_SERVER)
     }
     implementation(project(":domain"))

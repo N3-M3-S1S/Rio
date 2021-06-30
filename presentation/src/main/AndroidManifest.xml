@@ -28,8 +28,11 @@
             android:name=".main.MainActivity"
             android:theme="@style/AppTheme" />
 
-
         <receiver android:name=".app.browser.ShareUrlBroadcastReceiver" />
+        <provider
+            android:name="androidx.work.impl.WorkManagerInitializer"
+            android:authorities="${applicationId}.workmanager-init"
+            tools:node="remove" />
     </application>
 
 </manifest>

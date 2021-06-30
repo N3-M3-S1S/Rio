@@ -2,6 +2,7 @@ package com.nemesis.rio.presentation.app
 
 import android.content.Context
 import androidx.core.content.getSystemService
+import androidx.work.WorkManager
 import com.nemesis.rio.data.api.RioApiClient
 import com.nemesis.rio.data.api.retrofit.RioApi
 import com.nemesis.rio.data.connection.NetworkConnectionStatus
@@ -34,4 +35,5 @@ val dataModule = module {
     }
     single { RioApi.create() }
     single { NetworkConnectionStatus(androidApplication().getSystemService()!!) }
+    single { WorkManager.getInstance(androidApplication()) }
 }

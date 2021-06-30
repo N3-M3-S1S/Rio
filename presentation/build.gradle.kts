@@ -44,6 +44,7 @@ dependencies {
     with(PresentationDependencies) {
         implementation(KOIN_ANDROID)
         implementation(KOIN_EXT)
+        implementation(KOIN_WORK_MANAGER)
 
         implementation(KOTPREF)
         implementation(KOTPREF_INITIALIZER)

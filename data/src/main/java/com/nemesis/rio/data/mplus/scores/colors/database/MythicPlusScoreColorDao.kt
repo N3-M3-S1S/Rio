@@ -16,6 +16,9 @@ interface MythicPlusScoreColorDao {
     @Query("DELETE FROM mplus_scores_colors")
     suspend fun deleteAll()
 
+    @Query("DELETE FROM mplus_scores_colors WHERE season_id = (SELECT id FROM seasons WHERE name = :season)")
+    suspend fun deleteScoreColorsForSeason(season: Season)
+
     @Insert
     suspend fun saveAll(entities: List<MythicPlusScoreColorEntity>)
 
