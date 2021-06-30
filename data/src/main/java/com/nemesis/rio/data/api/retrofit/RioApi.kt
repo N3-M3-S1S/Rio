@@ -16,6 +16,7 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
+import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -23,25 +24,29 @@ import java.util.concurrent.TimeUnit
 
 interface RioApi {
     companion object {
+        private val json: Json = Json {
+            isLenient = true
+            ignoreUnknownKeys = true
+        }
 
-        @OptIn(ExperimentalSerializationApi::class)
         fun create(): RioApi = with(Retrofit.Builder()) {
-            client(createHttpClient())
             baseUrl("https://raider.io/api/v1/")
-            addConverterFactory(Json {
-                isLenient = true
-                ignoreUnknownKeys = true
-            }.asConverterFactory(MediaType.get("application/json")))
+            client(createHttpClient())
+            addConverterFactory(createJsonConverterFactory())
             addConverterFactory(RegionConverterFactory())
             build()
         }.create(RioApi::class.java)
 
-        private fun createHttpClient() = with(OkHttpClient.Builder()) {
+        private fun createHttpClient(): OkHttpClient = with(OkHttpClient.Builder()) {
             connectTimeout(30L, TimeUnit.SECONDS)
             addInterceptor(RealmNameQueryParameterInterceptor())
             addInterceptor(CharacterNameQueryParameterCapitalizeInterceptor())
             build()
         }
+
+        @OptIn(ExperimentalSerializationApi::class)
+        private fun createJsonConverterFactory(): Converter.Factory =
+            json.asConverterFactory(MediaType.get("application/json"))
     }
 
     @GET("characters/profile")
