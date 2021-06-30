@@ -8,11 +8,15 @@ import com.nemesis.rio.data.connection.NetworkConnectionStatus
 import com.nemesis.rio.data.connection.NotConnectedToNetworkException
 import com.nemesis.rio.data.profile.character.api.CharacterSearchFields
 import com.nemesis.rio.data.profile.guild.api.GuildSearchFields
+import com.nemesis.rio.domain.mplus.scores.MythicPlusScore
+import com.nemesis.rio.domain.mplus.scores.color.HexColor
 import com.nemesis.rio.domain.server.Region
 import com.nemesis.rio.domain.server.realm.Realm
 import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.json.Json
 import retrofit2.HttpException
+import timber.log.Timber
+import java.net.HttpURLConnection
 
 class RioApiClient(
     private val rioApi: RioApi,
@@ -72,21 +76,15 @@ class RioApiClient(
     }
 
     private fun handleProfileSearchQueryException(exception: Throwable): Nothing? {
-        if (exception is HttpException && apiException(exception)) {
-            val apiExceptionMessage = getApiExceptionMessage(exception)
+        doIfExceptionIsApiException(exception) { apiHttpException ->
+            val apiExceptionMessage = getApiExceptionMessage(apiHttpException)
             if (profileNotFoundMessage(apiExceptionMessage)) {
                 return null
             } else {
                 throw Exception(apiExceptionMessage, exception)
             }
-        } else {
-            throw exception
         }
-    }
-
-    private fun apiException(exception: HttpException): Boolean {
-        return exception.response()?.errorBody()?.contentType()?.subtype()?.equals("json")
-            ?: false // api returns api-specific errors in json
+        throw exception
     }
 
     private fun getApiExceptionMessage(apiException: HttpException): String {
@@ -96,4 +94,39 @@ class RioApiClient(
 
     private fun profileNotFoundMessage(apiExceptionMessage: String) =
         apiExceptionMessage.matches(profileNotFoundMessageRegex)
+
+    suspend fun getMythicPlusScoresWithColors(seasonApiValue: String): Map<MythicPlusScore, HexColor> =
+        runCatching {
+            ensureConnectedToNetwork()
+            rioApi.getMythicPlusScoreColors(seasonApiValue).associate { it.score to it.hexColor }
+        }.getOrElse(::handleMythicPlusScoreColorsException)
+
+    private fun handleMythicPlusScoreColorsException(exception: Throwable): Map<MythicPlusScore, HexColor> {
+        doIfExceptionIsApiException(exception) { apiHttpException ->
+            // internal error happens if there are no score colors for a season
+            return if (apiHttpException.code() == HttpURLConnection.HTTP_INTERNAL_ERROR) {
+                Timber.e("Internal server error occurred, return empty score colors list")
+                emptyMap()
+            } else {
+                val apiExceptionMessage = getApiExceptionMessage(apiHttpException)
+                throw Exception(apiExceptionMessage, exception)
+            }
+        }
+        throw exception
+    }
+
+    private inline fun doIfExceptionIsApiException(
+        exception: Throwable,
+        block: (apiHttpException: HttpException) -> Unit
+    ) {
+        if (exception is HttpException && apiException(exception)) {
+            block(exception)
+        }
+    }
+
+    private fun apiException(exception: HttpException): Boolean {
+        return exception.response()?.errorBody()?.contentType()?.subtype()?.equals("json")
+            ?: false // api returns api-specific errors in json
+    }
+
 }
