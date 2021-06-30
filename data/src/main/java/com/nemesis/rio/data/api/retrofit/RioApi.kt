@@ -4,6 +4,8 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import com.nemesis.rio.data.api.refresh.ProfileLastCrawlDateTime
 import com.nemesis.rio.data.api.search.CharacterSearchResponse
 import com.nemesis.rio.data.api.search.GuildSearchResponse
+import com.nemesis.rio.data.mplus.scores.colors.api.MythicPlusScoreColorsParameters
+import com.nemesis.rio.data.mplus.scores.colors.serialization.MythicPlusScoreColorApiDto
 import com.nemesis.rio.data.profile.api.ProfileSearchParameters
 import com.nemesis.rio.data.profile.character.api.CharacterSearchFields
 import com.nemesis.rio.data.profile.guild.api.GuildSearchFields
@@ -71,4 +73,8 @@ interface RioApi {
         @Query(ServerParameters.REALM) realm: Realm,
         @Query(ProfileSearchParameters.FIELDS, encoded = true) fields: GuildSearchFields
     ): GuildSearchResponse
+
+    @GET("mythic-plus/score-tiers")
+    suspend fun getMythicPlusScoreColors(@Query(MythicPlusScoreColorsParameters.SEASON) seasonApiValue: String): List<MythicPlusScoreColorApiDto>
+
 }
