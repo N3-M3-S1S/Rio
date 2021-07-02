@@ -19,6 +19,7 @@ val Raid.stringResId: Int
         Raid.THE_ETERNAL_PALACE -> R.string.raid_eternal_palace
         Raid.NYALOTHA_THE_WAKING_CITY -> R.string.raid_nyalotha
         Raid.CASTLE_NATHRIA -> R.string.raid_castle_nathria
+        Raid.SANCTUM_OF_DOMINATION -> R.string.raid_sanctum_of_domination
     }
 val Raid.imageResId
     @DrawableRes
@@ -34,4 +35,5 @@ val Raid.imageResId
         Raid.THE_ETERNAL_PALACE -> R.drawable.raid_eternal_palace
         Raid.NYALOTHA_THE_WAKING_CITY -> R.drawable.raid_nyalotha
         Raid.CASTLE_NATHRIA -> R.drawable.raid_castle_nathria
+        Raid.SANCTUM_OF_DOMINATION -> R.drawable.raid_sanctum_of_domination
     }

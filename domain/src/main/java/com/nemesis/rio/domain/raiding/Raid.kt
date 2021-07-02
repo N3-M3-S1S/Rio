@@ -5,6 +5,7 @@ import com.nemesis.rio.domain.game.Expansion
 enum class Raid(val bossesCount: Int) {
 
     // Shadowlands
+    SANCTUM_OF_DOMINATION(10),
     CASTLE_NATHRIA(10),
 
     // Battle for Azeroth

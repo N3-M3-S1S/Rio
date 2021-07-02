@@ -84,6 +84,7 @@
     <string name="raid_eternal_palace">The Eternal Palace</string>
     <string name="raid_nyalotha">Ny\'alotha, the Waking City</string>
     <string name="raid_castle_nathria">Castle Nathria</string>
+    <string name="raid_sanctum_of_domination">Sanctum of Domination</string>
 
     <!-- Difficulties-->
     <string name="difficulty_normal">Normal</string>

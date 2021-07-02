@@ -19,8 +19,9 @@ internal object RaidSerialization {
         NYALOTHA_THE_WAKING_CITY -> "nyalotha-the-waking-city"
 
         CASTLE_NATHRIA -> "castle-nathria"
+        SANCTUM_OF_DOMINATION -> "sanctum-of-domination"
     }
 
-     fun parseRaidByJsonValueOrNull(raidJsonValue: String) =
+    fun parseRaidByJsonValueOrNull(raidJsonValue: String) =
         enumValues<Raid>().find { raid -> getRaidJsonValue(raid) == raidJsonValue }
 }
