@@ -1,11 +1,12 @@
 package com.nemesis.rio.presentation.utils
 
 import com.nemesis.rio.domain.mplus.scores.MythicPlusScore
+import timber.log.Timber
 import java.time.Duration
 import java.util.*
 
 fun MythicPlusScore.toPrettyString(): String {
-    val scoreHasDecimalPart = this % 1f == 0f
+    val scoreHasDecimalPart = this % 1f != 0f
     return if (scoreHasDecimalPart) {
         String.format(Locale.getDefault(), "%.1f", this)
     } else {
