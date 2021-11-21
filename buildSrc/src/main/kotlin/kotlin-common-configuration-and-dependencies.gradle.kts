@@ -10,12 +10,14 @@ detekt {
 }
 
 tasks.withType<Detekt>().configureEach {
-    jvmTarget = "1.8"
+    jvmTarget = "11"
 }
 
 tasks.withType<KotlinCompile>().configureEach {
+    kotlinOptions.jvmTarget = "11"
     kotlinOptions.freeCompilerArgs += listOf(
-        "-Xopt-in=kotlin.RequiresOptIn"
+        "-Xopt-in=kotlin.RequiresOptIn",
+        "-Xjvm-default=all"
     )
 }
 

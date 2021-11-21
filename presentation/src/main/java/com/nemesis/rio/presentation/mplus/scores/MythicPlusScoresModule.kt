@@ -21,9 +21,9 @@ import com.nemesis.rio.domain.mplus.seasons.usecase.GetCurrentSeason
 import com.nemesis.rio.presentation.profile.character.characterQualifier
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.workmanager.dsl.worker
+import org.koin.dsl.bind
+import org.koin.dsl.factory
 import org.koin.dsl.module
-import org.koin.experimental.builder.factory
-import org.koin.experimental.builder.factoryBy
 
 val mythicPlusScoresModule = module {
     factory<GetOverallMythicPlusScore>()
@@ -32,10 +32,10 @@ val mythicPlusScoresModule = module {
     factory<GetSeasonsWithScoresForExpansion>()
     factory<MythicPlusScoresSaver>()
     factory<MythicPlusScoreColorsAssetUpdater>()
-    factoryBy<MythicPlusScoreColorSource, MythicPlusScoreColorDatabaseSource>()
+    factory<MythicPlusScoreColorDatabaseSource>() bind MythicPlusScoreColorSource::class
     factory<GetHexColorForMythicPlusScore>()
     factory<GetCurrentSeason>()
-    factoryBy<SeasonsSource, SeasonsDatabaseSource>()
+    factory<SeasonsDatabaseSource>() bind SeasonsSource::class
     factory<SeasonsAssetUpdater>()
     factory<MythicPlusScoreColorsUpdateScheduler>()
     worker { MythicPlusScoreColorsUpdateWorker(get(), get(), get(), androidApplication(), it.get()) }

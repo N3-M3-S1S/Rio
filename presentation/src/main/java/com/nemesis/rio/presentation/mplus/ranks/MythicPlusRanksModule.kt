@@ -9,8 +9,8 @@ import com.nemesis.rio.domain.mplus.ranks.usecase.GetClassMythicPlusRanksForCurr
 import com.nemesis.rio.domain.mplus.ranks.usecase.GetOverallMythicPlusRanksForCurrentSeason
 import com.nemesis.rio.domain.mplus.ranks.usecase.GetSpecMythicPlusRanksForCurrentSeason
 import com.nemesis.rio.presentation.profile.character.characterQualifier
+import org.koin.dsl.factory
 import org.koin.dsl.module
-import org.koin.experimental.builder.factory
 
 val mythicPlusRanksModule = module {
     factory<MythicPlusRanksSaver>()

@@ -81,5 +81,4 @@ interface RioApi {
 
     @GET("mythic-plus/score-tiers")
     suspend fun getMythicPlusScoreColors(@Query(MythicPlusScoreColorsParameters.SEASON) seasonApiValue: String): List<MythicPlusScoreColorApiDto>
-
 }

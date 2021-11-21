@@ -18,5 +18,4 @@ class AssetDatabaseFileManager(private val assetManager: AssetManager, directory
 
     private fun readAssetDatabaseBytes() = assetManager.open("db.sqlite")
         .use(InputStream::readBytes)
-
 }

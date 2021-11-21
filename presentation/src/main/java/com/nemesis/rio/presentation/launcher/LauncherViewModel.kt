@@ -44,5 +44,4 @@ class LauncherViewModel(
     private fun sendNavigateToMainScreenEvent() {
         _navigateToMainScreenEvent.tryEmit(Unit)
     }
-
 }

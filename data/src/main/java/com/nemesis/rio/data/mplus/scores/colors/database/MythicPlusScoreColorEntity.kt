@@ -30,5 +30,4 @@ data class MythicPlusScoreColorEntity(
         const val SCORE_COLUMN = "score"
         const val HEX_COLOR_COLUMN = "hex_color"
     }
-
 }

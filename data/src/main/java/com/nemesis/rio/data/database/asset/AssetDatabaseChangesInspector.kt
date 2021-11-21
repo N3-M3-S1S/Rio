@@ -21,6 +21,4 @@ class AssetDatabaseChangesInspector(
         val assetDatabaseChecksum = fileChecksumGenerator.generateChecksum(assetDatabaseFile)
         assetDatabaseChecksumStorage.saveChecksum(assetDatabaseChecksum)
     }
-
 }
-

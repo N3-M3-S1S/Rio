@@ -10,5 +10,4 @@ class GetHexColorForMythicPlusScore(private val mythicPlusScoreColorSource: Myth
 
     suspend operator fun invoke(score: MythicPlusScore, season: Season): HexColor =
         mythicPlusScoreColorSource.getHexColorForMythicPlusScore(score, season) ?: defaultHexColor
-
 }

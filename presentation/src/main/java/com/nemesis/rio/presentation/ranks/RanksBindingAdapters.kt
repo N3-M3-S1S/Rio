@@ -3,7 +3,7 @@ package com.nemesis.rio.presentation.ranks
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
-import coil.Coil
+import coil.imageLoader
 import coil.request.ImageRequest
 import coil.transform.CircleCropTransformation
 import com.nemesis.rio.presentation.R
@@ -18,12 +18,12 @@ fun TextView.setRankSpan(rankSpan: RanksSpan?) {
 @BindingAdapter("ranksIcon")
 fun TextView.setRanksIcon(@DrawableRes iconResId: Int?) {
     iconResId?.let {
-        val iconRequest = ImageRequest.Builder(context)
+        ImageRequest.Builder(context)
             .data(iconResId)
             .size(dimenPxSize(R.dimen.item_ranks_icon_size))
             .transformations(CircleCropTransformation())
             .target { icon -> setCompoundDrawables(start = icon, intrinsicBounds = true); }
             .build()
-        Coil.enqueue(iconRequest)
+            .let { imageRequest -> context.imageLoader.enqueue(imageRequest) }
     }
 }

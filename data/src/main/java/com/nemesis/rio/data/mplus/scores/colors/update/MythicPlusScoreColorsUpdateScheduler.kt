@@ -22,5 +22,4 @@ class MythicPlusScoreColorsUpdateScheduler(private val workManager: WorkManager)
 
     private fun buildMythicPlusScoreColorsUpdateWorkRequestConstraints(): Constraints =
         Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
-
 }

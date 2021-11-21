@@ -1,7 +1,6 @@
 package com.nemesis.rio.presentation.utils
 
 import com.nemesis.rio.domain.mplus.scores.MythicPlusScore
-import timber.log.Timber
 import java.time.Duration
 import java.util.*
 

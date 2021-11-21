@@ -4,12 +4,10 @@ import android.content.Context
 import android.graphics.Canvas
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import splitties.resources.withStyledAttributes
+import splitties.resources.styledDrawable
 
 class VerticalRecyclerViewItemDivider(context: Context) : RecyclerView.ItemDecoration() {
-    private val divider = context.withStyledAttributes(android.R.attr.listDivider) {
-        requireNotNull(getDrawable(0))
-    }
+    private val divider = context.styledDrawable(android.R.attr.listDivider)!!
 
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         val dividerLeft = parent.paddingLeft

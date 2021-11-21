@@ -1,12 +1,12 @@
 plugins {
     kotlin("jvm")
     kotlin("plugin.serialization") version ProjectDependencies.KOTLIN_VERSION
+    id("com.github.ben-manes.versions") version ProjectDependencies.DEPENDENCY_UPDATES_CHECKER_PLUGIN_VERSION
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
         mavenCentral()
     }
 }

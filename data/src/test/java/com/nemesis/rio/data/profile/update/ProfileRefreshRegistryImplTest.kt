@@ -17,7 +17,7 @@ import sharedTest.createTestCharacter
 import sharedTest.createTestGuild
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
-import kotlin.time.Duration
+import kotlin.time.Duration.Companion.minutes
 import kotlin.time.ExperimentalTime
 
 @OptIn(ExperimentalTime::class)
@@ -44,7 +44,7 @@ class ProfileRefreshRegistryImplTest {
     fun testProfileUpdated() = runBlocking {
         val profile = createTestGuild()
         val lastRefreshInstant = Clock.System.now()
-        val lastCrawlInstant = lastRefreshInstant - Duration.minutes(1)
+        val lastCrawlInstant = lastRefreshInstant - 1.minutes
 
         coEvery { profileDao.getLastUpdateDateTime(any()) } returns
                 lastRefreshInstant.toLocalDateTime(TimeZone.currentSystemDefault())
@@ -59,7 +59,7 @@ class ProfileRefreshRegistryImplTest {
     fun testProfileOutdated() = runBlocking {
         val profile = createTestCharacter()
         val lastRefreshInstant = Clock.System.now()
-        val lastCrawlInstant = lastRefreshInstant + Duration.minutes(1)
+        val lastCrawlInstant = lastRefreshInstant + 1.minutes
 
         coEvery { profileDao.getLastUpdateDateTime(any()) } returns
                 lastRefreshInstant.toLocalDateTime(TimeZone.currentSystemDefault())

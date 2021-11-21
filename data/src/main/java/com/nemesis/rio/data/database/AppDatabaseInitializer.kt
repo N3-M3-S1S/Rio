@@ -31,5 +31,4 @@ class AppDatabaseInitializer(
 
     private fun openAssetDatabase(assetDatabaseFile: File): SQLiteDatabase =
         SQLiteDatabase.openDatabase(assetDatabaseFile.path, null, SQLiteDatabase.OPEN_READONLY)
-
 }

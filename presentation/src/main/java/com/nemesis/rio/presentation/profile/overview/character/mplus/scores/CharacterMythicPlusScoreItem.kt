@@ -8,4 +8,3 @@ data class CharacterMythicPlusScoreItem(
     val score: MythicPlusScore,
     val scoreColor: HexColor
 )
-

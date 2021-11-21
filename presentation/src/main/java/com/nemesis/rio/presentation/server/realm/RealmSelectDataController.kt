@@ -21,7 +21,7 @@ class RealmSelectDataController(private val onRealmSelected: (String) -> Unit) :
                 itemOption {
                     id(realm.hashCode())
                     string(realm)
-                    onClick(onRealmSelected)
+                    onClick(this@RealmSelectDataController.onRealmSelected)
                     isSelected(realm == selectedRealm)
                 }
             }

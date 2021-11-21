@@ -33,5 +33,4 @@ class MD5FileChecksumGeneratorTest {
         val secondChecksum = md5ChecksumGenerator.generateChecksum(temporaryFile)
         assertNotEquals(firstChecksum, secondChecksum)
     }
-
 }

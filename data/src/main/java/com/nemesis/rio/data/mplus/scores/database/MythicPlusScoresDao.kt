@@ -49,6 +49,4 @@ abstract class MythicPlusScoresDao {
         characterID: Long,
         expansion: Expansion
     ): List<Season>
-
-
 }

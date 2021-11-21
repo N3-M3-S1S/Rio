@@ -13,9 +13,9 @@ import com.nemesis.rio.presentation.profile.overview.character.mplus.scores.Char
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.qualifier
+import org.koin.dsl.bind
+import org.koin.dsl.factory
 import org.koin.dsl.module
-import org.koin.experimental.builder.factory
-import org.koin.experimental.builder.factoryBy
 
 val characterMythicPlusModule = module {
     val ranksItemsFactoriesQualifier = qualifier("ranks-items-factories")
@@ -39,15 +39,9 @@ val characterMythicPlusModule = module {
 
     factory<CharacterMythicPlusScoresDataFactory>()
     factory<CharacterMythicPlusRunsDataFactory>()
-    factoryBy<MythicPlusRanksItemsFactory, MythicPlusSpecRanksItemsFactory>(
-        qualifier(MythicPlusRanksType.SPEC)
-    )
-    factoryBy<MythicPlusRanksItemsFactory, MythicPlusClassRanksItemsFactory>(
-        qualifier(MythicPlusRanksType.CLASS)
-    )
-    factoryBy<MythicPlusRanksItemsFactory, MythicPlusOverallRanksItemsFactory>(
-        qualifier(MythicPlusRanksType.OVERALL)
-    )
+    factory<MythicPlusSpecRanksItemsFactory>(qualifier(MythicPlusRanksType.SPEC)) bind MythicPlusRanksItemsFactory::class
+    factory<MythicPlusClassRanksItemsFactory>(qualifier(MythicPlusRanksType.CLASS)) bind MythicPlusRanksItemsFactory::class
+    factory<MythicPlusOverallRanksItemsFactory>(qualifier(MythicPlusRanksType.OVERALL)) bind MythicPlusRanksItemsFactory::class
 
     factory { (handler: CharacterMythicPlusScoresDataActionsHandler) ->
         val scoresModelsBuilder =

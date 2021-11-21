@@ -13,8 +13,8 @@ import com.nemesis.rio.data.mplus.scores.colors.database.MythicPlusScoreColorsAs
 import com.nemesis.rio.data.mplus.seasons.database.SeasonsAssetUpdater
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
+import org.koin.dsl.single
 import org.koin.dsl.module
-import org.koin.experimental.builder.single
 
 val dataModule = module {
     single<RioApiClient>()

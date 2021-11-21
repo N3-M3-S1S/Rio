@@ -24,7 +24,7 @@ object MythicPlusScoresForSeasonDeserializer :
         for (scoresBySeasonJsonObject in scoresBySeasonJsonObjects) {
             val scoresJsonObject = getScoresJsonObject(scoresBySeasonJsonObject)
             val overallScore = parseOverallScore(scoresJsonObject)
-            if (overallScore == 0f) continue //if overall score is 0 - a character has no scores for a season, no need to parse further
+            if (overallScore == 0f) continue // if overall score is 0 - a character has no scores for a season, no need to parse further
             val roleScores = parseRoleScores(scoresJsonObject)
             val seasonApiValue = getSeasonJsonValue(scoresBySeasonJsonObject)
             val mythicPlusScoresForSeason =

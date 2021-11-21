@@ -8,10 +8,10 @@ import com.nemesis.rio.presentation.utils.LoadingStateController
 import com.nemesis.rio.presentation.view.databinding.DefaultBindingAdapters
 import com.nemesis.rio.utils.checksum.FileChecksumGenerator
 import com.nemesis.rio.utils.checksum.MD5FileChecksumGenerator
+import org.koin.dsl.bind
+import org.koin.dsl.factory
 import org.koin.dsl.module
-import org.koin.experimental.builder.factory
-import org.koin.experimental.builder.single
-import org.koin.experimental.builder.singleBy
+import org.koin.dsl.single
 import java.time.format.DateTimeFormatter
 
 val appModule = module {
@@ -20,7 +20,7 @@ val appModule = module {
     single<UrlBrowser>()
     single<ApplicationInitializationState>()
     factory<LoadingStateController>()
-    singleBy<FileChecksumGenerator, MD5FileChecksumGenerator>()
+    single<MD5FileChecksumGenerator>() bind FileChecksumGenerator::class
     single { DefaultBindingAdapters().apply { setDateTimeFormatter(get()) } }
     single { DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss") }
 }

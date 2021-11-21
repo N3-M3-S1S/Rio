@@ -12,5 +12,4 @@ class MythicPlusScoreColorDatabaseSource(private val mythicPlusScoreColorDao: My
         score: MythicPlusScore,
         season: Season
     ): HexColor? = mythicPlusScoreColorDao.getHexColorForMythicPlusScore(score, season)
-
 }

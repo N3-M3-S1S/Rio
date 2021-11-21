@@ -13,8 +13,8 @@ import com.nemesis.rio.presentation.mplus.nameResId
 import com.nemesis.rio.presentation.profile.character.characterQualifier
 import org.koin.android.ext.koin.androidApplication
 import org.koin.core.qualifier.qualifier
+import org.koin.dsl.factory
 import org.koin.dsl.module
-import org.koin.experimental.builder.factory
 import splitties.resources.str
 
 val mythicPlusRunsModule = module {

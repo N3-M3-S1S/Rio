@@ -58,5 +58,4 @@ class CharacterMythicPlusScoresDataFactory(
         val scoreColor = getHexColorForMythicPlusScore(score, season)
         return CharacterMythicPlusScoreItem(appStr(titleResId), score, scoreColor)
     }
-
 }

@@ -18,7 +18,7 @@ internal class MythicPlusScoresDeserializerTest {
             mythicPlusScoresJson
         )
 
-        assertEquals(setOf(expectedSeasonApiValue), result.mapTo(mutableSetOf(),MythicPlusScoresContainer::seasonApiValue))
+        assertEquals(setOf(expectedSeasonApiValue), result.mapTo(mutableSetOf(), MythicPlusScoresContainer::seasonApiValue))
 
         val scores = result.first { it.seasonApiValue == expectedSeasonApiValue }
 

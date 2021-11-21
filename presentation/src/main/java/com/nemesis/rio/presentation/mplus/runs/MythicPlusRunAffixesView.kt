@@ -29,7 +29,7 @@ class MythicPlusRunAffixesView(context: Context, attrs: AttributeSet) : View(con
             val testAffixes = enumValues<Affix>().take(4).toList()
             setAffixes(testAffixes)
         } else {
-            coilMemoryCache = context.imageLoader.memoryCache
+            coilMemoryCache = context.imageLoader.memoryCache!!
         }
     }
 
@@ -43,21 +43,22 @@ class MythicPlusRunAffixesView(context: Context, attrs: AttributeSet) : View(con
         invalidate()
     }
 
+    // TODO coil 2.0 memory cache bitmap
     private fun initializeAffixesIconBitmaps(affixes: Collection<Affix>) {
         affixesIconsBitmaps.clear()
         if (isInEditMode) { // for android studio preview
             affixes.mapTo(affixesIconsBitmaps, ::createAffixIconBitmap)
         } else {
-            affixes.mapTo(affixesIconsBitmaps) {
-                val affixIconBitmapMemoryCacheKey = MemoryCache.Key(it.name)
+            affixes.mapTo(affixesIconsBitmaps) { affix ->
+                val affixIconBitmapMemoryCacheKey = MemoryCache.Key(affix.name)
                 var affixIconBitmap = coilMemoryCache[affixIconBitmapMemoryCacheKey]
 
                 if (affixIconBitmap == null) {
-                    affixIconBitmap = createAffixIconBitmap(it)
+                    affixIconBitmap = createAffixIconBitmap(affix).let(MemoryCache::Value)
                     coilMemoryCache[affixIconBitmapMemoryCacheKey] = affixIconBitmap
                 }
 
-                affixIconBitmap
+                affixIconBitmap.bitmap
             }
         }
     }

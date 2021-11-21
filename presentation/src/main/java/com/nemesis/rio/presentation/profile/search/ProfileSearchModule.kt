@@ -4,8 +4,8 @@ import com.nemesis.rio.presentation.main.navigateToProfileOverviewEventFlowQuali
 import com.nemesis.rio.presentation.profile.search.character.characterSearchModule
 import com.nemesis.rio.presentation.profile.search.guild.guildSearchModule
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.factory
 import org.koin.dsl.module
-import org.koin.experimental.builder.factory
 
 val profileSearchModule = module {
     factory<ProfileSearchPreferences>()

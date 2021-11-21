@@ -29,5 +29,3 @@ data class ProfileCommonDataParcel(
             ProfileCommonDataParcel(name, region, faction, url)
     }
 }
-
-

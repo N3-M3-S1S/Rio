@@ -6,5 +6,4 @@ class GetCurrentRaid {
     private val currentRaid = enumValues<Raid>().first()
 
     operator fun invoke() = currentRaid
-
 }

@@ -15,12 +15,12 @@ import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.profile.character.search.CharacterSearchSource
 import com.nemesis.rio.domain.profile.character.search.usecase.SearchCharacter
 import com.nemesis.rio.presentation.profile.character.characterQualifier
+import org.koin.dsl.bind
+import org.koin.dsl.factory
 import org.koin.dsl.module
-import org.koin.experimental.builder.factory
-import org.koin.experimental.builder.factoryBy
 
 val characterSearchModule = module {
-    factoryBy<CharacterSearchSource, CharacterSearchSourceImpl>()
+    factory<CharacterSearchSourceImpl>() bind CharacterSearchSource::class
     factory<CharacterSearchApiSource>()
     factory<CharacterSearchFields.Factory>()
     factory { CharacterSearchDatabaseSource(characterDao = get(characterQualifier)) }

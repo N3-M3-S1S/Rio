@@ -10,9 +10,9 @@ plugins {
 
 android {
     defaultConfig {
-        applicationId("com.nemesis.rio")
-        versionCode(2)
-        versionName("1.1")
+        applicationId = "com.nemesis.rio"
+        versionCode = 2
+        versionName = "1.1"
         base {
             archivesBaseName = "${rootProject.name}-$versionName"
         }
@@ -34,16 +34,20 @@ android {
             arguments["logEpoxyTimings"] = "true"
             arguments["enableParallelEpoxyProcessing"] = "true"
         }
+
+    kotlinOptions{
+        freeCompilerArgs += "-opt-in=org.koin.core.annotation.KoinReflectAPI"
+    }
 }
 
 kapt {
     correctErrorTypes = true
 }
 
+
 dependencies {
     with(PresentationDependencies) {
         implementation(KOIN_ANDROID)
-        implementation(KOIN_EXT)
         implementation(KOIN_WORK_MANAGER)
 
         implementation(KOTPREF)

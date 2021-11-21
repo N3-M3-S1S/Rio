@@ -10,16 +10,14 @@ import com.nemesis.rio.domain.profile.update.usecase.ProfileUpdateStrategy
 import com.nemesis.rio.presentation.profile.profileCoreDependencies
 import org.koin.core.qualifier.qualifier
 import org.koin.dsl.bind
+import org.koin.dsl.factory
 import org.koin.dsl.module
-import org.koin.experimental.builder.factoryBy
 
 val characterQualifier = qualifier<Character>()
 
 val characterModule = module {
     profileCoreDependencies<Character>()
     single(characterQualifier) { get<AppDatabase>().characterDao } bind ProfileDao::class
-    factoryBy<ProfileUpdateStrategy<Character>, CharacterUpdateStrategy>(characterQualifier)
-    factoryBy<ProfileLastCrawlDateTimeProvider<Character>, CharacterLastCrawlDateTimeProvider>(
-        characterQualifier
-    )
+    factory<CharacterUpdateStrategy>(characterQualifier) bind ProfileUpdateStrategy::class
+    factory<CharacterLastCrawlDateTimeProvider>(characterQualifier) bind ProfileLastCrawlDateTimeProvider::class
 }

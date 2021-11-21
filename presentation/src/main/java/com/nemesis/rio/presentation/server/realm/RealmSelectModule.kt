@@ -7,8 +7,8 @@ import com.nemesis.rio.domain.server.realm.usecase.FilterRealmList
 import com.nemesis.rio.domain.server.realm.usecase.GetRealmListForRegion
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.factory
 import org.koin.dsl.module
-import org.koin.experimental.builder.factory
 
 val realmSelectModule = module {
     factory<GetRealmListForRegion>()

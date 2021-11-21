@@ -5,8 +5,8 @@ import com.nemesis.rio.presentation.profile.search.character.history.list.Charac
 import com.nemesis.rio.presentation.profile.search.guild.history.guildSearchHistoryModule
 import com.nemesis.rio.presentation.profile.search.guild.history.list.GuildSearchHistoryListItemsSource
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.factory
 import org.koin.dsl.module
-import org.koin.experimental.builder.factory
 
 val profileSearchHistoryModule = module {
     factory<ProfileSearchHistoryController>()

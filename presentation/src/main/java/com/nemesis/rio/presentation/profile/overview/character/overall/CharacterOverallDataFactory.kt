@@ -10,7 +10,6 @@ import com.nemesis.rio.domain.raiding.achievements.usecase.GetAchievementsForRai
 import com.nemesis.rio.domain.raiding.progress.bestProgress
 import com.nemesis.rio.domain.raiding.progress.usecase.GetProgressForRaid
 import com.nemesis.rio.domain.raiding.usecase.GetCurrentRaid
-import com.nemesis.rio.presentation.utils.increaseForegroundHexColorBrightnessToWCAGAAStandard
 
 class CharacterOverallDataFactory(
     private val getCurrentSeason: GetCurrentSeason,

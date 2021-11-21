@@ -19,8 +19,8 @@ import com.nemesis.rio.domain.raiding.usecase.GetCurrentRaid
 import com.nemesis.rio.presentation.profile.character.characterQualifier
 import com.nemesis.rio.presentation.profile.guild.guildQualifier
 import com.nemesis.rio.presentation.profile.overview.raiding.RaidProgressListDataController
+import org.koin.dsl.factory
 import org.koin.dsl.module
-import org.koin.experimental.builder.factory
 
 val raidingModule = module {
     factory<GetProgressForRaid>()

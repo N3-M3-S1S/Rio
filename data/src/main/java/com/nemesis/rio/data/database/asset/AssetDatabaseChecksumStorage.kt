@@ -12,5 +12,4 @@ class AssetDatabaseChecksumStorage(private val sharedPreferences: SharedPreferen
     fun saveChecksum(checksum: String) {
         sharedPreferences.edit { putString(assetDatabaseChecksumKey, checksum) }
     }
-
 }

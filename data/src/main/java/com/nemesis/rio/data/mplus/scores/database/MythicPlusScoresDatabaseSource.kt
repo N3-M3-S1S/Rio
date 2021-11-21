@@ -36,5 +36,4 @@ class MythicPlusScoresDatabaseSource(
     ): Map<Role, MythicPlusScore> = profileIDProvider.withProfileID(character) {
         scoresDao.getRoleScoresEntities(it, season).toRoleScores()
     }
-
 }

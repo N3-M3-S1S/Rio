@@ -7,7 +7,6 @@ import com.nemesis.rio.data.profile.character.database.CharacterEntity
 import com.nemesis.rio.data.profile.database.ProfileEntity
 import com.nemesis.rio.domain.mplus.scores.MythicPlusScore
 
-
 @Entity(
     tableName = MythicPlusOverallScoreEntity.TABLE_NAME,
     foreignKeys = [

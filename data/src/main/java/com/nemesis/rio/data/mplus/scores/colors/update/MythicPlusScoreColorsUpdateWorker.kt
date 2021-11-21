@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.nemesis.rio.data.api.RioApiClient
-import com.nemesis.rio.data.mplus.scores.colors.database.MythicPlusScoreColorEntity
 import com.nemesis.rio.data.mplus.scores.colors.database.MythicPlusScoreColorDao
+import com.nemesis.rio.data.mplus.scores.colors.database.MythicPlusScoreColorEntity
 import com.nemesis.rio.data.mplus.seasons.database.SeasonsDao
 import com.nemesis.rio.domain.mplus.scores.MythicPlusScore
 import com.nemesis.rio.domain.mplus.scores.color.HexColor
@@ -53,5 +53,4 @@ class MythicPlusScoreColorsUpdateWorker(
         scoresWithColors.map { (score, color) ->
             MythicPlusScoreColorEntity(seasonId, score, color)
         }
-
 }

@@ -26,7 +26,7 @@ class ProfileSearchViewModel(
     private val getRealmListForRegion: GetRealmListForRegion,
     private val navigateToProfileOverviewScreenEventFlow: MutableSharedFlow<Profile>,
     private val messageManager: MessageManager,
-) : ViewModel(), LifecycleObserver {
+) : ViewModel(), DefaultLifecycleObserver {
     val profileName = MutableLiveData<String>()
     val profileType = MutableLiveData(searchPreferences.profileType)
 
@@ -115,8 +115,7 @@ class ProfileSearchViewModel(
         messageManager.sendMessage(profileNotFoundMessage(profileType.notNullValue))
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    fun onStop() {
+    override fun onStop(owner: LifecycleOwner) {
         saveSearchPreferences()
     }
 

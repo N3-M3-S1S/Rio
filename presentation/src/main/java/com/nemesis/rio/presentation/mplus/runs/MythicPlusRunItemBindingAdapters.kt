@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.core.view.doOnLayout
 import androidx.databinding.BindingAdapter
-import coil.Coil
+import coil.imageLoader
 import coil.request.ImageRequest
 import com.nemesis.rio.domain.mplus.Affix
 import com.nemesis.rio.domain.mplus.Dungeon
@@ -32,7 +32,7 @@ fun View.setRunDungeonImageBackground(dungeon: Dungeon?) {
                 .data(it.imageResId)
                 .target { dungeonImage -> background = dungeonImage }
                 .build()
-                .let(Coil::enqueue)
+                .let { imageRequest -> context.imageLoader.enqueue(imageRequest) }
         }
     }
 }

@@ -2,7 +2,6 @@ package com.nemesis.rio.presentation.profile.overview.guild.ranks
 
 import com.airbnb.epoxy.EpoxyController
 import com.airbnb.epoxy.TypedEpoxyController
-import com.nemesis.rio.domain.game.Expansion
 import com.nemesis.rio.presentation.R
 import com.nemesis.rio.presentation.game.stringResId
 import com.nemesis.rio.presentation.itemCenterText
@@ -28,15 +27,18 @@ class GuildRaidRanksListDataController : TypedEpoxyController<GuildRaidRanksList
 
     private fun EpoxyController.raidRanksList(data: GuildRaidRanksListData) {
         data.forEach { (expansion, ranksListData) ->
-            expansionTitle(expansion)
+            itemTextHeader {
+                id(expansion.hashCode())
+                textResId(expansion.stringResId)
+            }
             ranks(ranksListData)
         }
     }
 
-    private fun EpoxyController.expansionTitle(expansion: Expansion) {
-        itemTextHeader {
-            id(expansion.hashCode())
-            textResId(expansion.stringResId)
-        }
-    }
+//    private fun EpoxyController.expansionTitle(expansion: Expansion) {
+//        itemTextHeader {
+//            id(expansion.hashCode())
+//            textResId(expansion.stringResId)
+//        }
+//    }
 }

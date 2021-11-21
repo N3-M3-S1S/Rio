@@ -34,5 +34,4 @@ class MythicPlusScoreColorsAssetUpdater(private val mythicPlusScoreColorDao: Myt
 
             scoreColorEntities
         }
-
 }

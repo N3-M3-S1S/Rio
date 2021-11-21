@@ -93,7 +93,6 @@ object Migration_1_2 : Migration(1, 2) {
             .selection("overallScoreId = ?", arrayOf(overallScoreId))
             .create()
 
-
     private fun deleteOldMythicPlusScoreEntitiesTables(database: SupportSQLiteDatabase) {
         deleteMythicPlusOverallScoreParentEntityTable(database)
         deleteMythicPlusRoleScoreChildEntityTable(database)
@@ -128,7 +127,6 @@ object Migration_1_2 : Migration(1, 2) {
                 "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                 "FOREIGN KEY(${MythicPlusScoreBaseEntity.CHARACTER_ID_COLUMN}) REFERENCES ${CharacterEntity.TABLE_NAME}(${ProfileEntity.ID_COLUMN_NAME}) ON UPDATE NO ACTION ON DELETE CASCADE," +
                 "FOREIGN KEY(${MythicPlusScoreBaseEntity.SEASON_ID_COLUMN}) REFERENCES ${SeasonEntity.TABLE_NAME}(id))"
-
 
     private fun createMythicPlusRoleScoreEntityTable(database: SupportSQLiteDatabase) {
         val createMythicPlusRoleScoreEntityTableQuery =
@@ -200,4 +198,3 @@ object Migration_1_2 : Migration(1, 2) {
         val roleScores: Map<String, MythicPlusScore>
     )
 }
-

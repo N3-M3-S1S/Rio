@@ -40,4 +40,3 @@ class MythicPlusRoleScoreEntity(
 }
 
 internal fun List<MythicPlusRoleScoreEntity>.toRoleScores() = associate { it.role to it.score }
-

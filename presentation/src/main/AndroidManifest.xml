@@ -17,7 +17,8 @@
 
         <activity
             android:name=".launcher.LauncherActivity"
-            android:theme="@style/AppTheme.SplashScreen">
+            android:theme="@style/AppTheme.SplashScreen"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -26,13 +27,24 @@
 
         <activity
             android:name=".main.MainActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            />
 
         <receiver android:name=".app.browser.ShareUrlBroadcastReceiver" />
+
         <provider
-            android:name="androidx.work.impl.WorkManagerInitializer"
-            android:authorities="${applicationId}.workmanager-init"
-            tools:node="remove" />
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <!-- If you are using androidx.startup to initialize other components -->
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+        </provider>
+
+
     </application>
 
 </manifest>

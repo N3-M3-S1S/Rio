@@ -21,5 +21,4 @@ interface MythicPlusScoreColorDao {
 
     @Insert
     suspend fun saveAll(entities: List<MythicPlusScoreColorEntity>)
-
 }

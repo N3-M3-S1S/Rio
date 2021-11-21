@@ -12,12 +12,13 @@ import com.nemesis.rio.domain.profile.Guild
 import com.nemesis.rio.domain.profile.guild.search.GuildSearchSource
 import com.nemesis.rio.domain.profile.guild.search.usecase.SearchGuild
 import com.nemesis.rio.presentation.profile.guild.guildQualifier
+
+import org.koin.dsl.bind
+import org.koin.dsl.factory
 import org.koin.dsl.module
-import org.koin.experimental.builder.factory
-import org.koin.experimental.builder.factoryBy
 
 val guildSearchModule = module {
-    factoryBy<GuildSearchSource, GuildSearchSourceImpl>()
+    factory<GuildSearchSourceImpl>() bind GuildSearchSource::class
     factory<GuildSearchApiSource>()
     factory<GuildSearchFields.Factory>()
     factory { GuildSearchDatabaseSource(guildDao = get(guildQualifier)) }

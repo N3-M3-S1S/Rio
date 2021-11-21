@@ -10,14 +10,14 @@ import com.nemesis.rio.domain.profile.update.usecase.ProfileUpdateStrategy
 import com.nemesis.rio.presentation.profile.profileCoreDependencies
 import org.koin.core.qualifier.qualifier
 import org.koin.dsl.bind
+import org.koin.dsl.factory
 import org.koin.dsl.module
-import org.koin.experimental.builder.factoryBy
 
 val guildQualifier = qualifier<Guild>()
 
 val guildModule = module {
     profileCoreDependencies<Guild>()
     single(guildQualifier) { get<AppDatabase>().guildDao } bind ProfileDao::class
-    factoryBy<ProfileUpdateStrategy<Guild>, GuildUpdateStrategy>(guildQualifier)
-    factoryBy<ProfileLastCrawlDateTimeProvider<Guild>, GuildLastCrawlDateTimeProvider>(guildQualifier)
+    factory<GuildUpdateStrategy>(guildQualifier) bind ProfileUpdateStrategy::class
+    factory<GuildLastCrawlDateTimeProvider>(guildQualifier) bind ProfileLastCrawlDateTimeProvider::class
 }

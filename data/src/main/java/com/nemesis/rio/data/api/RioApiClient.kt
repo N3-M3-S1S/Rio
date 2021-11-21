@@ -128,5 +128,4 @@ class RioApiClient(
         return exception.response()?.errorBody()?.contentType()?.subtype()?.equals("json")
             ?: false // api returns api-specific errors in json
     }
-
 }

@@ -18,5 +18,4 @@ class MD5FileChecksumGenerator : FileChecksumGenerator {
         val rawChecksum = md.digest()
         BigInteger(1, rawChecksum).toString(16).padStart(32, '0') // convert raw checksum to string
     }
-
 }

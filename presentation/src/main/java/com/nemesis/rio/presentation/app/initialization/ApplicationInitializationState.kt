@@ -13,5 +13,4 @@ class ApplicationInitializationState {
     fun setApplicationInitialized() {
         ApplicationVersionCodeStorage.versionCode = currentApplicationVersionCode
     }
-
 }

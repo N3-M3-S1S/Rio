@@ -6,7 +6,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
-import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.snackbar.Snackbar
 import com.nemesis.rio.domain.profile.Profile
@@ -25,10 +24,10 @@ import splitties.resources.str
 import splitties.snackbar.action
 import splitties.toast.toast
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private lateinit var navController: NavController
     private val viewModel by viewModel<MainActivityViewModel>()
-    private val viewBinding by viewBinding<ActivityMainBinding>(CreateMethod.INFLATE)
+    private val viewBinding by viewBinding<ActivityMainBinding>()
     private val urlBrowser: UrlBrowser by inject()
     private val navigateToProfileOverviewEventFlow: Flow<Profile> by inject(
         navigateToProfileOverviewEventFlowQualifier

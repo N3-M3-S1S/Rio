@@ -27,5 +27,4 @@ abstract class SeasonsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     internal abstract suspend fun save(seasonEntities: List<SeasonEntity>)
-
 }

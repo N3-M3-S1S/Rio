@@ -24,11 +24,9 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidFileProperties
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.workmanager.koin.workManagerFactory
-import org.koin.core.KoinExperimentalAPI
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import timber.log.Timber
-import java.io.File
 
 class App : Application() {
 
@@ -46,10 +44,10 @@ class App : Application() {
         }
     }
 
-    @OptIn(KoinExperimentalAPI::class)
     private fun setupKoin() {
         startKoin {
-            androidLogger(Level.DEBUG)
+            // https://github.com/InsertKoinIO/koin/issues/1188
+            androidLogger(if (BuildConfig.DEBUG) Level.ERROR else Level.NONE)
             androidContext(this@App)
             androidFileProperties()
             workManagerFactory()
@@ -74,7 +72,6 @@ class App : Application() {
 
     private fun setupDefaultBindingAdapters() =
         getKoin().get<DefaultBindingAdapters>().also(DataBindingUtil::setDefaultComponent)
-
 }
 
 val applicationScope = MainScope()

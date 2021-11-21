@@ -33,4 +33,3 @@ class MythicPlusScoresSaver(
         scoresDao.saveRoleScoreEntities(roleScoreEntities)
     }
 }
-
