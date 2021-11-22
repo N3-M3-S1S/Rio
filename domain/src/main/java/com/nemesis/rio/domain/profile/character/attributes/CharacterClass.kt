@@ -13,4 +13,6 @@ enum class CharacterClass(vararg val specs: Spec) {
     SHAMAN(Spec.ELEMENTAL, Spec.ENHANCEMENT, Spec.RESTORATION_SHAMAN),
     WARLOCK(Spec.AFFLICTION, Spec.DEMONOLOGY, Spec.DESTRUCTION),
     WARRIOR(Spec.ARMS, Spec.FURY, Spec.PROTECTION_WARRIOR);
+
+    val roles = specs.mapTo(mutableSetOf(), Spec::role)
 }
