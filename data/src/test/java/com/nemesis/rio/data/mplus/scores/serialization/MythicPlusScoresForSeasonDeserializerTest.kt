@@ -1,12 +1,14 @@
 package com.nemesis.rio.data.mplus.scores.serialization
 
+import com.nemesis.rio.domain.profile.character.attributes.CharacterClass
 import com.nemesis.rio.domain.profile.character.attributes.Role
+import com.nemesis.rio.domain.profile.character.attributes.Spec
 import kotlinx.serialization.json.Json
-import org.junit.Test
 import sharedTest.parseJsonObjectFromFile
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
-internal class MythicPlusScoresDeserializerTest {
+internal class MythicPlusScoresForSeasonDeserializerTest {
     private val mythicPlusScoresJson = parseJsonObjectFromFile("/json/mplus/mplus_scores_json")
 
     @Test
@@ -14,7 +16,7 @@ internal class MythicPlusScoresDeserializerTest {
         val expectedSeasonApiValue = "season-bfa-1"
 
         val result = Json.decodeFromJsonElement(
-            MythicPlusScoresForSeasonDeserializer,
+            MythicPlusScoresForSeasonDeserializer(CharacterClass.DEATH_KNIGHT),
             mythicPlusScoresJson
         )
 
@@ -27,5 +29,8 @@ internal class MythicPlusScoresDeserializerTest {
 
         val expectedRoleScores = mapOf(Role.DAMAGE_DEALER to 1599.3F, Role.TANK to 1727.6F)
         assertEquals(expectedRoleScores, scores.roleScores)
+
+        val expectedSpecScores = mapOf(Spec.BLOOD to 100F, Spec.UNHOLY to 300.1F)
+        assertEquals(expectedSpecScores, scores.specScores)
     }
 }

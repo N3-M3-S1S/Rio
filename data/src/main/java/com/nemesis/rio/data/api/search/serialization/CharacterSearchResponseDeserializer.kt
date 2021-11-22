@@ -23,7 +23,7 @@ internal object CharacterSearchResponseDeserializer : JsonObjectDeserializer<Cha
             json.decodeFromJsonElement(deserializer, jsonObject)
 
         val character = deserialize(CharacterDeserializer)
-        val mythicPlusScores = deserialize(MythicPlusScoresForSeasonDeserializer)
+        val mythicPlusScores = deserialize(MythicPlusScoresForSeasonDeserializer(character.attributes.characterClass))
         val mythicPlusRanks = deserialize(MythicPlusRanksDeserializer)
         val mythicPlusRuns = deserialize(MythicPlusRunsDeserializer)
         val raidAchievements = deserialize(RaidAchievementsDeserializer)

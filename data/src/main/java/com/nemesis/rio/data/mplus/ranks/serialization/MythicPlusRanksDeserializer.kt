@@ -75,14 +75,16 @@ object MythicPlusRanksDeserializer :
     }
 
     private fun getOverallRanks(ranksObject: JsonObject): MythicPlusOverallRanks {
-        val overallRank = RanksSerialization.parseRanksOrNull(ranksObject.getValue("overall").jsonObject)
+        val overallRank =
+            RanksSerialization.parseRanksOrNull(ranksObject.getValue("overall").jsonObject)
         require(overallRank != null)
         val overallRoleRanks = parseRoleRanks(ranksObject)
         return MythicPlusOverallRanks(overallRank, overallRoleRanks)
     }
 
     private fun getClassRanks(ranksJsonObject: JsonObject): MythicPlusClassRanks {
-        val classRanks = RanksSerialization.parseRanksOrNull(ranksJsonObject.getValue("class").jsonObject)
+        val classRanks =
+            RanksSerialization.parseRanksOrNull(ranksJsonObject.getValue("class").jsonObject)
         require(classRanks != null)
         val classRoleRanksJsonObject = getClassRoleRanksJsonObject(ranksJsonObject)
         val classRoleRanks = parseRoleRanks(classRoleRanksJsonObject)
@@ -99,9 +101,10 @@ object MythicPlusRanksDeserializer :
 
     private fun parseRoleRanks(ranksJsonObject: JsonObject): Map<Role, Ranks> {
         val roleRanks = enumMap<Role, Ranks>()
-        RoleSerialization.jsonValueToRole.forEach { (apiValue, role) ->
+        Role.values().forEach { role ->
+            val roleJsonValue = RoleSerialization.roleToJsonValue.getValue(role)
             val ranksForRole =
-                ranksJsonObject[apiValue]?.jsonObject?.let(RanksSerialization::parseRanksOrNull)
+                ranksJsonObject[roleJsonValue]?.jsonObject?.let(RanksSerialization::parseRanksOrNull)
             if (ranksForRole != null) {
                 roleRanks[role] = ranksForRole
             }
