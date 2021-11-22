@@ -8,6 +8,7 @@ import com.nemesis.rio.domain.mplus.scores.MythicPlusScoresSource
 import com.nemesis.rio.domain.mplus.seasons.Season
 import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.profile.character.attributes.Role
+import com.nemesis.rio.domain.profile.character.attributes.Spec
 
 class MythicPlusScoresDatabaseSource(
     private val scoresDao: MythicPlusScoresDao,
@@ -35,5 +36,12 @@ class MythicPlusScoresDatabaseSource(
         season: Season
     ): Map<Role, MythicPlusScore> = profileIDProvider.withProfileID(character) {
         scoresDao.getRoleScoresEntities(it, season).toRoleScores()
+    }
+
+    override suspend fun getSpecScores(
+        character: Character,
+        season: Season
+    ): Map<Spec, MythicPlusScore> {
+        TODO("Not yet implemented")
     }
 }
