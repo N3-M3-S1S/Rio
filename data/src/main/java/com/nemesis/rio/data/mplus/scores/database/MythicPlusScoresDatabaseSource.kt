@@ -35,13 +35,13 @@ class MythicPlusScoresDatabaseSource(
         character: Character,
         season: Season
     ): Map<Role, MythicPlusScore> = profileIDProvider.withProfileID(character) {
-        scoresDao.getRoleScoresEntities(it, season).toRoleScores()
+        scoresDao.getRoleScoreEntities(it, season).toRoleScores()
     }
 
     override suspend fun getSpecScores(
         character: Character,
         season: Season
-    ): Map<Spec, MythicPlusScore> {
-        TODO("Not yet implemented")
+    ): Map<Spec, MythicPlusScore> = profileIDProvider.withProfileID(character) {
+        scoresDao.getSpecScoreEntities(it, season).toSpecScores()
     }
 }

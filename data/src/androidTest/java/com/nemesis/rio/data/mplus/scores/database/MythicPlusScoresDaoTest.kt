@@ -6,6 +6,7 @@ import com.nemesis.rio.data.mplus.seasons.database.testSeasonEntities
 import com.nemesis.rio.data.profile.database.createTestCharacterInDatabase
 import com.nemesis.rio.domain.game.Expansion
 import com.nemesis.rio.domain.profile.character.attributes.Role
+import com.nemesis.rio.domain.profile.character.attributes.Spec
 import kotlinx.coroutines.runBlocking
 import kotlin.properties.Delegates
 import kotlin.test.*
@@ -57,13 +58,33 @@ class MythicPlusScoresDaoTest : AppDatabaseTest() {
         scoresDao.saveRoleScoreEntities(roleScoreEntities)
 
         val result =
-            scoresDao.getRoleScoresEntities(characterId, randomSeasonEntity.name).toRoleScores()
+            scoresDao.getRoleScoreEntities(characterId, randomSeasonEntity.name).toRoleScores()
         assertEquals(expectedRoleScores, result)
     }
 
     @Test
     fun getRoleScoresForUnknownSeason() = runBlocking {
-        val result = scoresDao.getRoleScoresEntities(characterId, "unknown-season")
+        val result = scoresDao.getRoleScoreEntities(characterId, "unknown-season")
+        assertTrue(result.isEmpty())
+    }
+
+    @Test
+    fun saveAndGetSpecScores() = runBlocking {
+        val randomSeasonEntity = testSeasonEntities.random()
+        val expectedSpecScores = mapOf(Spec.BLOOD to 100F, Spec.UNHOLY to 12.3F)
+
+        val specScoreEntities = expectedSpecScores.map { (spec, score) ->
+            MythicPlusSpecScoreEntity(spec, score, randomSeasonEntity.id, characterId)
+        }
+        scoresDao.saveSpecScoreEntities(specScoreEntities)
+
+        val result = scoresDao.getSpecScoreEntities(characterId, randomSeasonEntity.name).toSpecScores()
+        assertEquals(expectedSpecScores, result)
+    }
+
+    @Test
+    fun getSpecScoresForUnknownSeason() = runBlocking {
+        val result = scoresDao.getSpecScoreEntities(characterId, "unknown-season")
         assertTrue(result.isEmpty())
     }
 

@@ -40,6 +40,7 @@ import com.nemesis.rio.data.raiding.ranks.database.RaidRanksEntity
 
         MythicPlusOverallScoreEntity::class,
         MythicPlusRoleScoreEntity::class,
+        MythicPlusSpecScoreEntity::class,
         MythicPlusScoreColorEntity::class,
 
         MythicPlusRunEntity::class,
@@ -50,8 +51,8 @@ import com.nemesis.rio.data.raiding.ranks.database.RaidRanksEntity
         RaidAchievementsEntity::class,
 
         SeasonEntity::class],
-    version = 3,
-    autoMigrations = [AutoMigration(from = 2, to = 3)]
+    version = 4,
+    autoMigrations = [AutoMigration(from = 2, to = 3), AutoMigration(from = 3, to = 4)]
 )
 
 @TypeConverters(value = [DateTimeConverters::class, ExpansionConverters::class])

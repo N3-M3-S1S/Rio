@@ -15,8 +15,9 @@ class MythicPlusScoresSaver(
         scoresDao.deleteAllScores(profileId)
         val overallScoreEntities = mutableListOf<MythicPlusOverallScoreEntity>()
         val roleScoreEntities = mutableListOf<MythicPlusRoleScoreEntity>()
+        val specScoreEntities = mutableListOf<MythicPlusSpecScoreEntity>()
 
-        for ((seasonApiValue, overallScore, roleScores) in progress) {
+        for ((seasonApiValue, overallScore, roleScores, specScores) in progress) {
             val seasonId = seasonDao.getSeasonIdByApiValue(seasonApiValue)
             if (seasonId == null) {
                 Timber.d("No season id for api value '$seasonApiValue', scores with this api value will not be saved")
@@ -27,9 +28,13 @@ class MythicPlusScoresSaver(
             roleScores.mapTo(roleScoreEntities) { (role, score) ->
                 MythicPlusRoleScoreEntity(role, score, seasonId, profileId)
             }
+            specScores.mapTo(specScoreEntities) { (spec, score) ->
+                MythicPlusSpecScoreEntity(spec, score, seasonId, profileId)
+            }
         }
 
         scoresDao.saveOverallScores(overallScoreEntities)
         scoresDao.saveRoleScoreEntities(roleScoreEntities)
+        scoresDao.saveSpecScoreEntities(specScoreEntities)
     }
 }
