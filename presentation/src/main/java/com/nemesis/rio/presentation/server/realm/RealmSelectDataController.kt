@@ -2,9 +2,7 @@ package com.nemesis.rio.presentation.server.realm
 
 import com.airbnb.epoxy.Typed2EpoxyController
 import com.nemesis.rio.domain.server.realm.Realm
-import com.nemesis.rio.presentation.ItemStickyHeaderLetterBindingModel_
-import com.nemesis.rio.presentation.itemOption
-import com.nemesis.rio.presentation.itemStickyHeaderLetter
+import com.nemesis.rio.presentation.*
 
 class RealmSelectDataController(private val onRealmSelected: (String) -> Unit) :
     Typed2EpoxyController<RealmSelectData, Realm>() {
@@ -12,9 +10,9 @@ class RealmSelectDataController(private val onRealmSelected: (String) -> Unit) :
     override fun buildModels(data: RealmSelectData, selectedRealm: Realm) {
         data.forEach { (letter, realms) ->
 
-            itemStickyHeaderLetter {
+            itemOptionSelectStickyHeader {
                 id(letter.hashCode())
-                letter(letter)
+                text(letter.toString())
             }
 
             realms.forEach { realm ->
@@ -29,5 +27,5 @@ class RealmSelectDataController(private val onRealmSelected: (String) -> Unit) :
     }
 
     override fun isStickyHeader(position: Int): Boolean =
-        adapter.getModelAtPosition(position) is ItemStickyHeaderLetterBindingModel_
+        adapter.getModelAtPosition(position) is ItemOptionSelectStickyHeaderBindingModel_
 }

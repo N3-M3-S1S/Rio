@@ -12,7 +12,7 @@ import com.nemesis.rio.presentation.R;
         R.layout.item_ranks_header,
         R.layout.item_mplus_score,
         R.layout.item_mplus_run_content,
-        R.layout.item_sticky_header_letter,
+        R.layout.item_option_select_sticky_header,
         R.layout.item_option,
         R.layout.item_dropdown,
         R.layout.item_no_content_for_current_season_message
