@@ -49,7 +49,7 @@ class CharacterMythicPlusViewModel(
     val characterMythicPlusData: LiveData<CharacterMythicPlusData> = _characterMythicPlusData
 
     private lateinit var selectedSeason: Season
-    private lateinit var selectedExpansion: Expansion
+    private lateinit var expansionsWithSeasons: Map<Expansion, List<Season>>
 
     private var selectedRanksType = CharacterMythicPlusPreferences.ranksType
     private var selectedRanksScope = CharacterMythicPlusPreferences.ranksScope
@@ -101,48 +101,27 @@ class CharacterMythicPlusViewModel(
         val expansionsWithScores = getExpansionsWithScores(character)
         if (expansionsWithScores.isEmpty()) return null
 
-        if (!::selectedExpansion.isInitialized) {
-            selectedExpansion = expansionsWithScores.first()
-            selectedSeason =
-                getSeasonsWithScoresForExpansion(character, selectedExpansion).first()
+        expansionsWithSeasons = expansionsWithScores.associateWith { expansion ->
+            getSeasonsWithScoresForExpansion(character, expansion)
         }
 
-        return scoresDataFactory.getScoresData(character, selectedSeason, selectedExpansion)
+        selectedSeason = expansionsWithSeasons.getValue(expansionsWithScores.first()).first()
+
+        return scoresDataFactory.getScoresData(character, selectedSeason)
     }
 
-    override fun onSelectExpansionClicked() {
-        sendMythicPlusOptionSelectEvent {
-            SelectScoresExpansion(
-                getExpansionsWithScores(characterFlow.first()),
-                selectedExpansion
-            )
-        }
-    }
-
-    fun onExpansionChanged(expansion: Expansion) {
-        selectedExpansion = expansion
-        updateScoresData { character ->
-            selectedSeason = getSeasonsWithScoresForExpansion(character, expansion).first()
-            scoresDataFactory.getScoresData(character, selectedSeason, selectedExpansion)
-        }
-    }
 
     override fun onSelectSeasonClicked() {
-        sendMythicPlusOptionSelectEvent {
-            SelectScoresSeason(
-                getSeasonsWithScoresForExpansion(
-                    characterFlow.first(), selectedExpansion
-                ), selectedSeason
-            )
-        }
+        sendMythicPlusOptionSelectEvent { SelectScoresSeason(expansionsWithSeasons, selectedSeason) }
     }
 
     fun onSeasonChanged(season: Season) {
         selectedSeason = season
         updateScoresData { character ->
-            scoresDataFactory.getScoresData(character, selectedSeason, selectedExpansion)
+            scoresDataFactory.getScoresData(character, selectedSeason)
         }
     }
+
 
     override fun onRanksTypeClicked() {
         sendMythicPlusOptionSelectEvent { SelectRanksType(selectedRanksType) }

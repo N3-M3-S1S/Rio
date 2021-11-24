@@ -10,12 +10,9 @@ import com.nemesis.rio.presentation.mplus.ranks.MythicPlusRanksType
 
 sealed class CharacterMythicPlusOptionSelectEvent
 
-data class SelectScoresExpansion(
-    val expansions: List<Expansion>,
-    val selectedExpansion: Expansion
-) : CharacterMythicPlusOptionSelectEvent()
-
-data class SelectScoresSeason(val seasons: List<Season>, val selectedSeason: Season) :
+data class SelectScoresSeason(
+    val expansionsWithSeasons: Map<Expansion, List<Season>>,
+    val selectedSeason: Season) :
     CharacterMythicPlusOptionSelectEvent()
 
 data class SelectRanksType(val selectedRanksType: MythicPlusRanksType) :

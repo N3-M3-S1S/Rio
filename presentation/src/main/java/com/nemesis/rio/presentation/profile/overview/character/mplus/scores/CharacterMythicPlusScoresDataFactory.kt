@@ -1,7 +1,6 @@
 package com.nemesis.rio.presentation.profile.overview.character.mplus.scores
 
 import androidx.annotation.StringRes
-import com.nemesis.rio.domain.game.Expansion
 import com.nemesis.rio.domain.mplus.scores.MythicPlusScore
 import com.nemesis.rio.domain.mplus.scores.color.usecase.GetHexColorForMythicPlusScore
 import com.nemesis.rio.domain.mplus.scores.usecase.GetOverallMythicPlusScore
@@ -21,7 +20,6 @@ class CharacterMythicPlusScoresDataFactory(
     suspend fun getScoresData(
         character: Character,
         selectedSeason: Season,
-        selectedExpansion: Expansion
     ): CharacterMythicPlusScoresData {
         val scoreItemsForSelectedSeason = mutableListOf<CharacterMythicPlusScoreItem>()
         val overallScore = getOverallMythicPlusScore(character, selectedSeason)
@@ -43,7 +41,6 @@ class CharacterMythicPlusScoresDataFactory(
         scoreItemsForSelectedSeason.sortByDescending(CharacterMythicPlusScoreItem::score)
 
         return CharacterMythicPlusScoresData(
-            selectedExpansion,
             selectedSeason,
             scoreItemsForSelectedSeason
         )

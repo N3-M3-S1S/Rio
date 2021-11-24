@@ -3,21 +3,31 @@ package com.nemesis.rio.presentation.profile.overview.character.mplus.scores
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
+import com.nemesis.rio.domain.game.Expansion
 import com.nemesis.rio.domain.mplus.seasons.Season
 import com.nemesis.rio.presentation.R
-import com.nemesis.rio.presentation.itemOption
 import com.nemesis.rio.presentation.view.fragment.BaseOptionSelectDialogFragment
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class CharacterMythicPlusScoresSeasonSelectDialogFragment : BaseOptionSelectDialogFragment() {
     private val seasonsKey = "seasons"
+    private val seasonSelectController: CharacterMythicPlusScoresSeasonSelectController by inject {
+        parametersOf(
+            ::onSeasonSelected
+        )
+    }
 
     companion object {
         const val REQUEST_KEY = "select_season"
         const val SELECTED_SEASON_KEY = "selected_season"
 
-        fun create(seasons: List<Season>, selectedSeason: Season) =
+        fun create(expansionsWithSeasons: Map<Expansion, List<Season>>, selectedSeason: Season) =
             CharacterMythicPlusScoresSeasonSelectDialogFragment().apply {
-                arguments = bundleOf(seasonsKey to seasons, SELECTED_SEASON_KEY to selectedSeason)
+                arguments = bundleOf(
+                    seasonsKey to expansionsWithSeasons,
+                    SELECTED_SEASON_KEY to selectedSeason
+                )
             }
     }
 
@@ -28,20 +38,13 @@ class CharacterMythicPlusScoresSeasonSelectDialogFragment : BaseOptionSelectDial
     }
 
     private fun setupSeasonsList() {
-        viewBinding.optionSelectRecyclerview.withModels {
-            val selectedSeason = requireArguments().getString(SELECTED_SEASON_KEY)!!
-            @Suppress("UNCHECKED_CAST") val seasons =
-                requireArguments().get(seasonsKey) as List<Season>
+        val selectedSeason = requireArguments().getString(SELECTED_SEASON_KEY)!!
+        @Suppress("UNCHECKED_CAST")
+        val expansionsWithSeasons =
+            requireArguments().get(seasonsKey) as Map<Expansion, List<Season>>
 
-            seasons.forEach { season ->
-                itemOption {
-                    id(season)
-                    string(season)
-                    isSelected(season == selectedSeason)
-                    onClick(::onSeasonSelected)
-                }
-            }
-        }
+        viewBinding.optionSelectRecyclerview.setController(seasonSelectController)
+        seasonSelectController.setData(expansionsWithSeasons, selectedSeason)
     }
 
     private fun onSeasonSelected(season: Season) {

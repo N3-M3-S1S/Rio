@@ -10,6 +10,7 @@ import com.nemesis.rio.presentation.profile.overview.character.mplus.runs.Charac
 import com.nemesis.rio.presentation.profile.overview.character.mplus.scores.CharacterMythicPlusScoresDataActionsHandler
 import com.nemesis.rio.presentation.profile.overview.character.mplus.scores.CharacterMythicPlusScoresDataFactory
 import com.nemesis.rio.presentation.profile.overview.character.mplus.scores.CharacterMythicPlusScoresDataModelsBuilder
+import com.nemesis.rio.presentation.profile.overview.character.mplus.scores.CharacterMythicPlusScoresSeasonSelectController
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.qualifier
@@ -80,4 +81,6 @@ val characterMythicPlusModule = module {
         enumValues<MythicPlusRanksType>()
             .associateWith { get<MythicPlusRanksItemsFactory>(qualifier(it)) }
     }
+
+    factory<CharacterMythicPlusScoresSeasonSelectController>()
 }

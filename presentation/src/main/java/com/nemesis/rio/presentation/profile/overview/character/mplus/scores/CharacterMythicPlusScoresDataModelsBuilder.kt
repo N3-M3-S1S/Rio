@@ -2,10 +2,8 @@ package com.nemesis.rio.presentation.profile.overview.character.mplus.scores
 
 import com.airbnb.epoxy.EpoxyController
 import com.airbnb.epoxy.group
-import com.nemesis.rio.domain.game.Expansion
 import com.nemesis.rio.domain.mplus.seasons.Season
 import com.nemesis.rio.presentation.R
-import com.nemesis.rio.presentation.game.stringResId
 import com.nemesis.rio.presentation.itemDropdown
 import com.nemesis.rio.presentation.itemMplusScore
 import com.nemesis.rio.presentation.itemTextHeader
@@ -21,7 +19,6 @@ class CharacterMythicPlusScoresDataModelsBuilder(
             if (data != null) {
                 scoresHeader()
                 with(data) {
-                    expansionDropdown(selectedExpansion)
                     seasonDropdown(selectedSeason)
                     scores(scoreItems)
                 }
@@ -34,15 +31,6 @@ class CharacterMythicPlusScoresDataModelsBuilder(
             id("scores_header")
             textResId(R.string.character_mplus_scores_header)
             spanSizeOverride { totalSpanCount, _, _ -> totalSpanCount }
-        }
-    }
-
-    private fun EpoxyController.expansionDropdown(selectedExpansion: Expansion) {
-        itemDropdown {
-            id("scores_expansion")
-            titleResId(R.string.expansion_title)
-            textResId(selectedExpansion.stringResId)
-            onClick(scoresDataActionsHandler::onSelectExpansionClicked)
         }
     }
 
