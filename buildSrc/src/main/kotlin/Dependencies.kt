@@ -74,7 +74,7 @@ object PresentationDependencies {
     private const val NAVIGATION_VERSION = "2.4.0-beta02"
     private const val ACTIVITY_VERSION = "1.4.0"
     private const val FRAGMENT_VERSION = "1.4.0"
-    private const val APP_COMPAT_VERSION = "1.4.0"
+    private const val APP_COMPAT_VERSION = "1.3.1"
     private const val BROWSER_VERSION = "1.4.0"
     private const val MATERIAL_COMPONENTS_VERSION = "1.5.0-beta01"
     private const val CONSTRAINT_LAYOUT_VERSION = "2.1.2"
