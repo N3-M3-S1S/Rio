@@ -7,12 +7,17 @@ import com.nemesis.rio.domain.mplus.seasons.Season
 import com.nemesis.rio.domain.profile.Faction
 import com.nemesis.rio.domain.sorting.SortingOrder
 import com.nemesis.rio.presentation.mplus.ranks.MythicPlusRanksType
+import com.nemesis.rio.presentation.mplus.scores.MythicPlusScoresType
 
 sealed class CharacterMythicPlusOptionSelectEvent
 
+data class SelectScoresType(val selectedScoresType: MythicPlusScoresType) :
+    CharacterMythicPlusOptionSelectEvent()
+
 data class SelectScoresSeason(
     val expansionsWithSeasons: Map<Expansion, List<Season>>,
-    val selectedSeason: Season) :
+    val selectedSeason: Season
+) :
     CharacterMythicPlusOptionSelectEvent()
 
 data class SelectRanksType(val selectedRanksType: MythicPlusRanksType) :

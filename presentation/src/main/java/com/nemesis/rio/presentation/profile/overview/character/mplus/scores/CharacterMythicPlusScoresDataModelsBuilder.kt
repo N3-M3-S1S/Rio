@@ -7,6 +7,8 @@ import com.nemesis.rio.presentation.R
 import com.nemesis.rio.presentation.itemDropdown
 import com.nemesis.rio.presentation.itemMplusScore
 import com.nemesis.rio.presentation.itemTextHeader
+import com.nemesis.rio.presentation.mplus.scores.MythicPlusScoresType
+import com.nemesis.rio.presentation.mplus.scores.stringResId
 import com.nemesis.rio.presentation.view.epoxy.EpoxyModelsBuilderDelegate
 
 class CharacterMythicPlusScoresDataModelsBuilder(
@@ -19,6 +21,7 @@ class CharacterMythicPlusScoresDataModelsBuilder(
             if (data != null) {
                 scoresHeader()
                 with(data) {
+                    scoresTypeDropdown(selectedScoresType)
                     seasonDropdown(selectedSeason)
                     scores(scoreItems)
                 }
@@ -31,6 +34,15 @@ class CharacterMythicPlusScoresDataModelsBuilder(
             id("scores_header")
             textResId(R.string.character_mplus_scores_header)
             spanSizeOverride { totalSpanCount, _, _ -> totalSpanCount }
+        }
+    }
+
+    private fun EpoxyController.scoresTypeDropdown(selectedScoresType: MythicPlusScoresType) {
+        itemDropdown {
+            id("scores_type")
+            titleResId(R.string.character_mplus_scores_type)
+            textResId(selectedScoresType.stringResId)
+            onClick(scoresDataActionsHandler::onSelectScoresTypeClicked)
         }
     }
 

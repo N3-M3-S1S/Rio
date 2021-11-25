@@ -5,7 +5,7 @@ import com.nemesis.rio.domain.mplus.ranks.usecase.GetOverallMythicPlusRanksForCu
 import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.presentation.R
 import com.nemesis.rio.presentation.profile.character.attributes.iconResId
-import com.nemesis.rio.presentation.profile.character.attributes.nameResId
+import com.nemesis.rio.presentation.profile.character.attributes.stringResId
 import com.nemesis.rio.presentation.ranks.list.RanksListItem
 import splitties.resources.appStr
 
@@ -31,7 +31,7 @@ class MythicPlusOverallRanksItemsFactory(
 
         overallRanks.overallRoleRanks.mapTo(overallRanksItems) { (role, ranks) ->
             RanksListItem(
-                appStr(role.nameResId),
+                appStr(role.stringResId),
                 ranks,
                 role.iconResId
             )

@@ -5,7 +5,7 @@ import androidx.annotation.StringRes
 import com.nemesis.rio.domain.profile.character.attributes.Role
 import com.nemesis.rio.presentation.R
 
-val Role.nameResId: Int
+val Role.stringResId: Int
     @StringRes
     get() = when (this) {
         Role.DAMAGE_DEALER -> R.string.role_damage_dealer

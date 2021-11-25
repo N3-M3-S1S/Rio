@@ -21,6 +21,9 @@
     <string name="character_overall_item_level_format">%d ilvl</string>
     <string name="character_overall_best_mplus_score">Best Mythic+ score</string>
     <string name="character_mplus_scores_header">Scores</string>
+    <string name="character_mplus_scores_type">Scores type</string>
+    <string name="character_mplus_scores_role">Role scores</string>
+    <string name="character_mpls_scores_spec">Spec scores</string>
     <string name="character_mplus_season_select_title">Season</string>
     <string name="character_mplus_score_overall">Overall</string>
     <string name="character_mplus_ranks_header">Ranks</string>

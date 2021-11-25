@@ -33,6 +33,4 @@ class CharacterMythicPlusScoresSeasonSelectController(private val onSeasonSelect
 
     override fun isStickyHeader(position: Int): Boolean =
         adapter.getModelAtPosition(position) is ItemOptionSelectStickyHeaderBindingModel_
-
-
 }

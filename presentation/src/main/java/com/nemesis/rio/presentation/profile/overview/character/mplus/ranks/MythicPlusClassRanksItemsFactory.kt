@@ -4,7 +4,6 @@ import com.nemesis.rio.domain.mplus.ranks.MythicPlusRanksScope
 import com.nemesis.rio.domain.mplus.ranks.usecase.GetClassMythicPlusRanksForCurrentSeason
 import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.presentation.profile.character.attributes.iconResId
-import com.nemesis.rio.presentation.profile.character.attributes.nameResId
 import com.nemesis.rio.presentation.profile.character.attributes.stringResId
 import com.nemesis.rio.presentation.ranks.list.RanksListItem
 import splitties.resources.appStr
@@ -35,7 +34,7 @@ class MythicPlusClassRanksItemsFactory(
 
         classRanks.ranksForClassRoles.mapTo(classRanksItems) { (role, ranks) ->
             val className = appStr(characterClass.stringResId)
-            val roleName = appStr(role.nameResId)
+            val roleName = appStr(role.stringResId)
             val title = "$className $roleName"
             RanksListItem(
                 title,

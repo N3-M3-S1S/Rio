@@ -12,6 +12,7 @@ import com.nemesis.rio.domain.mplus.seasons.Season
 import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.sorting.SortingOrder
 import com.nemesis.rio.presentation.mplus.ranks.MythicPlusRanksType
+import com.nemesis.rio.presentation.mplus.scores.MythicPlusScoresType
 import com.nemesis.rio.presentation.profile.overview.character.mplus.ranks.CharacterMythicPlusRanksData
 import com.nemesis.rio.presentation.profile.overview.character.mplus.ranks.CharacterMythicPlusRanksDataActionsHandler
 import com.nemesis.rio.presentation.profile.overview.character.mplus.ranks.CharacterMythicPlusRanksDataFactory
@@ -50,6 +51,7 @@ class CharacterMythicPlusViewModel(
 
     private lateinit var selectedSeason: Season
     private lateinit var expansionsWithSeasons: Map<Expansion, List<Season>>
+    private var selectedScoresType = CharacterMythicPlusPreferences.scoresType
 
     private var selectedRanksType = CharacterMythicPlusPreferences.ranksType
     private var selectedRanksScope = CharacterMythicPlusPreferences.ranksScope
@@ -107,21 +109,37 @@ class CharacterMythicPlusViewModel(
 
         selectedSeason = expansionsWithSeasons.getValue(expansionsWithScores.first()).first()
 
-        return scoresDataFactory.getScoresData(character, selectedSeason)
+        return scoresDataFactory.getScoresData(character, selectedScoresType, selectedSeason)
     }
 
+    override fun onSelectScoresTypeClicked() {
+        sendMythicPlusOptionSelectEvent {
+            SelectScoresType(selectedScoresType)
+        }
+    }
+
+    fun onScoresTypeChanged(scoresType: MythicPlusScoresType) {
+        selectedScoresType = scoresType
+        updateScoresData { character ->
+            scoresDataFactory.getScoresData(character, selectedScoresType, selectedSeason)
+        }
+    }
 
     override fun onSelectSeasonClicked() {
-        sendMythicPlusOptionSelectEvent { SelectScoresSeason(expansionsWithSeasons, selectedSeason) }
+        sendMythicPlusOptionSelectEvent {
+            SelectScoresSeason(
+                expansionsWithSeasons,
+                selectedSeason
+            )
+        }
     }
 
     fun onSeasonChanged(season: Season) {
         selectedSeason = season
         updateScoresData { character ->
-            scoresDataFactory.getScoresData(character, selectedSeason)
+            scoresDataFactory.getScoresData(character, selectedScoresType, selectedSeason)
         }
     }
-
 
     override fun onRanksTypeClicked() {
         sendMythicPlusOptionSelectEvent { SelectRanksType(selectedRanksType) }
@@ -211,6 +229,7 @@ class CharacterMythicPlusViewModel(
     override fun onStop(owner: LifecycleOwner) {
         super.onStop(owner)
         CharacterMythicPlusPreferences.bulk {
+            scoresType = selectedScoresType
             ranksType = selectedRanksType
             ranksScope = selectedRanksScope
             runsSortingOption = selectedRunsSortingOption

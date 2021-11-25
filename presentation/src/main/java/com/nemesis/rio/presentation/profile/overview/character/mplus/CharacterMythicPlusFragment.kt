@@ -11,10 +11,12 @@ import com.nemesis.rio.domain.sorting.SortingOrder
 import com.nemesis.rio.presentation.mplus.ranks.MythicPlusRanksType
 import com.nemesis.rio.presentation.mplus.runs.MythicPlusRunItemModel
 import com.nemesis.rio.presentation.mplus.runs.mythicPlusRunItemModelPreloader
+import com.nemesis.rio.presentation.mplus.scores.MythicPlusScoresType
 import com.nemesis.rio.presentation.profile.overview.character.mplus.ranks.MythicPlusRanksScopeSelectDialogFragment
 import com.nemesis.rio.presentation.profile.overview.character.mplus.ranks.MythicPlusRanksTypeSelectDialogFragment
 import com.nemesis.rio.presentation.profile.overview.character.mplus.runs.CharacterMythicPlusRunsSortingOptionSelectDialogFragment
 import com.nemesis.rio.presentation.profile.overview.character.mplus.scores.CharacterMythicPlusScoresSeasonSelectDialogFragment
+import com.nemesis.rio.presentation.profile.overview.character.mplus.scores.CharacterMythicPlusScoresTypeSelectDialogFragment
 import com.nemesis.rio.presentation.sorting.SortingOrderSelectDialogFragment
 import com.nemesis.rio.presentation.utils.extensions.getEnum
 import com.nemesis.rio.presentation.utils.extensions.getEnumOrNull
@@ -46,9 +48,10 @@ class CharacterMythicPlusFragment : BaseDataListFragment() {
         setupRecyclerView()
         observeCharacterMythicPlusData()
         observeCharacterMythicPlusEvents()
+        observeSelectScoresType()
+        observeSelectSeason()
         observeSelectRanksType()
         observeSelectRanksScope()
-        observeSelectSeason()
         observeSelectRunsSortingOption()
         observeSelectRunsSortingOrder()
     }
@@ -84,6 +87,13 @@ class CharacterMythicPlusFragment : BaseDataListFragment() {
 
     private fun getOptionSelectDialogFragmentForEvent(event: CharacterMythicPlusOptionSelectEvent) =
         when (event) {
+            is SelectScoresType -> CharacterMythicPlusScoresTypeSelectDialogFragment.create(event.selectedScoresType)
+
+            is SelectScoresSeason -> CharacterMythicPlusScoresSeasonSelectDialogFragment.create(
+                event.expansionsWithSeasons,
+                event.selectedSeason
+            )
+
             is SelectRanksType -> MythicPlusRanksTypeSelectDialogFragment.create(event.selectedRanksType)
 
             is SelectRanksScope -> MythicPlusRanksScopeSelectDialogFragment.create(
@@ -91,15 +101,27 @@ class CharacterMythicPlusFragment : BaseDataListFragment() {
                 event.faction
             )
 
-            is SelectScoresSeason -> CharacterMythicPlusScoresSeasonSelectDialogFragment.create(
-                event.expansionsWithSeasons,
-                event.selectedSeason
-            )
             is SelectRunsSoringOption -> CharacterMythicPlusRunsSortingOptionSelectDialogFragment.create(
                 event.selectedSortingOption
             )
             is SelectRunsSortingOrder -> SortingOrderSelectDialogFragment.create(event.selectedSortingOrder)
         }
+
+    private fun observeSelectScoresType() {
+        observeFragmentResult(CharacterMythicPlusScoresTypeSelectDialogFragment.REQUEST_KEY) {
+            val selectedScoresType =
+                it.getEnum<MythicPlusScoresType>(CharacterMythicPlusScoresTypeSelectDialogFragment.SELECTED_SCORES_TYPE_KEY)
+            viewModel.onScoresTypeChanged(selectedScoresType)
+        }
+    }
+
+    private fun observeSelectSeason() {
+        observeFragmentResult(CharacterMythicPlusScoresSeasonSelectDialogFragment.REQUEST_KEY) {
+            val selectedSeason =
+                it.getString(CharacterMythicPlusScoresSeasonSelectDialogFragment.SELECTED_SEASON_KEY)!!
+            viewModel.onSeasonChanged(selectedSeason)
+        }
+    }
 
     private fun observeSelectRanksType() {
         observeFragmentResult(MythicPlusRanksTypeSelectDialogFragment.REQUEST_KEY) {
@@ -115,15 +137,6 @@ class CharacterMythicPlusFragment : BaseDataListFragment() {
             val selectedRanksScope =
                 it.getEnumOrNull<MythicPlusRanksScope>(MythicPlusRanksScopeSelectDialogFragment.SELECTED_SCOPE_KEY)
             viewModel.onRanksScopeChanged(selectedRanksScope)
-        }
-    }
-
-
-    private fun observeSelectSeason() {
-        observeFragmentResult(CharacterMythicPlusScoresSeasonSelectDialogFragment.REQUEST_KEY) {
-            val selectedSeason =
-                it.getString(CharacterMythicPlusScoresSeasonSelectDialogFragment.SELECTED_SEASON_KEY)!!
-            viewModel.onSeasonChanged(selectedSeason)
         }
     }
 
