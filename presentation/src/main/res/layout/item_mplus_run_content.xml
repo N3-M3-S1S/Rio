@@ -90,7 +90,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/run_keystone_level_and_dungeon_name"
-            app:run_dungeonDuration="@{run.dungeon.duration}"
+            app:run_dungeonDuration="@{run.dungeon.completionTimer}"
             app:run_duration="@{run.duration}"
             tools:text="@string/test_run_duration" />
 
