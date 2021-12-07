@@ -4,7 +4,7 @@ import com.nemesis.rio.domain.game.Expansion
 import kotlinx.coroutines.runBlocking
 
 val testSeasonEntities = enumValues<Expansion>().flatMapIndexed { index, expansion ->
-    (1..3).map { i ->
+    (3 downTo 1).map { i ->
         SeasonEntity("season-$i-$expansion", "Season $expansion $i", expansion).also {
             it.id = ((index * 10) + i)
         }
