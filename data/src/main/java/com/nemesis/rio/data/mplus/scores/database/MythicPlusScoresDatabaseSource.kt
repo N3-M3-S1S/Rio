@@ -15,14 +15,10 @@ class MythicPlusScoresDatabaseSource(
     private val profileIDProvider: ProfileIDProvider<Character>,
 ) : MythicPlusScoresSource {
 
-    override suspend fun getExpansionsWithScores(character: Character): List<Expansion> =
-        profileIDProvider.withProfileID(character, scoresDao::getExpansionsWithScores)
-
     override suspend fun getSeasonsWithScores(
-        character: Character,
-        expansion: Expansion
-    ): List<Season> =
-        profileIDProvider.withProfileID(character) { scoresDao.getSeasonsWithScores(it, expansion) }
+        character: Character
+    ): Map<Expansion, List<Season>> =
+        profileIDProvider.withProfileID(character) { scoresDao.getSeasonsWithScores(it) }
 
     override suspend fun getOverallScore(
         character: Character,

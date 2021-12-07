@@ -6,8 +6,7 @@ import com.nemesis.rio.domain.game.Expansion
 import com.nemesis.rio.domain.mplus.ranks.MythicPlusRanksScope
 import com.nemesis.rio.domain.mplus.runs.MythicPlusRun
 import com.nemesis.rio.domain.mplus.runs.sorting.MythicPlusRunsSortingOption
-import com.nemesis.rio.domain.mplus.scores.usecase.GetExpansionsWithScores
-import com.nemesis.rio.domain.mplus.scores.usecase.GetSeasonsWithScoresForExpansion
+import com.nemesis.rio.domain.mplus.scores.usecase.GetSeasonsWithScores
 import com.nemesis.rio.domain.mplus.seasons.Season
 import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.sorting.SortingOrder
@@ -32,8 +31,7 @@ import kotlinx.coroutines.launch
 
 class CharacterMythicPlusViewModel(
     private val characterFlow: Flow<Character>,
-    private val getExpansionsWithScores: GetExpansionsWithScores,
-    private val getSeasonsWithScoresForExpansion: GetSeasonsWithScoresForExpansion,
+    private val getSeasonsWithScores: GetSeasonsWithScores,
     private val scoresDataFactory: CharacterMythicPlusScoresDataFactory,
     private val ranksDataFactory: CharacterMythicPlusRanksDataFactory,
     private val runsDataFactory: CharacterMythicPlusRunsDataFactory,
@@ -50,7 +48,7 @@ class CharacterMythicPlusViewModel(
     val characterMythicPlusData: LiveData<CharacterMythicPlusData> = _characterMythicPlusData
 
     private lateinit var selectedSeason: Season
-    private lateinit var expansionsWithSeasons: Map<Expansion, List<Season>>
+    private lateinit var seasonsWithScores: Map<Expansion, List<Season>>
     private var selectedScoresType = CharacterMythicPlusPreferences.scoresType
 
     private var selectedRanksType = CharacterMythicPlusPreferences.ranksType
@@ -100,14 +98,10 @@ class CharacterMythicPlusViewModel(
     }
 
     private suspend fun initializeScoresData(character: Character): CharacterMythicPlusScoresData? {
-        val expansionsWithScores = getExpansionsWithScores(character)
-        if (expansionsWithScores.isEmpty()) return null
+        seasonsWithScores = getSeasonsWithScores(character)
+        if (seasonsWithScores.isEmpty()) return null
 
-        expansionsWithSeasons = expansionsWithScores.associateWith { expansion ->
-            getSeasonsWithScoresForExpansion(character, expansion)
-        }
-
-        selectedSeason = expansionsWithSeasons.getValue(expansionsWithScores.first()).first()
+        selectedSeason = seasonsWithScores.getValue(seasonsWithScores.keys.first()).first()
 
         return scoresDataFactory.getScoresData(character, selectedScoresType, selectedSeason)
     }
@@ -128,7 +122,7 @@ class CharacterMythicPlusViewModel(
     override fun onSelectSeasonClicked() {
         sendMythicPlusOptionSelectEvent {
             SelectScoresSeason(
-                expansionsWithSeasons,
+                seasonsWithScores,
                 selectedSeason
             )
         }

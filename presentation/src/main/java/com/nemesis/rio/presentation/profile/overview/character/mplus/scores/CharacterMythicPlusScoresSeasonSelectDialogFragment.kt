@@ -11,7 +11,7 @@ import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
 class CharacterMythicPlusScoresSeasonSelectDialogFragment : BaseOptionSelectDialogFragment() {
-    private val expansionsWithSeasonsKey = "expansionsWithSeasons"
+    private val seasonsWithScoresKey = "expansionsWithSeasons"
     private val seasonSelectController: CharacterMythicPlusScoresSeasonSelectController by inject {
         parametersOf(
             ::onSeasonSelected
@@ -22,10 +22,10 @@ class CharacterMythicPlusScoresSeasonSelectDialogFragment : BaseOptionSelectDial
         const val REQUEST_KEY = "select_season"
         const val SELECTED_SEASON_KEY = "selected_season"
 
-        fun create(expansionsWithSeasons: Map<Expansion, List<Season>>, selectedSeason: Season) =
+        fun create(seasonsWithScores: Map<Expansion, List<Season>>, selectedSeason: Season) =
             CharacterMythicPlusScoresSeasonSelectDialogFragment().apply {
                 arguments = bundleOf(
-                    expansionsWithSeasonsKey to expansionsWithSeasons,
+                    seasonsWithScoresKey to seasonsWithScores,
                     SELECTED_SEASON_KEY to selectedSeason
                 )
             }
@@ -41,7 +41,7 @@ class CharacterMythicPlusScoresSeasonSelectDialogFragment : BaseOptionSelectDial
         val selectedSeason = requireArguments().getString(SELECTED_SEASON_KEY)!!
         @Suppress("UNCHECKED_CAST")
         val expansionsWithSeasons =
-            requireArguments().get(expansionsWithSeasonsKey) as Map<Expansion, List<Season>>
+            requireArguments().get(seasonsWithScoresKey) as Map<Expansion, List<Season>>
 
         viewBinding.optionSelectRecyclerview.setController(seasonSelectController)
         seasonSelectController.setData(expansionsWithSeasons, selectedSeason)

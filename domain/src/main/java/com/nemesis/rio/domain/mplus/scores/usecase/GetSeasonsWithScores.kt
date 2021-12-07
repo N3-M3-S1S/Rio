@@ -5,8 +5,8 @@ import com.nemesis.rio.domain.mplus.scores.MythicPlusScoresSource
 import com.nemesis.rio.domain.mplus.seasons.Season
 import com.nemesis.rio.domain.profile.Character
 
-class GetSeasonsWithScoresForExpansion(private val mythicPlusScoresSource: MythicPlusScoresSource) {
+class GetSeasonsWithScores(private val mythicPlusScoresSource: MythicPlusScoresSource) {
 
-    suspend operator fun invoke(character: Character, expansion: Expansion): List<Season> =
-        mythicPlusScoresSource.getSeasonsWithScores(character, expansion)
+    suspend operator fun invoke(character: Character): Map<Expansion, List<Season>> =
+        mythicPlusScoresSource.getSeasonsWithScores(character)
 }

@@ -1,9 +1,6 @@
 package com.nemesis.rio.data.mplus.scores.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 import com.nemesis.rio.domain.game.Expansion
 import com.nemesis.rio.domain.mplus.scores.MythicPlusScore
 import com.nemesis.rio.domain.mplus.seasons.Season
@@ -33,7 +30,10 @@ abstract class MythicPlusScoresDao {
     ): List<MythicPlusRoleScoreEntity>
 
     @Query("SELECT * FROM MythicPlusSpecScoreEntity WHERE characterId = :characterId AND seasonId = (SELECT id FROM SEASONS WHERE name = :season)")
-    internal abstract suspend fun getSpecScoreEntities(characterId: Long, season: Season): List<MythicPlusSpecScoreEntity>
+    internal abstract suspend fun getSpecScoreEntities(
+        characterId: Long,
+        season: Season
+    ): List<MythicPlusSpecScoreEntity>
 
     @Transaction
     internal open suspend fun deleteAllScores(characterId: Long) {
@@ -54,9 +54,9 @@ abstract class MythicPlusScoresDao {
     @Query("SELECT DISTINCT expansion from seasons WHERE id in (SELECT seasonId from MythicPlusOverallScoreEntity where characterId = :characterID) ORDER BY expansion DESC")
     internal abstract suspend fun getExpansionsWithScores(characterID: Long): List<Expansion>
 
-    @Query("SELECT name from seasons where expansion = :expansion and id in (SELECT seasonId from MythicPlusOverallScoreEntity where characterId = :characterID) ORDER BY id DESC")
+    @MapInfo(keyColumn = "expansion", valueColumn = "name")
+    @Query("SELECT DISTINCT expansion, name from seasons where id in (SELECT seasonId from MythicPlusOverallScoreEntity where characterId = :characterID) ORDER BY expansion DESC, id DESC")
     internal abstract suspend fun getSeasonsWithScores(
         characterID: Long,
-        expansion: Expansion
-    ): List<Season>
+    ): Map<Expansion, List<Season>>
 }

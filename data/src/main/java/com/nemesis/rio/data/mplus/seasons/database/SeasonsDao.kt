@@ -10,7 +10,7 @@ import com.nemesis.rio.domain.mplus.seasons.Season
 @Dao
 abstract class SeasonsDao {
 
-    @Query("SELECT name FROM seasons WHERE expansion = :expansion")
+    @Query("SELECT name FROM seasons WHERE expansion = :expansion ORDER BY id DESC")
     abstract suspend fun getSeasonsForExpansion(expansion: Expansion): List<Season>
 
     @Query("SELECT id FROM seasons WHERE api_value = :seasonApiValue")

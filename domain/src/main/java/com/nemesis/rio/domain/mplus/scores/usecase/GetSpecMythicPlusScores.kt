@@ -10,5 +10,4 @@ class GetSpecMythicPlusScores(private val mythicPlusScoresSource: MythicPlusScor
 
     suspend operator fun invoke(character: Character, season: Season): Map<Spec, MythicPlusScore> =
         mythicPlusScoresSource.getSpecScores(character, season)
-
 }

@@ -25,8 +25,7 @@ val characterMythicPlusModule = module {
         viewModel {
             CharacterMythicPlusViewModel(
                 characterFlow = get(),
-                getExpansionsWithScores = get(),
-                getSeasonsWithScoresForExpansion = get(),
+                getSeasonsWithScores = get(),
                 scoresDataFactory = get(),
                 ranksDataFactory = get(),
                 runsDataFactory = get(),

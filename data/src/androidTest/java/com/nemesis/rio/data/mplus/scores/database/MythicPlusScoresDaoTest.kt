@@ -1,6 +1,7 @@
 package com.nemesis.rio.data.mplus.scores.database
 
 import com.nemesis.rio.data.AppDatabaseTest
+import com.nemesis.rio.data.mplus.seasons.database.SeasonEntity
 import com.nemesis.rio.data.mplus.seasons.database.createTestSeasonEntitiesInDatabase
 import com.nemesis.rio.data.mplus.seasons.database.testSeasonEntities
 import com.nemesis.rio.data.profile.database.createTestCharacterInDatabase
@@ -78,7 +79,8 @@ class MythicPlusScoresDaoTest : AppDatabaseTest() {
         }
         scoresDao.saveSpecScoreEntities(specScoreEntities)
 
-        val result = scoresDao.getSpecScoreEntities(characterId, randomSeasonEntity.name).toSpecScores()
+        val result =
+            scoresDao.getSpecScoreEntities(characterId, randomSeasonEntity.name).toSpecScores()
         assertEquals(expectedSpecScores, result)
     }
 
@@ -109,10 +111,12 @@ class MythicPlusScoresDaoTest : AppDatabaseTest() {
             .also { scoresDao.saveOverallScores(it) }
 
 
-        val expected = legionSeasonEntities.map { it.name }
+        val expected = legionSeasonEntities.groupBy(SeasonEntity::expansion)
+            .mapValues { entry -> entry.value.map { seasonEntity -> seasonEntity.name } }
 
-        val result = scoresDao.getSeasonsWithScores(characterId, Expansion.LEGION)
-        assertEquals(expected.toSet(), result.toSet())
+        val result = scoresDao.getSeasonsWithScores(characterId)
+
+        assertEquals(expected, result)
     }
 
 }

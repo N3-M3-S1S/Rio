@@ -12,10 +12,10 @@ class CharacterMythicPlusScoresSeasonSelectController(private val onSeasonSelect
     Typed2EpoxyController<Map<Expansion, List<Season>>, Season>() {
 
     override fun buildModels(
-        expansionsWithSeasons: Map<Expansion, List<Season>>,
+        seasonWithScores: Map<Expansion, List<Season>>,
         selectedSeason: Season
     ) {
-        expansionsWithSeasons.forEach { (expansion, seasons) ->
+        seasonWithScores.forEach { (expansion, seasons) ->
             itemOptionSelectStickyHeader {
                 id(expansion.hashCode())
                 textResId(expansion.stringResId)

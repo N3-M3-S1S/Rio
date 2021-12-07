@@ -33,5 +33,4 @@ class SeasonsAssetUpdater(private val seasonsDao: SeasonsDao) : AppDatabaseTable
 
             seasonEntities
         }
-
 }

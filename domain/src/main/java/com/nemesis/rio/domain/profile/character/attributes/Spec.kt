@@ -33,7 +33,7 @@ enum class Spec(val role: Role) {
 
     // Warlock
     AFFLICTION(Role.DAMAGE_DEALER), DEMONOLOGY(Role.DAMAGE_DEALER), DESTRUCTION(Role.DAMAGE_DEALER),
-    
+
     // Warrior
     ARMS(Role.DAMAGE_DEALER), FURY(Role.DAMAGE_DEALER), PROTECTION_WARRIOR(Role.TANK),
 }

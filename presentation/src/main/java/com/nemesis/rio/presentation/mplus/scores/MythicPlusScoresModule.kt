@@ -12,7 +12,10 @@ import com.nemesis.rio.data.mplus.seasons.database.SeasonsDatabaseSource
 import com.nemesis.rio.domain.mplus.scores.MythicPlusScoresSource
 import com.nemesis.rio.domain.mplus.scores.color.MythicPlusScoreColorSource
 import com.nemesis.rio.domain.mplus.scores.color.usecase.GetHexColorForMythicPlusScore
-import com.nemesis.rio.domain.mplus.scores.usecase.*
+import com.nemesis.rio.domain.mplus.scores.usecase.GetOverallMythicPlusScore
+import com.nemesis.rio.domain.mplus.scores.usecase.GetRoleMythicPlusScores
+import com.nemesis.rio.domain.mplus.scores.usecase.GetSeasonsWithScores
+import com.nemesis.rio.domain.mplus.scores.usecase.GetSpecMythicPlusScores
 import com.nemesis.rio.domain.mplus.seasons.SeasonsSource
 import com.nemesis.rio.domain.mplus.seasons.usecase.GetCurrentSeason
 import com.nemesis.rio.presentation.profile.character.characterQualifier
@@ -26,8 +29,7 @@ val mythicPlusScoresModule = module {
     factory<GetOverallMythicPlusScore>()
     factory<GetRoleMythicPlusScores>()
     factory<GetSpecMythicPlusScores>()
-    factory<GetExpansionsWithScores>()
-    factory<GetSeasonsWithScoresForExpansion>()
+    factory<GetSeasonsWithScores>()
     factory<MythicPlusScoresSaver>()
     factory<MythicPlusScoreColorsAssetUpdater>()
     factory<MythicPlusScoreColorDatabaseSource>() bind MythicPlusScoreColorSource::class
