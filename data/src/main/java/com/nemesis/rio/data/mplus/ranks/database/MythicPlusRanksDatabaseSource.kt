@@ -44,7 +44,9 @@ class MythicPlusRanksDatabaseSource(
     }
 
     override suspend fun characterHasRanksForCurrentSeason(character: Character): Boolean =
-        profileIDProvider.withProfileID(character, ranksDao::characterHasAnyMythicPlusRanksEntities)
+        profileIDProvider.withProfileID(character) {
+            ranksDao.characterHasAnyMythicPlusRanksEntities(it)
+        }
 
     private suspend fun <T> getClassOverallRanks(
         ranksType: Int,

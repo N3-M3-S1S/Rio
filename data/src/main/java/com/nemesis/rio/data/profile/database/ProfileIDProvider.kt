@@ -17,7 +17,7 @@ class ProfileIDProvider<P : Profile>(
             }
 }
 
-internal suspend fun <P : Profile, T> ProfileIDProvider<P>.withProfileID(
+internal suspend inline fun <P : Profile, T> ProfileIDProvider<P>.withProfileID(
     profile: P,
-    action: suspend (id: Long) -> T,
+    action:  (id: Long) -> T,
 ) = action(getProfileID(profile))
