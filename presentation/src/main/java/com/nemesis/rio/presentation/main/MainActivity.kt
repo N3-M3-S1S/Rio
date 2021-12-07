@@ -2,6 +2,7 @@ package com.nemesis.rio.presentation.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -15,6 +16,7 @@ import com.nemesis.rio.presentation.app.messages.Message
 import com.nemesis.rio.presentation.databinding.ActivityMainBinding
 import com.nemesis.rio.presentation.profile.overview.overviewDirection
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import splitties.alertdialog.appcompat.alertDialog
@@ -64,19 +66,26 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     private fun observeNavigateToProfileOverviewEventFlow() {
-        lifecycleScope.launchWhenStarted {
+        lifecycleScope.launch {
             navigateToProfileOverviewEventFlow
+                .flowWithLifecycle(lifecycle)
                 .map { it.overviewDirection }
                 .collect(navController::navigate)
         }
     }
 
     private fun observeOpenUrlInBrowserEventFlow() {
-        openUrlInBrowserEventFlow.onEach { urlBrowser.openUrl(this, it) }.launchIn(lifecycleScope)
+        lifecycleScope.launch {
+            openUrlInBrowserEventFlow
+                .flowWithLifecycle(lifecycle)
+                .collect { url -> urlBrowser.openUrl(this@MainActivity, url) }
+        }
     }
 
     private fun observeMessageEventFlow() {
-        viewModel.messages.onEach(::showMessage).launchIn(lifecycleScope)
+        lifecycleScope.launch {
+            viewModel.messages.flowWithLifecycle(lifecycle).collect(::showMessage)
+        }
     }
 
     private fun showMessage(message: Message) {

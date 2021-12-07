@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -14,8 +15,8 @@ import com.nemesis.rio.presentation.server.realm.RealmSelectDialogFragment
 import com.nemesis.rio.presentation.server.region.RegionSelectDialogFragment
 import com.nemesis.rio.presentation.utils.extensions.getEnum
 import com.nemesis.rio.presentation.utils.extensions.observeFragmentResult
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import splitties.systemservices.inputMethodManager
 import splitties.views.onClick
@@ -64,10 +65,14 @@ class ProfileSearchFragment : Fragment(R.layout.fragment_profile_search) {
     }
 
     private fun observeOptionSelectEvent() {
-        viewModel.profileSearchOptionSelectEvent.onEach { event ->
-            val optionSelectDialogFragment = getOptionSelectDialogFragmentForEvent(event)
-            optionSelectDialogFragment.show(childFragmentManager, null)
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.profileSearchOptionSelectEvent
+                .flowWithLifecycle(viewLifecycleOwner.lifecycle)
+                .collect { event ->
+                    val optionSelectDialogFragment = getOptionSelectDialogFragmentForEvent(event)
+                    optionSelectDialogFragment.show(childFragmentManager, null)
+                }
+        }
     }
 
     private fun getOptionSelectDialogFragmentForEvent(profileSearchOptionSelectEvent: ProfileSearchOptionSelectEvent) =

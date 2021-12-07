@@ -101,6 +101,7 @@ object PresentationDependencies {
     const val VIEWMODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:$LIFECYCLE_VERSION"
     const val LIVEDATA = "androidx.lifecycle:lifecycle-livedata-ktx:$LIFECYCLE_VERSION"
     const val LIFECYCLE_COMPILER = "androidx.lifecycle:lifecycle-common-java8:$LIFECYCLE_VERSION"
+    const val LIFECYCLE_RUNTIME_KTX = "androidx.lifecycle:lifecycle-runtime-ktx:$LIFECYCLE_VERSION"
 
     const val NAVIGATION_SAFE_ARGS_PLUGIN =
         "androidx.navigation:navigation-safe-args-gradle-plugin:$NAVIGATION_VERSION"

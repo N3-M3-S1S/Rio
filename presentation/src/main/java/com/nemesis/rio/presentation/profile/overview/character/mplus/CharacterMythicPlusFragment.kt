@@ -3,7 +3,9 @@ package com.nemesis.rio.presentation.profile.overview.character.mplus
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nemesis.rio.domain.mplus.ranks.MythicPlusRanksScope
 import com.nemesis.rio.domain.mplus.runs.sorting.MythicPlusRunsSortingOption
@@ -23,8 +25,8 @@ import com.nemesis.rio.presentation.utils.extensions.getEnumOrNull
 import com.nemesis.rio.presentation.utils.extensions.observeFragmentResult
 import com.nemesis.rio.presentation.view.epoxy.preloader.coil.addCoilPreloader
 import com.nemesis.rio.presentation.view.fragment.BaseDataListFragment
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.core.parameter.parametersOf
@@ -79,10 +81,14 @@ class CharacterMythicPlusFragment : BaseDataListFragment() {
     }
 
     private fun observeCharacterMythicPlusEvents() {
-        viewModel.characterMythicPlusOptionSelectEvent.onEach { event ->
-            val optionSelectDialogFragment = getOptionSelectDialogFragmentForEvent(event)
-            optionSelectDialogFragment.show(childFragmentManager, null)
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.characterMythicPlusOptionSelectEvent
+                .flowWithLifecycle(viewLifecycleOwner.lifecycle)
+                .collect { event ->
+                    val optionSelectDialogFragment = getOptionSelectDialogFragmentForEvent(event)
+                    optionSelectDialogFragment.show(childFragmentManager, null)
+                }
+        }
     }
 
     private fun getOptionSelectDialogFragmentForEvent(event: CharacterMythicPlusOptionSelectEvent) =

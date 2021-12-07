@@ -3,13 +3,14 @@ package com.nemesis.rio.presentation.launcher
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.nemesis.rio.presentation.R
 import com.nemesis.rio.presentation.databinding.ActivityLauncherBinding
 import com.nemesis.rio.presentation.main.MainActivity
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LauncherActivity : AppCompatActivity(R.layout.activity_launcher) {
@@ -30,8 +31,11 @@ class LauncherActivity : AppCompatActivity(R.layout.activity_launcher) {
     }
 
     private fun observeNavigateToMainScreenEvent() {
-        viewModel.navigateToMainScreenEvent
-            .onEach { navigateToMainScreen() }.launchIn(lifecycleScope)
+        lifecycleScope.launch {
+            viewModel.navigateToMainScreenEvent
+                .flowWithLifecycle(lifecycle)
+                .collect { navigateToMainScreen() }
+        }
     }
 
     private fun navigateToMainScreen() {

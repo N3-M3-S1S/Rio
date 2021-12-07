@@ -62,6 +62,7 @@ dependencies {
         implementation(VIEWMODEL)
         implementation(LIVEDATA)
         implementation(LIFECYCLE_COMPILER)
+        implementation(LIFECYCLE_RUNTIME_KTX)
 
         implementation(NAVIGATION_UI)
         implementation(NAVIGATION_FRAGMENT)
