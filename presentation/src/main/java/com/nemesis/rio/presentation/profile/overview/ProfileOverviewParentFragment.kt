@@ -3,8 +3,11 @@ package com.nemesis.rio.presentation.profile.overview
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.nemesis.rio.domain.profile.Profile
 import com.nemesis.rio.presentation.R
@@ -17,7 +20,7 @@ import org.koin.core.parameter.parametersOf
 import org.koin.core.scope.Scope
 
 abstract class ProfileOverviewParentFragment<P : Profile> :
-    Fragment(R.layout.fragment_profile_overview), AndroidScopeComponent {
+    Fragment(R.layout.fragment_profile_overview), AndroidScopeComponent, MenuProvider {
     private val viewBinding by viewBinding<FragmentProfileOverviewBinding>()
     private val childFragmentsNavigator: ProfileOverviewChildFragmentsNavigator by inject()
     private lateinit var toolbarTitle: String
@@ -28,7 +31,6 @@ abstract class ProfileOverviewParentFragment<P : Profile> :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
         childFragmentsNavigator.setup(
             childFragmentManager,
             R.id.profile_overview_child_fragment_container
@@ -40,17 +42,10 @@ abstract class ProfileOverviewParentFragment<P : Profile> :
 
     protected abstract fun getProfileFromArguments(arguments: Bundle): P
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.fragment_profile_overview_toolbar_menu, menu)
-        menu.findItem(R.id.profile_overview_open_in_browser).setOnMenuItemClickListener {
-            viewModel.onOpenProfileInBrowserClicked()
-            true
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupViewBinding()
         setupBottomNavigation()
+        setupToolbarMenu()
     }
 
     private fun setupViewBinding() {
@@ -68,6 +63,22 @@ abstract class ProfileOverviewParentFragment<P : Profile> :
                 true
             }
         }
+    }
+
+    private fun setupToolbarMenu() {
+        requireActivity().addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.STARTED)
+    }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.fragment_profile_overview_toolbar_menu, menu)
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        if (menuItem.itemId == R.id.profile_overview_open_in_browser) {
+            viewModel.onOpenProfileInBrowserClicked()
+            return true
+        }
+        return false
     }
 
     override fun onStart() {
