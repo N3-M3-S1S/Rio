@@ -11,4 +11,5 @@
         <attr name="mpb_progressVisibility" format="boolean" />
         <attr name="mpb_progressbarColor" format="color|reference" />
     </declare-styleable>
+    <string name="leak_canary_test_class_name">assertk.Assert</string>
 </resources>
