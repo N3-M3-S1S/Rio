@@ -5,6 +5,7 @@ import com.chibatching.kotpref.bulk
 import com.nemesis.rio.domain.profile.Profile
 import com.nemesis.rio.domain.profile.character.search.usecase.SearchCharacter
 import com.nemesis.rio.domain.profile.guild.search.usecase.SearchGuild
+import com.nemesis.rio.domain.profile.search.usecase.ValidateProfileName
 import com.nemesis.rio.domain.server.Region
 import com.nemesis.rio.domain.server.realm.Realm
 import com.nemesis.rio.domain.server.realm.usecase.GetRealmListForRegion
@@ -21,6 +22,7 @@ import kotlinx.coroutines.runBlocking
 
 class ProfileSearchViewModel(
     private val searchPreferences: ProfileSearchPreferences,
+    private val validateProfileName: ValidateProfileName,
     private val searchCharacter: SearchCharacter,
     private val searchGuild: SearchGuild,
     private val getRealmListForRegion: GetRealmListForRegion,
@@ -75,9 +77,8 @@ class ProfileSearchViewModel(
         }
     }
 
-    // TODO: move profile name validation to domain layer
     private fun isProfileNameValid() =
-        profileName.value != null && profileName.notNullValue.length >= 2
+        profileName.value != null && validateProfileName(profileName.notNullValue)
 
     fun search() {
         viewModelScope.launch(profileSearchExceptionHandler) {

@@ -1,5 +1,6 @@
 package com.nemesis.rio.presentation.profile.search
 
+import com.nemesis.rio.domain.profile.search.usecase.ValidateProfileName
 import com.nemesis.rio.presentation.main.navigateToProfileOverviewEventFlowQualifier
 import com.nemesis.rio.presentation.profile.search.character.characterSearchModule
 import com.nemesis.rio.presentation.profile.search.guild.guildSearchModule
@@ -9,10 +10,12 @@ import org.koin.dsl.module
 
 val profileSearchModule = module {
     factory<ProfileSearchPreferences>()
+    factory<ValidateProfileName>()
 
     viewModel {
         ProfileSearchViewModel(
             searchPreferences = get(),
+            validateProfileName = get(),
             searchCharacter = get(),
             searchGuild = get(),
             getRealmListForRegion = get(),
