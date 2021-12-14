@@ -58,7 +58,7 @@ abstract class ProfileOverviewParentFragment<P : Profile> :
     private fun setupBottomNavigation() {
         with(viewBinding.profileOverviewBottomNavigation) {
             inflateMenu(childFragmentsNavigator.bottomNavigationMenuId)
-            setOnNavigationItemSelectedListener { menuItem ->
+            setOnItemSelectedListener { menuItem ->
                 childFragmentsNavigator.showChildFragmentForBottomNavigationMenuOptionId(menuItem.itemId)
                 true
             }
