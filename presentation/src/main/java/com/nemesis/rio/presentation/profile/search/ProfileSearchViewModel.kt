@@ -13,10 +13,8 @@ import com.nemesis.rio.presentation.app.messages.MessageManager
 import com.nemesis.rio.presentation.app.messages.logAndSendExceptionMessage
 import com.nemesis.rio.presentation.app.messages.profileNotFoundMessage
 import com.nemesis.rio.presentation.profile.ProfileType
-import com.nemesis.rio.presentation.utils.extensions.notNullValue
 import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -29,22 +27,24 @@ class ProfileSearchViewModel(
     private val navigateToProfileOverviewScreenEventFlow: MutableSharedFlow<Profile>,
     private val messageManager: MessageManager,
 ) : ViewModel(), DefaultLifecycleObserver {
-    val profileName = MutableLiveData<String>()
-    val profileType = MutableLiveData(searchPreferences.profileType)
+    val profileName = MutableStateFlow("")
+    val profileType = MutableStateFlow(searchPreferences.profileType)
 
-    private val _selectedRegion = MutableLiveData(searchPreferences.region)
-    val selectedRegion: LiveData<Region> = _selectedRegion
+    private val _selectedRegion = MutableStateFlow(searchPreferences.region)
+    val selectedRegion: StateFlow<Region> = _selectedRegion
 
-    private val _selectedRealm = MutableLiveData<String>()
-    val selectedRealm: LiveData<String> = _selectedRealm
-
-    private val _isSearchActive = MutableLiveData(false)
-    val isSearchActive: LiveData<Boolean> = _isSearchActive
-
-    private val _isSearchEnabled = MediatorLiveData<Boolean>()
-    val isSearchEnabled: LiveData<Boolean> = _isSearchEnabled
+    private val _selectedRealm: MutableStateFlow<Realm> = MutableStateFlow("")
+    val selectedRealm: StateFlow<String> = _selectedRealm
 
     private var selectedRegionToRealm: MutableMap<Region, String>
+
+    private val _isSearchActive = MutableStateFlow(false)
+    val isSearchActive: StateFlow<Boolean> = _isSearchActive
+
+    val isSearchEnabled: StateFlow<Boolean> =
+        profileName.combine(_isSearchActive) { profileName, isSearchActive ->
+            !isSearchActive && validateProfileName(profileName)
+        }.stateIn(viewModelScope, SharingStarted.Lazily, false)
 
     private val profileSearchExceptionHandler =
         CoroutineExceptionHandler { _, throwable ->
@@ -58,32 +58,15 @@ class ProfileSearchViewModel(
         _profileSearchOptionSelectEvent
 
     init {
-        setupIsSearchEnabledLiveData()
         runBlocking {
             selectedRegionToRealm = searchPreferences.getSelectedRegionAndRealm()
-            _selectedRealm.value = selectedRegionToRealm[selectedRegion.notNullValue]
+            _selectedRealm.value = selectedRegionToRealm.getValue(_selectedRegion.value)
         }
     }
-
-    private fun setupIsSearchEnabledLiveData() {
-        with(_isSearchEnabled) {
-            value = false
-            addSource(_isSearchActive) { searchActive ->
-                _isSearchEnabled.value = !searchActive && isProfileNameValid()
-            }
-            addSource(profileName) {
-                _isSearchEnabled.value = !_isSearchActive.notNullValue && isProfileNameValid()
-            }
-        }
-    }
-
-    private fun isProfileNameValid() =
-        profileName.value != null && validateProfileName(profileName.notNullValue)
 
     fun search() {
         viewModelScope.launch(profileSearchExceptionHandler) {
             _isSearchActive.value = true
-
             val profile = searchProfile()
 
             if (profile != null) {
@@ -97,12 +80,12 @@ class ProfileSearchViewModel(
     }
 
     private suspend fun searchProfile(): Profile? {
-        val name = profileName.notNullValue
-        val region = selectedRegion.notNullValue
-        val realm = selectedRealm.notNullValue
+        val name = profileName.value
+        val region = selectedRegion.value
+        val realm = selectedRealm.value
 
         @Suppress("WHEN_ENUM_CAN_BE_NULL_IN_JAVA")
-        return when (profileType.notNullValue) {
+        return when (profileType.value) {
             ProfileType.CHARACTER -> searchCharacter(name, region, realm)
             ProfileType.GUILD -> searchGuild(name, region, realm)
         }
@@ -113,7 +96,7 @@ class ProfileSearchViewModel(
     }
 
     private fun sendProfileNotFoundMessage() {
-        messageManager.sendMessage(profileNotFoundMessage(profileType.notNullValue))
+        messageManager.sendMessage(profileNotFoundMessage(profileType.value))
     }
 
     override fun onStop(owner: LifecycleOwner) {
@@ -122,8 +105,8 @@ class ProfileSearchViewModel(
 
     private fun saveSearchPreferences() {
         searchPreferences.bulk {
-            profileType = this@ProfileSearchViewModel.profileType.notNullValue
-            region = this@ProfileSearchViewModel.selectedRegion.notNullValue
+            profileType = this@ProfileSearchViewModel.profileType.value
+            region = this@ProfileSearchViewModel.selectedRegion.value
             saveSelectedRegionAndRealm(selectedRegionToRealm)
         }
     }
@@ -134,13 +117,13 @@ class ProfileSearchViewModel(
 
     private fun sendSelectRegionEvent() {
         viewModelScope.launch {
-            _profileSearchOptionSelectEvent.emit(SelectRegion(selectedRegion.notNullValue))
+            _profileSearchOptionSelectEvent.emit(SelectRegion(selectedRegion.value))
         }
     }
 
     fun onRegionChanged(region: Region) {
         _selectedRegion.value = region
-        _selectedRealm.value = selectedRegionToRealm[region]
+        _selectedRealm.value = selectedRegionToRealm.getValue(region)
     }
 
     fun onRealmSelectClicked() {
@@ -152,8 +135,8 @@ class ProfileSearchViewModel(
             _profileSearchOptionSelectEvent
                 .emit(
                     SelectRealm(
-                        getRealmListForRegion(selectedRegion.notNullValue),
-                        selectedRealm.notNullValue
+                        getRealmListForRegion(selectedRegion.value),
+                        selectedRealm.value
                     )
                 )
         }
@@ -161,6 +144,6 @@ class ProfileSearchViewModel(
 
     fun onRealmChanged(realm: Realm) {
         _selectedRealm.value = realm
-        selectedRegionToRealm[selectedRegion.notNullValue] = realm
+        selectedRegionToRealm[selectedRegion.value] = realm
     }
 }
