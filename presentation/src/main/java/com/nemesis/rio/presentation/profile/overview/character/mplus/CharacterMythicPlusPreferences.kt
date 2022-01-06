@@ -14,5 +14,5 @@ object CharacterMythicPlusPreferences : KotprefModel() {
     var ranksType by enumValuePref(MythicPlusRanksType.OVERALL)
     var ranksScope by nullableEnumValuePref(MythicPlusRanksScope.GLOBAL)
     var runsSortingOption by enumValuePref(MythicPlusRunsSortingOption.BY_COMPLETE_DATE)
-    var runsSortingOrder by enumValuePref(SortingOrder.DESC)
+    var runsSortingOrder by enumValuePref(SortingOrder.DESCENDING)
 }

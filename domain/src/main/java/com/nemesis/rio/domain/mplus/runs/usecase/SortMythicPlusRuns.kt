@@ -15,7 +15,7 @@ class SortMythicPlusRuns(private val sortStrategies: Map<MythicPlusRunsSortingOp
         if (runs.size < 2) return runs
         val comparator = sortStrategies.getValue(sortBy).getComparator()
         val comparatorForOrder =
-            if (sortingOrder == SortingOrder.DESC) compareByDescending(comparator) { it } else comparator
+            if (sortingOrder == SortingOrder.DESCENDING) compareByDescending(comparator) { it } else comparator
         return runs.sortedWith(comparatorForOrder)
     }
 }
