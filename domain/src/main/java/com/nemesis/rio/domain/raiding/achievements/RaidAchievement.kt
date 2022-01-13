@@ -1,9 +1,9 @@
 package com.nemesis.rio.domain.raiding.achievements
 
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Instant
 
 sealed class RaidAchievement : Comparable<RaidAchievement> {
-    abstract val date: LocalDateTime
+    abstract val achievedAt: Instant
 
     override fun compareTo(other: RaidAchievement): Int {
         fun getAchievementWeight(achievement: RaidAchievement) = when (achievement) {
@@ -14,8 +14,8 @@ sealed class RaidAchievement : Comparable<RaidAchievement> {
     }
 }
 
-data class AheadOfTheCurve(override val date: LocalDateTime) : RaidAchievement()
+data class AheadOfTheCurve(override val achievedAt: Instant) : RaidAchievement()
 
-data class CuttingEdge(override val date: LocalDateTime) : RaidAchievement()
+data class CuttingEdge(override val achievedAt: Instant) : RaidAchievement()
 
 fun List<RaidAchievement>.bestAchievementOrNull() = maxOrNull()

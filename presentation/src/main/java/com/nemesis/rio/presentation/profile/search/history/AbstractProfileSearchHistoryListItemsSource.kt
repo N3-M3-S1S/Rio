@@ -36,7 +36,7 @@ abstract class AbstractProfileSearchHistoryListItemsSource<P : Profile>(
             profile.name,
             profileDescription,
             serverAndFactionText,
-            profileSearchHistoryItem.lastSearchDateTime,
+            profileSearchHistoryItem.lastSearch,
             onClick,
             onSwipe
         )

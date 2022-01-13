@@ -9,7 +9,7 @@ import com.nemesis.rio.data.profile.database.ProfileEntity
 import com.nemesis.rio.data.progress.database.CharacterProgressEntity
 import com.nemesis.rio.domain.mplus.Dungeon
 import com.nemesis.rio.domain.mplus.runs.MythicPlusRun
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Instant
 import java.time.Duration
 
 @Entity(
@@ -23,7 +23,7 @@ import java.time.Duration
 class MythicPlusRunEntity(
     val dungeon: Dungeon,
     val keystoneLevel: Int,
-    val date: LocalDateTime,
+    val completedAt: Instant,
     val duration: Duration,
     val keystoneUpgrades: Int,
     val score: Float,
@@ -44,7 +44,7 @@ internal fun MythicPlusRun.toRunEntity(characterID: Long) =
     MythicPlusRunEntity(
         dungeon,
         keystoneLevel,
-        date,
+        completedAt,
         duration,
         keystoneUpgrades,
         score,

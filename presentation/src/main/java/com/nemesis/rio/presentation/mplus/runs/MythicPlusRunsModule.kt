@@ -37,7 +37,7 @@ val mythicPlusRunsModule = module {
                     dungeonToLocalizedName
                 )
                 MythicPlusRunsSortingOption.BY_KEYSTONE_LEVEL -> SortRunsByKeystoneLevel
-                MythicPlusRunsSortingOption.BY_COMPLETE_DATE -> SortRunsByCompleteDate
+                MythicPlusRunsSortingOption.BY_COMPLETE_DATE -> SortByCompletedDateTime
                 MythicPlusRunsSortingOption.BY_KEYSTONE_UPGRADES -> SortRunsByKeystoneUpgrades
                 MythicPlusRunsSortingOption.BY_SCORE -> SortRunsByScore
             }

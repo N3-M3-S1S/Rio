@@ -1,6 +1,5 @@
 package com.nemesis.rio.data.raiding.achievements.serialization
 
-import com.nemesis.rio.data.api.serialization.ApiLocalDateTimeDeserializer
 import com.nemesis.rio.data.profile.character.api.CharacterSearchFields
 import com.nemesis.rio.data.raiding.serialization.RaidSerialization
 import com.nemesis.rio.data.serialization.JsonObjectDeserializer
@@ -10,7 +9,7 @@ import com.nemesis.rio.domain.raiding.achievements.AheadOfTheCurve
 import com.nemesis.rio.domain.raiding.achievements.CuttingEdge
 import com.nemesis.rio.domain.raiding.achievements.RaidAchievement
 import com.nemesis.rio.utils.enumMap
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Instant
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonArray
@@ -70,18 +69,18 @@ object RaidAchievementsDeserializer : JsonObjectDeserializer<Map<Raid, List<Raid
     private fun parseRaidAchievement(
         raidAchievementKey: String,
         raidAchievementsJsonObject: JsonObject,
-        raidAchievementBuilder: (LocalDateTime) -> RaidAchievement
+        raidAchievementBuilder: (Instant) -> RaidAchievement
     ): RaidAchievement? {
         val raidAchievementDateTime =
-            parseRaidAchievementDateTime(raidAchievementKey, raidAchievementsJsonObject)
+            parseRaidAchievementAchievementInstant(raidAchievementKey, raidAchievementsJsonObject)
                 ?: return null
         return raidAchievementBuilder(raidAchievementDateTime)
     }
 
-    private fun parseRaidAchievementDateTime(
+    private fun parseRaidAchievementAchievementInstant(
         raidAchievementKey: String,
         raidAchievementsJsonObject: JsonObject
-    ): LocalDateTime? = raidAchievementsJsonObject[raidAchievementKey]?.let {
-        Json.decodeFromJsonElement(ApiLocalDateTimeDeserializer, it)
+    ): Instant? = raidAchievementsJsonObject[raidAchievementKey]?.let {
+        Json.decodeFromJsonElement(Instant.serializer(), it)
     }
 }

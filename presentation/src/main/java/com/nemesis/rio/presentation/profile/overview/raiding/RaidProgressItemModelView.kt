@@ -147,7 +147,7 @@ class RaidProgressItemModelView @JvmOverloads constructor(
 
     private fun setAchievementDateTime(achievement: RaidAchievement) {
         findViewById<TextView>(achievement.dateTimeViewID).apply {
-            defaultBindingAdapters.setLocalDateTime(this, achievement.date)
+            defaultBindingAdapters.setInstant(this, achievement.achievedAt)
         }
     }
 

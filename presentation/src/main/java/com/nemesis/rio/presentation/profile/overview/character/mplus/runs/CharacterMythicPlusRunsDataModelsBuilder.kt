@@ -64,7 +64,7 @@ class CharacterMythicPlusRunsDataModelsBuilder(
     private fun EpoxyController.runs(runs: List<MythicPlusRun>) {
         runs.forEach { run ->
             mythicPlusRunItem {
-                id(run.date.hashCode())
+                id(run.completedAt.hashCode())
                 run(run)
                 onOpenRunInBrowserClicked(runsDataActionsHandler::onOpenRunInBrowserClicked)
                 spanSizeOverride { totalSpanCount, _, _ -> getSpanSizeForRun(totalSpanCount) }

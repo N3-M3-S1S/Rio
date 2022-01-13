@@ -6,8 +6,8 @@ import com.nemesis.rio.data.profile.database.ProfileIDProvider
 import com.nemesis.rio.data.profile.database.withProfileID
 import com.nemesis.rio.domain.profile.Profile
 import com.nemesis.rio.domain.profile.update.ProfileUpdateRegistry
-import com.nemesis.rio.utils.now
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 
 class ProfileUpdateRegistryImpl<P : Profile>(
     private val profileDao: ProfileDao<P>,
@@ -17,11 +17,11 @@ class ProfileUpdateRegistryImpl<P : Profile>(
 
     override suspend fun registerProfileUpdated(profile: P) {
         profileIDProvider.withProfileID(profile) {
-            profileDao.updateLastRefreshDateTime(LocalDateTime.now(), it)
+            profileDao.updateLastRefreshDateTime(Clock.System.now(), it)
         }
     }
 
-    override suspend fun getLastUpdateDateTime(profile: P): LocalDateTime =
+    override suspend fun getLastUpdateDateTime(profile: P): Instant =
         profileIDProvider.withProfileID(profile) {
             profileDao.getLastUpdateDateTime(it)
         }
@@ -29,7 +29,7 @@ class ProfileUpdateRegistryImpl<P : Profile>(
     override suspend fun isProfileUpdated(profile: P): Boolean {
         val lastUpdateDateTime = getLastUpdateDateTime(profile)
         val lastCrawlDateTime =
-            profileLastCrawlDateTimeProvider.getProfileLastCrawlDateTime(profile)
+            profileLastCrawlDateTimeProvider.getProfileLastCrawlInstant(profile)
         return lastUpdateDateTime > lastCrawlDateTime
     }
 }

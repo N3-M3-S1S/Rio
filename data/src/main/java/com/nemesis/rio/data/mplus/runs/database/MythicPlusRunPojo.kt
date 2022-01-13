@@ -31,7 +31,7 @@ private fun MythicPlusRunPojo.toRun(): MythicPlusRun {
         return MythicPlusRun(
             dungeon,
             keystoneLevel,
-            date,
+            completedAt,
             duration,
             keystoneUpgrades,
             score,

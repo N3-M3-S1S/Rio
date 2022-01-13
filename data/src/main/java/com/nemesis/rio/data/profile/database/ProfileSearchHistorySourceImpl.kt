@@ -3,9 +3,8 @@ package com.nemesis.rio.data.profile.database
 import com.nemesis.rio.domain.profile.Profile
 import com.nemesis.rio.domain.profile.search.ProfileSearchHistoryItem
 import com.nemesis.rio.domain.profile.search.ProfileSearchHistorySource
-import com.nemesis.rio.utils.now
 import kotlinx.coroutines.flow.Flow
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Clock
 
 class ProfileSearchHistorySourceImpl<P : Profile>(
     private val profileDao: ProfileDao<P>,
@@ -18,7 +17,7 @@ class ProfileSearchHistorySourceImpl<P : Profile>(
 
     override suspend fun addOrUpdate(profile: P) {
         profileIDProvider.withProfileID(profile) {
-            profileDao.updateLastSearchDateTime(LocalDateTime.now(), it)
+            profileDao.updateLastSearchDateTime(Clock.System.now(), it)
         }
     }
 

@@ -10,10 +10,9 @@ import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.profile.search.ProfileSearchHistoryItem
 import com.nemesis.rio.domain.server.Region
 import com.nemesis.rio.domain.server.realm.Realm
-import com.nemesis.rio.utils.now
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Clock
 
 @Dao
 abstract class CharacterDao : ProfileDao<Character>() {
@@ -50,7 +49,7 @@ abstract class CharacterDao : ProfileDao<Character>() {
         it.map { characterPojo ->
             ProfileSearchHistoryItem(
                 characterPojo.toCharacter(),
-                characterPojo.characterEntity.lastSearchDateTime ?: LocalDateTime.now()
+                characterPojo.characterEntity.lastSearchDateTime ?: Clock.System.now()
             )
         }
     }

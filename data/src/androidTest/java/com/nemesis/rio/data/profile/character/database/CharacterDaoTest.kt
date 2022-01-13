@@ -5,10 +5,9 @@ import com.nemesis.rio.data.profile.database.createTestCharacterInDatabase
 import com.nemesis.rio.domain.profile.Character
 import com.nemesis.rio.domain.profile.character.attributes.Race
 import com.nemesis.rio.domain.profile.character.attributes.Spec
-import com.nemesis.rio.utils.now
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Clock
 import sharedTest.createTestCharacter
 import kotlin.test.*
 
@@ -66,7 +65,7 @@ class CharacterDaoTest : AppDatabaseTest() {
 
         expectedCharacterSearchHistory.forEach {
             val characterID = characterDao.saveOrUpdate(it)
-            characterDao.updateLastSearchDateTime(LocalDateTime.now(), characterID)
+            characterDao.updateLastSearchDateTime(Clock.System.now(), characterID)
         }
 
         val characterSearchHistory =
@@ -77,7 +76,7 @@ class CharacterDaoTest : AppDatabaseTest() {
     @Test
     fun updateLastRefreshDateTime() = runBlocking {
         val characterID = createTestCharacterInDatabase()
-        val expectedLastRefreshDateTime = LocalDateTime.now()
+        val expectedLastRefreshDateTime = Clock.System.now()
 
         characterDao.updateLastRefreshDateTime(expectedLastRefreshDateTime, characterID)
 
@@ -89,7 +88,7 @@ class CharacterDaoTest : AppDatabaseTest() {
     fun setLastSearchDateTimeNull() = runBlocking {
         val characterID = createTestCharacterInDatabase()
 
-        characterDao.updateLastSearchDateTime(LocalDateTime.now(), characterID)
+        characterDao.updateLastSearchDateTime(Clock.System.now(), characterID)
         var characterSearchHistory =
             characterDao.getProfilesWithSearchHistory().first().map { it.profile }
         assertEquals(characterSearchHistory.size, 1)
@@ -139,7 +138,7 @@ class CharacterDaoTest : AppDatabaseTest() {
         val expectedCharactersWithSearchHistoryCount = 3
         for (i in 0 until expectedCharactersWithSearchHistoryCount) {
             val characterID = createTestCharacterInDatabase(i.toString())
-            characterDao.updateLastSearchDateTime(LocalDateTime.now(), characterID)
+            characterDao.updateLastSearchDateTime(Clock.System.now(), characterID)
         }
 
         var characterSearchHistory =

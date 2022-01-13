@@ -9,7 +9,7 @@ import com.nemesis.rio.domain.raiding.Raid
 import com.nemesis.rio.domain.raiding.achievements.AheadOfTheCurve
 import com.nemesis.rio.domain.raiding.achievements.CuttingEdge
 import com.nemesis.rio.domain.raiding.achievements.RaidAchievement
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Instant
 
 @Entity(
     primaryKeys = ["raid", ProfileEntity.ID_COLUMN_NAME],
@@ -22,22 +22,22 @@ import kotlinx.datetime.LocalDateTime
 )
 class RaidAchievementsEntity(
     val raid: Raid,
-    val aotcDate: LocalDateTime,
-    val ceDate: LocalDateTime?,
+    val aotcAchievedAt: Instant,
+    val ceAchievedAt: Instant?,
     characterID: Long,
 ) : CharacterProgressEntity(characterID)
 
 @OptIn(ExperimentalStdlibApi::class)
 internal fun RaidAchievementsEntity.toRaidAchievementsList() = buildList {
-    add(AheadOfTheCurve(aotcDate))
-    ceDate?.let { add(CuttingEdge(it)) }
+    add(AheadOfTheCurve(aotcAchievedAt))
+    ceAchievedAt?.let { add(CuttingEdge(it)) }
 }
 
 internal fun Map<Raid, List<RaidAchievement>>.toRaidAchievementsEntities(characterId: Long) =
     map { (raid, achievements) ->
-        val aotcDateTime = achievements.find { it is AheadOfTheCurve }?.date
+        val aotcDateTime = achievements.find { it is AheadOfTheCurve }?.achievedAt
         checkNotNull(aotcDateTime)
-        val ceDateTime = achievements.find { it is CuttingEdge }?.date
+        val ceDateTime = achievements.find { it is CuttingEdge }?.achievedAt
         RaidAchievementsEntity(
             raid,
             aotcDateTime,

@@ -1,8 +1,8 @@
 package com.nemesis.rio.data.api.refresh
 
 import com.nemesis.rio.domain.profile.Profile
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Instant
 
 interface ProfileLastCrawlDateTimeProvider<P : Profile> {
-    suspend fun getProfileLastCrawlDateTime(profile: P): LocalDateTime
+    suspend fun getProfileLastCrawlInstant(profile: P): Instant
 }

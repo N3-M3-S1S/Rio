@@ -12,7 +12,7 @@ import com.nemesis.rio.domain.mplus.scores.MythicPlusScore
 import com.nemesis.rio.domain.mplus.scores.color.HexColor
 import com.nemesis.rio.domain.server.Region
 import com.nemesis.rio.domain.server.realm.Realm
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Instant
 import kotlinx.serialization.json.Json
 import retrofit2.HttpException
 import timber.log.Timber
@@ -27,20 +27,20 @@ class RioApiClient(
     private val profileNotFoundMessageRegex =
         "^Could not find requested (character|guild)\$".toRegex()
 
-    suspend fun getGuildLastCrawledDateTime(
+    suspend fun getGuildLastCrawlDateTime(
         name: String,
         region: Region,
         realm: Realm
-    ): LocalDateTime? = profileSearchQuery {
-        rioApi.getGuildLastCrawlDateTime(name, region, realm).lastCrawlDateTIme
+    ): Instant? = profileSearchQuery {
+        rioApi.getGuildLastCrawlDateTime(name, region, realm).lastCrawled
     }
 
     suspend fun getCharacterLastCrawlDateTime(
         name: String,
         region: Region,
         realm: Realm
-    ): LocalDateTime? = profileSearchQuery {
-        rioApi.getCharacterLastCrawlDateTime(name, region, realm).lastCrawlDateTIme
+    ): Instant? = profileSearchQuery {
+        rioApi.getCharacterLastCrawlDateTime(name, region, realm).lastCrawled
     }
 
     suspend fun searchCharacter(

@@ -12,7 +12,7 @@ import com.nemesis.rio.data.database.DateTimeConverters
 import com.nemesis.rio.domain.profile.Profile
 import com.nemesis.rio.domain.profile.search.ProfileSearchHistoryItem
 import kotlinx.coroutines.flow.Flow
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Instant
 
 abstract class ProfileDao<P : Profile> {
     protected abstract val tableName: String
@@ -25,7 +25,7 @@ abstract class ProfileDao<P : Profile> {
             database.openHelper.writableDatabase
     }
 
-    suspend fun updateLastRefreshDateTime(newRefreshDateTime: LocalDateTime, profileID: Long) {
+    suspend fun updateLastRefreshDateTime(newRefreshDateTime: Instant, profileID: Long) {
         updateDateTimeColumn(
             ProfileEntity.LAST_REFRESH_DATETIME_COLUMN_NAME,
             newRefreshDateTime,
@@ -33,7 +33,7 @@ abstract class ProfileDao<P : Profile> {
         )
     }
 
-    suspend fun updateLastSearchDateTime(newSearchDateTime: LocalDateTime?, profileID: Long) {
+    suspend fun updateLastSearchDateTime(newSearchDateTime: Instant?, profileID: Long) {
         updateDateTimeColumn(
             ProfileEntity.LAST_SEARCH_DATETIME_COLUMN_NAME,
             newSearchDateTime,
@@ -73,7 +73,7 @@ abstract class ProfileDao<P : Profile> {
         }
     }
 
-    suspend fun getLastUpdateDateTime(profileID: Long): LocalDateTime {
+    suspend fun getLastUpdateDateTime(profileID: Long): Instant {
         val query = SupportSQLiteQueryBuilder.builder(tableName)
             .columns(arrayOf(ProfileEntity.LAST_REFRESH_DATETIME_COLUMN_NAME))
             .selection("${ProfileEntity.ID_COLUMN_NAME} = ?", arrayOf(profileID))
@@ -82,7 +82,7 @@ abstract class ProfileDao<P : Profile> {
     }
 
     @RawQuery
-    protected abstract suspend fun getLastRefreshDateTimeRaw(query: SupportSQLiteQuery): LocalDateTime
+    protected abstract suspend fun getLastRefreshDateTimeRaw(query: SupportSQLiteQuery): Instant
 
     abstract suspend fun saveOrUpdate(profile: P): Long
 
@@ -92,16 +92,15 @@ abstract class ProfileDao<P : Profile> {
 
     private suspend fun updateDateTimeColumn(
         columnName: String,
-        newDateTime: LocalDateTime?,
+        newDateTime: Instant?,
         profileID: Long
     ) {
         roomDatabase.withTransaction {
-            val localDateTimeColumnValue =
-                DateTimeConverters.localDateTimeToColumnValue(newDateTime)
+            val instantColumnValue = DateTimeConverters.instantToLong(newDateTime)
             writableDatabase.update(
                 tableName,
                 SQLiteDatabase.CONFLICT_FAIL,
-                contentValuesOf(columnName to localDateTimeColumnValue),
+                contentValuesOf(columnName to instantColumnValue),
                 "${ProfileEntity.ID_COLUMN_NAME} = ?",
                 arrayOf(profileID)
             )

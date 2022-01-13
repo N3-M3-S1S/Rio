@@ -13,6 +13,7 @@
             type="kotlin.jvm.functions.Function1&lt;com.nemesis.rio.domain.mplus.runs.MythicPlusRun, kotlin.Unit>" />
 
         <import type="com.nemesis.rio.domain.mplus.runs.MythicPlusRun" />
+
         <import type="kotlin.Unit" />
 
     </data>
@@ -24,8 +25,7 @@
         android:backgroundTint="@color/item_mplus_run_dungeon_image_tint"
         android:backgroundTintMode="src_atop"
         app:run_dungeonImageBackground="@{run.dungeon}"
-        tools:background="@drawable/dungeon_de_other_side"
-       >
+        tools:background="@drawable/dungeon_de_other_side">
 
         <TextView
             android:id="@+id/run_date"
@@ -35,12 +35,12 @@
             android:layout_marginTop="@dimen/space_large"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
             android:textColor="?android:textColorPrimary"
+            app:instant="@{run.completedAt}"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toStartOf="@+id/run_open_in_browser"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:localDateTime="@{run.date}"
             tools:text="@string/test_date" />
 
         <ImageButton
@@ -65,8 +65,6 @@
             android:layout_marginEnd="@dimen/space_large"
             android:ellipsize="end"
             android:singleLine="true"
-            app:run_titleKeystoneLevel="@{run.keystoneLevel}"
-            app:run_titleDungeon="@{run.dungeon}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toTopOf="@+id/run_duration"
@@ -74,6 +72,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/run_open_in_browser"
+            app:run_titleDungeon="@{run.dungeon}"
+            app:run_titleKeystoneLevel="@{run.keystoneLevel}"
             tools:text="@string/test_run_keystone_level_and_dungeon_name" />
 
         <TextView
@@ -117,24 +117,24 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_large"
             android:layout_marginTop="@dimen/space_small"
-            app:run_score="@{run.score}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toStartOf="@+id/run_open_in_browser"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/run_keystone_upgrades"
+            app:run_score="@{run.score}"
             tools:text="@string/mplus_run_score_format" />
 
         <com.nemesis.rio.presentation.mplus.runs.MythicPlusRunAffixesView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/space_normal"
-            app:run_affixes="@{run.affixes}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/run_score" />
+            app:layout_constraintTop_toBottomOf="@+id/run_score"
+            app:run_affixes="@{run.affixes}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

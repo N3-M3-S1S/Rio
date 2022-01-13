@@ -6,9 +6,8 @@ import com.nemesis.rio.domain.raiding.Raid
 import com.nemesis.rio.domain.raiding.achievements.AheadOfTheCurve
 import com.nemesis.rio.domain.raiding.achievements.CuttingEdge
 import com.nemesis.rio.domain.raiding.achievements.RaidAchievement
-import com.nemesis.rio.utils.now
 import kotlinx.coroutines.runBlocking
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Clock
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -18,7 +17,7 @@ class RaidAchievementsDaoTest : AppDatabaseTest() {
     @Test
     fun saveAndGetAllAchievements() = runBlocking {
         val characterID = createTestCharacterInDatabase()
-        val expectedDateTime = LocalDateTime.now()
+        val expectedDateTime = Clock.System.now()
         val expectedRaidAchievements = mapOf(
             Raid.ANTORUS_THE_BURNING_THRONE to listOf(
                 AheadOfTheCurve(expectedDateTime),
@@ -41,7 +40,7 @@ class RaidAchievementsDaoTest : AppDatabaseTest() {
     @Test
     fun updateAndGetAchievements() = runBlocking {
         val characterID = createTestCharacterInDatabase()
-        val expectedDateTime = LocalDateTime.now()
+        val expectedDateTime = Clock.System.now()
         val expectedRaid = Raid.TOMB_OF_SARGERAS
         val expectedRaidAchievementsList =
             mutableListOf<RaidAchievement>(AheadOfTheCurve(expectedDateTime))

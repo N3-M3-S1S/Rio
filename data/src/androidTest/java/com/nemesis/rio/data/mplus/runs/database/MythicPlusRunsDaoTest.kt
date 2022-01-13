@@ -5,9 +5,8 @@ import com.nemesis.rio.data.profile.database.createTestCharacterInDatabase
 import com.nemesis.rio.domain.mplus.Affix
 import com.nemesis.rio.domain.mplus.Dungeon
 import com.nemesis.rio.domain.mplus.runs.MythicPlusRun
-import com.nemesis.rio.utils.now
 import kotlinx.coroutines.runBlocking
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Clock
 import org.junit.Test
 import java.time.Duration
 import kotlin.test.assertEquals
@@ -24,7 +23,7 @@ class MythicPlusRunsDaoTest : AppDatabaseTest() {
         val expectedRun1 = MythicPlusRun(
             dungeon = enumValues<Dungeon>().first(),
             keystoneLevel = 1,
-            date = LocalDateTime.now(),
+            completedAt = Clock.System.now(),
             duration = Duration.ofDays(1),
             keystoneUpgrades = 1,
             score = 1f,
@@ -58,7 +57,7 @@ class MythicPlusRunsDaoTest : AppDatabaseTest() {
                     MythicPlusRun(
                         dungeon = enumValues<Dungeon>().first(),
                         keystoneLevel = 2,
-                        date = LocalDateTime.now(),
+                        completedAt = Clock.System.now(),
                         duration = Duration.ofDays(1),
                         keystoneUpgrades = 1,
                         score = 1f,

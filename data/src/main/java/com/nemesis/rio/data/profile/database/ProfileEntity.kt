@@ -2,8 +2,8 @@ package com.nemesis.rio.data.profile.database
 
 import androidx.room.ColumnInfo
 import androidx.room.PrimaryKey
-import com.nemesis.rio.utils.now
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 
 abstract class ProfileEntity {
 
@@ -12,10 +12,10 @@ abstract class ProfileEntity {
     var id: Long = 0
 
     @ColumnInfo(name = LAST_REFRESH_DATETIME_COLUMN_NAME)
-    var lastRefreshDateTime: LocalDateTime = LocalDateTime.now()
+    var lastRefreshDateTime: Instant = Clock.System.now()
 
     @ColumnInfo(name = LAST_SEARCH_DATETIME_COLUMN_NAME)
-    var lastSearchDateTime: LocalDateTime? = null
+    var lastSearchDateTime: Instant? = null
 
     companion object {
         const val ID_COLUMN_NAME = "profileID"

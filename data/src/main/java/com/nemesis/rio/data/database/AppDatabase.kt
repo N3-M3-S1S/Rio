@@ -51,7 +51,7 @@ import com.nemesis.rio.data.raiding.ranks.database.RaidRanksEntity
         RaidAchievementsEntity::class,
 
         SeasonEntity::class],
-    version = 4,
+    version = 5,
     autoMigrations = [AutoMigration(from = 2, to = 3), AutoMigration(from = 3, to = 4)]
 )
 
@@ -83,6 +83,7 @@ abstract class AppDatabase : RoomDatabase() {
         fun build(context: Context) =
             Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
                 .addMigrations(Migration_1_2)
+                .fallbackToDestructiveMigrationFrom(5)
                 .build()
     }
 }

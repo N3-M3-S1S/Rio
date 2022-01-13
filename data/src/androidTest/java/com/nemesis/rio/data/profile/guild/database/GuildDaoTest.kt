@@ -2,10 +2,9 @@ package com.nemesis.rio.data.profile.guild.database
 
 import com.nemesis.rio.data.AppDatabaseTest
 import com.nemesis.rio.data.profile.database.createTestGuildInDatabase
-import com.nemesis.rio.utils.now
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Clock
 import sharedTest.createTestGuild
 import kotlin.test.*
 
@@ -39,7 +38,7 @@ class GuildDaoTest : AppDatabaseTest() {
 
         guilds.forEach {
             val guildID = guildDao.saveOrUpdate(it)
-            guildDao.updateLastSearchDateTime(LocalDateTime.now(), guildID)
+            guildDao.updateLastSearchDateTime(Clock.System.now(), guildID)
         }
 
         val guildSearchHistory =
@@ -50,7 +49,7 @@ class GuildDaoTest : AppDatabaseTest() {
     @Test
     fun updateLastRefreshDateTime() = runBlocking {
         val guildID = createTestGuildInDatabase()
-        val expectedLastRefreshDateTime = LocalDateTime.now()
+        val expectedLastRefreshDateTime = Clock.System.now()
 
         guildDao.updateLastRefreshDateTime(expectedLastRefreshDateTime, guildID)
 
@@ -62,7 +61,7 @@ class GuildDaoTest : AppDatabaseTest() {
     fun setLastSearchDateTimeNull() = runBlocking {
         val guildID = createTestGuildInDatabase()
 
-        guildDao.updateLastSearchDateTime(LocalDateTime.now(), guildID)
+        guildDao.updateLastSearchDateTime(Clock.System.now(), guildID)
         var guildSearchHistory = guildDao.getProfilesWithSearchHistory().first().map { it.profile }
         assertEquals(guildSearchHistory.size, 1)
 
@@ -109,7 +108,7 @@ class GuildDaoTest : AppDatabaseTest() {
         val expectedGuildsWithSearchHistoryCount = 3
         for (i in 0 until expectedGuildsWithSearchHistoryCount) {
             val guildID = createTestGuildInDatabase(i.toString())
-            guildDao.updateLastSearchDateTime(LocalDateTime.now(), guildID)
+            guildDao.updateLastSearchDateTime(Clock.System.now(), guildID)
         }
 
         var guildSearchHistory = guildDao.getProfilesWithSearchHistory().first().map { it.profile }

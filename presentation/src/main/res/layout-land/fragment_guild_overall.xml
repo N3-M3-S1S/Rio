@@ -168,7 +168,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/guild_overall_raid_ranks_span"
-                app:profileOverview_lastUpdateDateTime="@{viewModel.guildOverallData.lastUpdateDateTime}"
+                app:profileOverview_lastUpdate="@{viewModel.guildOverallData.lastUpdate}"
                 tools:text="@string/profile_overall_last_update_datetime_format" />
 
             <ProgressBar

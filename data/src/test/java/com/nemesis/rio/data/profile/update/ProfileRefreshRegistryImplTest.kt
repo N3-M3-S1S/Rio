@@ -10,8 +10,6 @@ import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.Clock
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
 import org.junit.Test
 import sharedTest.createTestCharacter
 import sharedTest.createTestGuild
@@ -47,10 +45,10 @@ class ProfileRefreshRegistryImplTest {
         val lastCrawlInstant = lastRefreshInstant - 1.minutes
 
         coEvery { profileDao.getLastUpdateDateTime(any()) } returns
-                lastRefreshInstant.toLocalDateTime(TimeZone.currentSystemDefault())
+                lastRefreshInstant
 
-        coEvery { profileLastCrawlDateTimeProvider.getProfileLastCrawlDateTime(any()) } returns
-                lastCrawlInstant.toLocalDateTime(TimeZone.currentSystemDefault())
+        coEvery { profileLastCrawlDateTimeProvider.getProfileLastCrawlInstant(profile) } returns
+                lastCrawlInstant
 
         assertTrue(profileRefreshRegistryImpl.isProfileUpdated(profile))
     }
@@ -61,11 +59,9 @@ class ProfileRefreshRegistryImplTest {
         val lastRefreshInstant = Clock.System.now()
         val lastCrawlInstant = lastRefreshInstant + 1.minutes
 
-        coEvery { profileDao.getLastUpdateDateTime(any()) } returns
-                lastRefreshInstant.toLocalDateTime(TimeZone.currentSystemDefault())
+        coEvery { profileDao.getLastUpdateDateTime(any()) } returns lastRefreshInstant
 
-        coEvery { profileLastCrawlDateTimeProvider.getProfileLastCrawlDateTime(any()) } returns
-                lastCrawlInstant.toLocalDateTime(TimeZone.currentSystemDefault())
+        coEvery { profileLastCrawlDateTimeProvider.getProfileLastCrawlInstant(any()) } returns lastCrawlInstant
 
         assertFalse(profileRefreshRegistryImpl.isProfileUpdated(profile))
     }

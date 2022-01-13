@@ -1,6 +1,5 @@
 package com.nemesis.rio.data.mplus.runs.serialization
 
-import com.nemesis.rio.data.api.serialization.ApiLocalDateTimeDeserializer
 import com.nemesis.rio.data.profile.character.api.CharacterSearchFields
 import com.nemesis.rio.data.serialization.JsonObjectDeserializer
 import com.nemesis.rio.data.serialization.getUnquotedString
@@ -9,7 +8,7 @@ import com.nemesis.rio.domain.mplus.Dungeon
 import com.nemesis.rio.domain.mplus.runs.MythicPlusRun
 import com.nemesis.rio.domain.mplus.scores.MythicPlusScore
 import com.nemesis.rio.utils.enumMap
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Instant
 import kotlinx.serialization.json.*
 import timber.log.Timber
 import java.time.Duration
@@ -39,7 +38,7 @@ object MythicPlusRunsDeserializer : JsonObjectDeserializer<List<MythicPlusRun>>(
     private fun parseRun(mythicPlusRunJsonObject: JsonObject): MythicPlusRun? {
         val dungeon = parseDungeonOrNull(mythicPlusRunJsonObject) ?: return null
         val keystoneLevel = parseKeystoneLevel(mythicPlusRunJsonObject)
-        val completeDate = parseCompleteDate(mythicPlusRunJsonObject)
+        val completeDate = parseCompletedAt(mythicPlusRunJsonObject)
         val duration = parseDuration(mythicPlusRunJsonObject)
         val keystoneUpgrades = parseKeystoneUpgrades(mythicPlusRunJsonObject)
         val score = parseScore(mythicPlusRunJsonObject)
@@ -69,9 +68,9 @@ object MythicPlusRunsDeserializer : JsonObjectDeserializer<List<MythicPlusRun>>(
     private fun parseKeystoneLevel(mythicPlusRunJsonObject: JsonObject): Int =
         mythicPlusRunJsonObject.getValue("mythic_level").jsonPrimitive.int
 
-    private fun parseCompleteDate(mythicPlusRunJsonObject: JsonObject): LocalDateTime =
+    private fun parseCompletedAt(mythicPlusRunJsonObject: JsonObject): Instant =
         Json.decodeFromJsonElement(
-            ApiLocalDateTimeDeserializer,
+            Instant.serializer(),
             mythicPlusRunJsonObject.getValue("completed_at")
         )
 
