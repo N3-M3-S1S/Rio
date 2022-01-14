@@ -1,11 +1,11 @@
 package com.nemesis.rio.presentation.profile.search.history
 
-import com.nemesis.rio.data.profile.database.ProfileSearchHistorySourceImpl
+import com.nemesis.rio.data.profile.database.ProfileSearchHistoryDatabaseRepository
 import com.nemesis.rio.domain.profile.Profile
-import com.nemesis.rio.domain.profile.search.ProfileSearchHistorySource
+import com.nemesis.rio.domain.profile.search.ProfileSearchHistoryRepository
+import com.nemesis.rio.domain.profile.search.usecase.AddProfileToSearchHistory
 import com.nemesis.rio.domain.profile.search.usecase.GetProfileSearchHistory
 import com.nemesis.rio.domain.profile.search.usecase.RemoveProfileFromSearchHistory
-import com.nemesis.rio.domain.profile.search.usecase.UpdateProfileLastDateTimeSearch
 import com.nemesis.rio.presentation.main.navigateToProfileOverviewEventFlowQualifier
 import com.nemesis.rio.presentation.profile.profileQualifier
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -14,23 +14,23 @@ import org.koin.core.module.Module
 inline fun <reified P : Profile> Module.profileSearchHistoryCoreDependencies() {
     val profileQualifier = profileQualifier<P>()
 
-    factory<ProfileSearchHistorySource<P>>(profileQualifier) {
-        ProfileSearchHistorySourceImpl(
+    factory<ProfileSearchHistoryRepository<P>>(profileQualifier) {
+        ProfileSearchHistoryDatabaseRepository(
             profileDao = get(profileQualifier),
             profileIDProvider = get(profileQualifier)
         )
     }
 
     factory(profileQualifier) {
-        GetProfileSearchHistory<P>(profileSearchHistorySource = get(profileQualifier))
+        GetProfileSearchHistory<P>(profileSearchHistoryRepository = get(profileQualifier))
     }
 
     factory(profileQualifier) {
-        RemoveProfileFromSearchHistory<P>(profileSearchHistorySource = get(profileQualifier))
+        RemoveProfileFromSearchHistory<P>(profileSearchHistoryRepository = get(profileQualifier))
     }
 
     factory(profileQualifier) {
-        UpdateProfileLastDateTimeSearch<P>(profileSearchHistorySource = get(profileQualifier))
+        AddProfileToSearchHistory<P>(profileSearchHistoryRepository = get(profileQualifier))
     }
 
     factory(profileQualifier) {
@@ -40,13 +40,13 @@ inline fun <reified P : Profile> Module.profileSearchHistoryCoreDependencies() {
         val removeProfileFromSearchHistory: RemoveProfileFromSearchHistory<P> =
             get(profileQualifier)
 
-        val updateProfileLastDateTimeSearch: UpdateProfileLastDateTimeSearch<P> =
+        val addProfileToSearchHistory: AddProfileToSearchHistory<P> =
             get(profileQualifier)
 
         ProfileSearchHistoryItemActionsHandler(
             profileOverviewNavigator,
             removeProfileFromSearchHistory,
-            updateProfileLastDateTimeSearch
+            addProfileToSearchHistory
         )
     }
 }

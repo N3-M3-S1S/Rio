@@ -10,7 +10,7 @@ import androidx.sqlite.db.SupportSQLiteQuery
 import androidx.sqlite.db.SupportSQLiteQueryBuilder
 import com.nemesis.rio.data.database.DateTimeConverters
 import com.nemesis.rio.domain.profile.Profile
-import com.nemesis.rio.domain.profile.search.ProfileSearchHistoryItem
+import com.nemesis.rio.domain.profile.search.ProfileSearchHistory
 import kotlinx.coroutines.flow.Flow
 import kotlinx.datetime.Instant
 
@@ -88,7 +88,7 @@ abstract class ProfileDao<P : Profile> {
 
     abstract suspend fun getProfileID(profile: P): Long?
 
-    abstract fun getProfilesWithSearchHistory(): Flow<List<ProfileSearchHistoryItem<P>>>
+    abstract fun getProfilesWithSearchHistory(): Flow<ProfileSearchHistory<P>>
 
     private suspend fun updateDateTimeColumn(
         columnName: String,

@@ -1,21 +1,21 @@
 package com.nemesis.rio.data.profile.database
 
 import com.nemesis.rio.domain.profile.Profile
-import com.nemesis.rio.domain.profile.search.ProfileSearchHistoryItem
-import com.nemesis.rio.domain.profile.search.ProfileSearchHistorySource
+import com.nemesis.rio.domain.profile.search.ProfileSearchHistory
+import com.nemesis.rio.domain.profile.search.ProfileSearchHistoryRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.datetime.Clock
 
-class ProfileSearchHistorySourceImpl<P : Profile>(
+class ProfileSearchHistoryDatabaseRepository<P : Profile>(
     private val profileDao: ProfileDao<P>,
     private val profileIDProvider: ProfileIDProvider<P>
-) : ProfileSearchHistorySource<P> {
+) : ProfileSearchHistoryRepository<P> {
 
-    override fun getSearchHistory(): Flow<List<ProfileSearchHistoryItem<P>>> {
+    override fun getSearchHistory(): Flow<ProfileSearchHistory<P>> {
         return profileDao.getProfilesWithSearchHistory()
     }
 
-    override suspend fun addOrUpdate(profile: P) {
+    override suspend fun add(profile: P) {
         profileIDProvider.withProfileID(profile) {
             profileDao.updateLastSearchDateTime(Clock.System.now(), it)
         }
