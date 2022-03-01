@@ -66,6 +66,8 @@
     <string name="dungeon_spires_of_ascension">Spires Of Ascension</string>
     <string name="dungeon_theater_of_pain">Theater Of Pain</string>
     <string name="dungeon_plaguefall">Plaguefall</string>
+    <string name="dungeon_tazavesh_strt">Tazavesh: Streets of Wonder</string>
+    <string name="dungeon_tazavesh_gmbt">Tazavesh: So\'leah\'s Gambit</string>
 
     <!-- Raiding -->
     <string name="raid_progress">Raid progress</string>

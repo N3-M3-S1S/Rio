@@ -10,5 +10,7 @@ enum class Dungeon(val completionTimer: Duration) {
     NECROTIC_WAKE(Duration.ofMinutes(36)),
     SPIRES_OF_ASCENSION(Duration.ofMinutes(39)),
     THEATER_OF_PAIN(Duration.ofMinutes(38)),
-    PLAGUEFALL(Duration.ofMinutes(38))
+    PLAGUEFALL(Duration.ofMinutes(38)),
+    TAZAVESH_STRT(Duration.ofMinutes(39)),
+    TAZAVESH_GMBT(Duration.ofMinutes(30))
 }

@@ -16,6 +16,8 @@ val Dungeon.nameResId: Int
         Dungeon.SPIRES_OF_ASCENSION -> R.string.dungeon_spires_of_ascension
         Dungeon.THEATER_OF_PAIN -> R.string.dungeon_theater_of_pain
         Dungeon.PLAGUEFALL -> R.string.dungeon_plaguefall
+        Dungeon.TAZAVESH_STRT -> R.string.dungeon_tazavesh_strt
+        Dungeon.TAZAVESH_GMBT -> R.string.dungeon_tazavesh_gmbt
     }
 
 val Dungeon.imageResId: Int
@@ -30,5 +32,6 @@ val Dungeon.imageResId: Int
             Dungeon.SPIRES_OF_ASCENSION -> R.drawable.dungeon_spires_of_ascension
             Dungeon.THEATER_OF_PAIN -> R.drawable.dungeon_theater_of_pain
             Dungeon.PLAGUEFALL -> R.drawable.dungeon_plaguefall
+            Dungeon.TAZAVESH_STRT, Dungeon.TAZAVESH_GMBT -> R.drawable.dungeon_tazavesh
         }
     }

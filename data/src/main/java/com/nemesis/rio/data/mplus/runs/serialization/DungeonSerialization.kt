@@ -14,6 +14,8 @@ internal object DungeonSerialization {
             SPIRES_OF_ASCENSION -> "SOA"
             THEATER_OF_PAIN -> "TOP"
             PLAGUEFALL -> "PF"
+            TAZAVESH_STRT -> "STRT"
+            TAZAVESH_GMBT -> "GMBT"
         }
 
     fun parseDungeonByJsonValueOrNull(dungeonJsonValue: String) =
