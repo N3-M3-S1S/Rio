@@ -7,7 +7,11 @@ enum class Expansion {
 
     val raids
         get() = when (this) {
-            SHADOWLANDS -> listOf(Raid.SANCTUM_OF_DOMINATION, Raid.CASTLE_NATHRIA)
+            SHADOWLANDS -> listOf(
+                Raid.SEPULCHER_OF_THE_FIRST_ONES,
+                Raid.SANCTUM_OF_DOMINATION,
+                Raid.CASTLE_NATHRIA
+            )
 
             BFA -> listOf(
                 Raid.NYALOTHA_THE_WAKING_CITY,

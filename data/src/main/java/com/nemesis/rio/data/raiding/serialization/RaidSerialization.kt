@@ -20,6 +20,7 @@ internal object RaidSerialization {
 
         CASTLE_NATHRIA -> "castle-nathria"
         SANCTUM_OF_DOMINATION -> "sanctum-of-domination"
+        SEPULCHER_OF_THE_FIRST_ONES -> "sepulcher-of-the-first-ones"
     }
 
     fun parseRaidByJsonValueOrNull(raidJsonValue: String) =

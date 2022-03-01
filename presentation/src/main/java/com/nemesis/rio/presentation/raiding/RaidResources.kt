@@ -20,6 +20,7 @@ val Raid.stringResId: Int
         Raid.NYALOTHA_THE_WAKING_CITY -> R.string.raid_nyalotha
         Raid.CASTLE_NATHRIA -> R.string.raid_castle_nathria
         Raid.SANCTUM_OF_DOMINATION -> R.string.raid_sanctum_of_domination
+        Raid.SEPULCHER_OF_THE_FIRST_ONES -> R.string.raid_sepulcher_of_the_first_ones
     }
 val Raid.imageResId
     @DrawableRes
@@ -36,4 +37,5 @@ val Raid.imageResId
         Raid.NYALOTHA_THE_WAKING_CITY -> R.drawable.raid_nyalotha
         Raid.CASTLE_NATHRIA -> R.drawable.raid_castle_nathria
         Raid.SANCTUM_OF_DOMINATION -> R.drawable.raid_sanctum_of_domination
+        Raid.SEPULCHER_OF_THE_FIRST_ONES -> R.drawable.raid_sepulcher_of_the_first_ones
     }
