@@ -4,13 +4,19 @@ import android.content.Context
 import androidx.room.*
 import com.nemesis.rio.data.database.migrations.Migration_1_2
 import com.nemesis.rio.data.game.database.ExpansionConverters
-import com.nemesis.rio.data.mplus.ranks.database.*
+import com.nemesis.rio.data.mplus.ranks.database.MythicPlusRanksDao
+import com.nemesis.rio.data.mplus.ranks.database.MythicPlusRanksEntity
+import com.nemesis.rio.data.mplus.ranks.database.MythicPlusRoleRanksEntity
+import com.nemesis.rio.data.mplus.ranks.database.MythicPlusSpecRanksEntity
 import com.nemesis.rio.data.mplus.runs.database.MythicPlusRunAffixesEntity
 import com.nemesis.rio.data.mplus.runs.database.MythicPlusRunEntity
 import com.nemesis.rio.data.mplus.runs.database.MythicPlusRunsDao
 import com.nemesis.rio.data.mplus.scores.colors.database.MythicPlusScoreColorDao
 import com.nemesis.rio.data.mplus.scores.colors.database.MythicPlusScoreColorEntity
-import com.nemesis.rio.data.mplus.scores.database.*
+import com.nemesis.rio.data.mplus.scores.database.MythicPlusOverallScoreEntity
+import com.nemesis.rio.data.mplus.scores.database.MythicPlusRoleScoreEntity
+import com.nemesis.rio.data.mplus.scores.database.MythicPlusScoresDao
+import com.nemesis.rio.data.mplus.scores.database.MythicPlusSpecScoreEntity
 import com.nemesis.rio.data.mplus.seasons.database.SeasonEntity
 import com.nemesis.rio.data.mplus.seasons.database.SeasonsDao
 import com.nemesis.rio.data.profile.character.database.CharacterDao
@@ -83,7 +89,7 @@ abstract class AppDatabase : RoomDatabase() {
         fun build(context: Context) =
             Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
                 .addMigrations(Migration_1_2)
-                .fallbackToDestructiveMigrationFrom(5)
+                .fallbackToDestructiveMigrationFrom(4)
                 .build()
     }
 }
