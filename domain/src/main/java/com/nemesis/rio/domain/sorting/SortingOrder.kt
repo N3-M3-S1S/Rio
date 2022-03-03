@@ -1,5 +1,5 @@
 package com.nemesis.rio.domain.sorting
 
 enum class SortingOrder {
-    ASCENDING, DESCENDING
+    ASC, DESC
 }
