@@ -4,6 +4,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.os.Build
 import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.net.toUri
@@ -36,12 +37,15 @@ class UrlBrowser {
 
     private fun createShareUrlPendingIntent(): PendingIntent {
         val intent = Intent(appCtx, ShareUrlBroadcastReceiver::class.java)
-        return PendingIntent.getBroadcast(appCtx, 0, intent, 0)
+        val flags =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) PendingIntent.FLAG_MUTABLE else 0
+        return PendingIntent.getBroadcast(appCtx, 0, intent, flags)
     }
 
     private fun setToolbarSurfaceColor(customTabsIntentBuilder: CustomTabsIntent.Builder) {
         val color = appColor(R.color.surface)
-        val customTabColorSchemeParams = CustomTabColorSchemeParams.Builder().setToolbarColor(color).build()
+        val customTabColorSchemeParams =
+            CustomTabColorSchemeParams.Builder().setToolbarColor(color).build()
         customTabsIntentBuilder.setDefaultColorSchemeParams(customTabColorSchemeParams)
     }
 }
