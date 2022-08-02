@@ -17,7 +17,7 @@ val Spec.stringResId: Int
         Spec.BEAST_MASTERY -> R.string.spec_beast_mastery
         Spec.MARKSMANSHIP -> R.string.spec_marksmanship
         Spec.SURVIVAL -> R.string.spec_survival
-        Spec.PROTECTION_PALADIN -> R.string.class_paladin
+        Spec.PROTECTION_PALADIN -> R.string.spec_protection
         Spec.RETRIBUTION -> R.string.spec_retribution
         Spec.HOLY_PALADIN -> R.string.spec_holy
         Spec.AFFLICTION -> R.string.spec_affliction
