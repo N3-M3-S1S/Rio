@@ -9,10 +9,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.nemesis.rio.presentation.view.epoxy.preloader.coil.addCoilPreloader
 import com.nemesis.rio.presentation.view.fragment.BaseDataListFragment
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.getViewModel
-import kotlin.reflect.KClass
 
-abstract class RaidProgressFragment<VM : RaidProgressViewModel>(private val viewModelClass: KClass<VM>) :
+abstract class RaidProgressFragment<VM : RaidProgressViewModel> :
     BaseDataListFragment() {
     private val raidProgressListController: RaidProgressListDataController by inject()
     private lateinit var viewModel: RaidProgressViewModel
@@ -21,9 +19,10 @@ abstract class RaidProgressFragment<VM : RaidProgressViewModel>(private val view
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = requireParentFragment()
-            .getViewModel(clazz = viewModelClass)
+        viewModel = getViewModel()
     }
+
+    protected abstract fun getViewModel(): RaidProgressViewModel
 
     @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
