@@ -11,8 +11,8 @@ plugins {
 android {
     defaultConfig {
         applicationId = "com.nemesis.rio"
-        versionCode = 6
-        versionName = "1.2.2"
+        versionCode = 7
+        versionName = "1.2.3"
         base {
             archivesBaseName = "${rootProject.name}-$versionName"
         }
