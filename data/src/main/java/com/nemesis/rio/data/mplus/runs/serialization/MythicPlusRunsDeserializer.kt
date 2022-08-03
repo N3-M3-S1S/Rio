@@ -57,10 +57,10 @@ object MythicPlusRunsDeserializer : JsonObjectDeserializer<List<MythicPlusRun>>(
     }
 
     private fun parseDungeonOrNull(mythicPlusRunJsonObject: JsonObject): Dungeon? {
-        val dungeonJsonValue = mythicPlusRunJsonObject.getUnquotedString("short_name")
-        val dungeon = DungeonSerialization.parseDungeonByJsonValueOrNull(dungeonJsonValue)
+        val dungeonShortName = mythicPlusRunJsonObject.getUnquotedString("short_name")
+        val dungeon = DungeonSerialization.parseDungeonByShorNameOrNull(dungeonShortName)
         if (dungeon == null) {
-            Timber.w("Unknown dungeon json value: $dungeonJsonValue")
+            Timber.w("Unknown dungeon short name: $dungeonShortName")
         }
         return dungeon
     }

@@ -58,16 +58,14 @@
     <string name="mplus_runs_sort_by_score">Score</string>
 
     <!-- Dungeons -->
-    <string name="dungeon_de_other_side">De Other Side</string>
-    <string name="dungeon_mists_of_tirna_scithe">Mists of Tirna Scithe</string>
-    <string name="dungeon_sanguine_depths">Sanguine Depths</string>
-    <string name="dungeon_halls_of_atonement">Halls Of Atonement</string>
-    <string name="dungeon_necrotic_wake">Necrotic Wake</string>
-    <string name="dungeon_spires_of_ascension">Spires Of Ascension</string>
-    <string name="dungeon_theater_of_pain">Theater Of Pain</string>
-    <string name="dungeon_plaguefall">Plaguefall</string>
-    <string name="dungeon_tazavesh_strt">Tazavesh: Streets of Wonder</string>
+    <string name="dungeon_grimrail_depot">Grimrail Depot</string>
+    <string name="dungeon_iron_docks">Iron Docks</string>
+    <string name="dungeon_mechagon_junkyard">Mechagon Junkyard</string>
+    <string name="dungeon_mechagon_workshop">Mechagon Workshop</string>
+    <string name="dungeon_karazhan_lower">Return to Karazhan: Lower</string>
+    <string name="dungeon_karazhan_upper">Return to Karazhan: Upper</string>
     <string name="dungeon_tazavesh_gmbt">Tazavesh: So\'leah\'s Gambit</string>
+    <string name="dungeon_tazavesh_strt">Tazavesh: Streets of Wonder</string>
 
     <!-- Raiding -->
     <string name="raid_progress">Raid progress</string>
