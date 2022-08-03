@@ -1,10 +1,10 @@
 import com.android.builder.core.DefaultApiVersion
 
 android {
-    compileSdkVersion(31)
+    compileSdkVersion(32)
     defaultConfig {
         minSdkVersion = DefaultApiVersion(23)
-        targetSdkVersion = DefaultApiVersion(31)
+        targetSdkVersion = DefaultApiVersion(32)
         testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
     }
     compileOptions {
@@ -21,7 +21,7 @@ android {
 dependencies {
     with(AndroidDependencies) {
         implementation(ANDROID_CORE_KTX)
-        implementation(ANDROID_COLLECTIONS_KTX)
+        implementation(ANDROID_COLLECTIONS)
         androidTestImplementation(ANDROID_TEST_RUNNER)
         androidTestImplementation(ANDROID_TEST_RULES)
         androidTestImplementation(ANDROID_MOCKK)
