@@ -21,7 +21,5 @@ val Affix.imageResId
         Affix.VOLCANIC -> R.drawable.affix_volcanic
         Affix.GRIEVOUS -> R.drawable.affix_griveous
         Affix.STORMING -> R.drawable.affix_storming
-        Affix.PRIDEFUL -> R.drawable.affix_prideful
-        Affix.TORMENTED -> R.drawable.affix_tormented
-        Affix.ENCRYPTED -> R.drawable.affix_encrypted
+        Affix.SHROUDED -> R.drawable.affix_shrouded
     }
