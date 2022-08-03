@@ -18,14 +18,12 @@ import com.nemesis.rio.presentation.profile.search.profileSearchModules
 import com.nemesis.rio.presentation.raiding.raidingModule
 import com.nemesis.rio.presentation.server.realm.realmSelectModule
 import com.nemesis.rio.presentation.view.databinding.DefaultBindingAdapters
-import kotlinx.coroutines.*
+import kotlinx.coroutines.MainScope
 import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidFileProperties
-import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.context.startKoin
-import org.koin.core.logger.Level
 import timber.log.Timber
 
 class App : Application() {
@@ -46,8 +44,6 @@ class App : Application() {
 
     private fun setupKoin() {
         startKoin {
-            // https://github.com/InsertKoinIO/koin/issues/1188
-            androidLogger(if (BuildConfig.DEBUG) Level.ERROR else Level.NONE)
             androidContext(this@App)
             androidFileProperties()
             workManagerFactory()
