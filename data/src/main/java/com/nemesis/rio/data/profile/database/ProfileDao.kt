@@ -22,7 +22,7 @@ abstract class ProfileDao<P : Profile> {
     fun setRoomDatabase(database: RoomDatabase) {
         roomDatabase = database
         writableDatabase =
-            database.openHelper.writableDatabase
+            database.getOpenHelper().writableDatabase
     }
 
     suspend fun updateLastRefreshDateTime(newRefreshDateTime: Instant, profileID: Long) {
